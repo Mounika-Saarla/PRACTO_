@@ -25,6 +25,8 @@
         <type>pom</type>
         <scope>import</scope>
       </dependency>
+      
+      
     </dependencies>
   </dependencyManagement>
 
@@ -145,9 +147,7 @@
   <scope>test</scope>
  
 </dependency>
- 
   </dependencies>
- 
 
   <build>
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
