@@ -10,12 +10,18 @@ import java.time.Duration;
 import org.openqa.selenium.By;
 import com.parameters.PropertyReader;
 
-public class HomePage {
-    WebDriver driver;
+public class HomePage extends BasePage {
+	
+public HomePage(WebDriver driver) {
+		super(driver);
+		// TODO Auto-generated constructor stub
+	}
 
-    public HomePage(WebDriver driver) {
-        this.driver = driver;
-    }
+//    WebDriver driver;
+//
+//    public HomePage(WebDriver driver) {
+//        this.driver = driver;
+//    }
 
 
 public void clickSearchForHospitals() throws Exception {

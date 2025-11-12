@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Cucumber" time="77.453" tests="2" skipped="0" failures="2" errors="0" timestamp="2025-11-12T15:29:09.409965500Z">
+<testcase classname="Practo Hospital Search and Booking" name="Navigate from homepage and book hospital with valid details - #1.1" time="39.237">
+<failure type="java.lang.NullPointerException" message="Cannot invoke &quot;org.openqa.selenium.support.ui.FluentWait.until(java.util.function.Function)&quot; because &quot;wait&quot; is null">
+<![CDATA[java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.support.ui.FluentWait.until(java.util.function.Function)" because "wait" is null
+	at com.stepDefinitionTestNG.PractoProfile.enterCityNameFromExcel(PractoProfile.java:256)
+	at ✽.user enters city name from sheet 0 and row 1 and selects suggestions(file:///C:/Training/SprintPracto/Practo/src/test/resources/com/features/Login.feature:80)
+]]>
+</failure>
+<system-out><![CDATA[
+Given user launches Practo application......................................passed
+When user clicks on Search for hospitals link on homepage...................passed
+And user enters city name from sheet 0 and row 1 and selects suggestions....failed
+Then user verifies hospital list page is displayed..........................skipped
+When user selects a hospital from the list..................................skipped
+And user clicks on Book Hospital Visit......................................skipped
+]]></system-out>
+</testcase>
+<testcase classname="Practo Hospital Search and Booking" name="Navigate from homepage and book hospital with valid details - #1.2" time="37.341">
+<failure type="java.lang.NullPointerException" message="Cannot invoke &quot;org.openqa.selenium.support.ui.FluentWait.until(java.util.function.Function)&quot; because &quot;wait&quot; is null">
+<![CDATA[java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.support.ui.FluentWait.until(java.util.function.Function)" because "wait" is null
+	at com.stepDefinitionTestNG.PractoProfile.enterCityNameFromExcel(PractoProfile.java:256)
+	at ✽.user enters city name from sheet 0 and row 2 and selects suggestions(file:///C:/Training/SprintPracto/Practo/src/test/resources/com/features/Login.feature:80)
+]]>
+</failure>
+<system-out><![CDATA[
+Given user launches Practo application......................................passed
+When user clicks on Search for hospitals link on homepage...................passed
+And user enters city name from sheet 0 and row 2 and selects suggestions....failed
+Then user verifies hospital list page is displayed..........................skipped
+When user selects a hospital from the list..................................skipped
+And user clicks on Book Hospital Visit......................................skipped
+]]></system-out>
+</testcase>
+</testsuite>

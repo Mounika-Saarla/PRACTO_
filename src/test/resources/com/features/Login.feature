@@ -36,25 +36,73 @@
 
 Feature: Practo Hospital Search and Booking
 
-Scenario: Navigate from homepage and book hospital with valid details
-    Given user launches Practo application
-    When user clicks on Search for hospitals link on homepage
-    And user enters city name from Excel and selects suggestions 
-    Then user verifies hospital list page is displayed
-    When user selects a hospital from the list
-    And user clicks on Book Hospital Visit
-    And user click on clinic button
-   Then user looks contact details
+#@valid
+#Scenario: Navigate from homepage and book hospital with valid details
+#   Given user launches Practo application
+#   When user clicks on Search for hospitals link on homepage
+#    And user enters city name from Excel and selects suggestions 
+#  Then user verifies hospital list page is displayed
+#    When user selects a hospital from the list
+#    And user clicks on Book Hospital Visit
+#    And user click on clinic button
+#   Then user looks contact details
+   
+#@overview
+#Scenario: Navigate from homepage to hospital overview page
+ #  Given user launches Practo application
+ #   When user clicks on Search for hospitals link on homepage
+ #   And user enters city name from Excel and selects suggestions 
+ #   Then user verifies hospital list page is displayed 
+ #   Then user clicks hospital card so user see details
+    
 
-Scenario: Navigate from homepage and book hospital with invalid phone number
-    Given user launches Practo application
-    When user clicks on Search for hospitals link on homepage
-    And user enters city name from Excel and selects suggestions 
-   # And user clicks on Search button
-    Then user verifies hospital list page is displayed
-    When user selects a hospital from the list
-    And user clicks on Book Hospital Visit
-     And user click on clinic button
-    #Then user enters invalid booking details from Excel and verifies error message  
+#@ExcelData
+#Scenario Outline: Navigate from homepage and book hospital with valid to details
+#   Given user launches Practo application
+#    When user clicks on Search for hospitals link on homepage
+#    And user enters city name "<City>" and selects suggestions
+#    Then user verifies hospital list page is displayed
+#    When user selects a hospital from the list
+#    And user clicks on Book Hospital Visit
+
+
+#Examples:
+#   | City      |
+#   | Bangalore |
+#   | Mumbai    |
+
+
+
+
+Scenario Outline: Navigate from homepage and book hospital with valid details
+   Given user launches Practo application
+   When user clicks on Search for hospitals link on homepage
+   And user enters city name from sheet <sheet> and row <row> and selects suggestions
+   Then user verifies hospital list page is displayed
+   When user selects a hospital from the list
+  And user clicks on Book Hospital Visit
+   
+Examples:
+    | sheet | row |
+	| 	0	|	1  |
+	|	0	|	2	|
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    #Then user verifies hospital Deatils page is displayed
+  
+    
+
+
+
 
     
