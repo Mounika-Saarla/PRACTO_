@@ -25,12 +25,11 @@
         <type>pom</type>
         <scope>import</scope>
       </dependency>
-      
-      
     </dependencies>
   </dependencyManagement>
 
   <dependencies>
+  
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-api</artifactId>
@@ -147,6 +146,12 @@
   <scope>test</scope>
  
 </dependency>
+ 
+  
+ 
+<!--Maven Repository: org.seleniumhq.selenium » selenium-java-->
+ 
+    
   </dependencies>
 
   <build>
