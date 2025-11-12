@@ -9,17 +9,20 @@
 <table>
 <tr><th>Test</th><th># Passed</th><th># Skipped</th><th># Retried</th><th># Failed</th><th>Time (ms)</th><th>Included Groups</th><th>Excluded Groups</th></tr>
 <tr><th colspan="8">Default suite</th></tr>
-<tr><td><a href="#t0">Default test</a></td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num attn">1</td><td class="num">11,140</td><td></td><td></td></tr>
+<tr><td><a href="#t0">Default test</a></td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num attn">1</td><td class="num">10,087</td><td></td><td></td></tr>
 </table>
-<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">Default suite</th></tr></tbody><tbody id="t0"><tr><th colspan="4">Default test &#8212; failed</th></tr><tr class="failedeven"><td rowspan="1">com.runner.TestRunnerTestNG</td><td><a href="#m0">runScenario</a></td><td rowspan="1">1762874241474</td><td rowspan="1">10098</td></tr></tbody>
+<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">Default suite</th></tr></tbody><tbody id="t0"><tr><th colspan="4">Default test &#8212; failed</th></tr><tr class="failedeven"><td rowspan="1">com.runner.TestRunnerTestNG</td><td><a href="#m0">runScenario</a></td><td rowspan="1">1762950703946</td><td rowspan="1">9074</td></tr></tbody>
 </table>
-<h2>Default test</h2><h3 id="m0">com.runner.TestRunnerTestNG#runScenario</h3><table class="result"><tr class="param"><th>Parameter #1</th><th>Parameter #2</th></tr><tr class="param stripe"><td>&quot;Validate that searching for dentist shows matching doctors&quot;</td><td>&quot;Practo Doctor Search&quot;</td></tr><tr><th colspan="2">Exception</th></tr><tr><td colspan="2"><div class="stacktrace">java.lang.NullPointerException
-	at java.base/java.io.FileInputStream.&lt;init&gt;(FileInputStream.java:151)
-	at java.base/java.io.FileInputStream.&lt;init&gt;(FileInputStream.java:112)
-	at com.parameters.ExcelReader.getSpecializationFromExcel(ExcelReader.java:19)
-	at com.pages.ProfilePage.enterSpecialization(ProfilePage.java:31)
-	at com.stepDefinitionTestNG.Profile.the_user_searches_for_the_dentists(Profile.java:49)
-	at ✽.the user searches for the Dentists(file:///C:/training/Java/SprintPracto/Practo/src/test/resources/Features/Profile.feature:7)
+<h2>Default test</h2><h3 id="m0">com.runner.TestRunnerTestNG#runScenario</h3><table class="result"><tr class="param"><th>Parameter #1</th><th>Parameter #2</th></tr><tr class="param stripe"><td>&quot;Invalid mobile number shows error but OTP field appears&quot;</td><td>&quot;Home Page Footer Navigation&quot;</td></tr><tr><th colspan="2">Exception</th></tr><tr><td colspan="2"><div class="stacktrace">io.cucumber.testng.UndefinedStepException: The step &apos;User applies a City filter from test data&apos; is undefined.
+You can implement this step using the snippet(s) below:
+
+@When(&quot;User applies a City filter from test data&quot;)
+public void user_applies_a_city_filter_from_test_data() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+	at ✽.User applies a City filter from test data(file:///C:/Training/SprintPracto/Practo/src/test/resources/Features/Profile.feature:29)
 </div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
 </body>
 </html>

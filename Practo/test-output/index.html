@@ -50,7 +50,7 @@
               <ul>
                 <li>
                   <a href="#" panel-name="test-xml-Default_suite" class="navigator-link ">
-                    <span>C:\Users\arecha\AppData\Local\Temp\testng-eclipse-1073813564\testng-customsuite.xml</span>
+                    <span>C:\Users\sripath\AppData\Local\Temp\testng-eclipse--2009225852\testng-customsuite.xml</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
@@ -103,7 +103,7 @@
                     <div class="method-list-content failed suite-Default_suite">
                       <span>
                         <img src="failed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Default_suite" title="com.runner.TestRunnerTestNG" class="method navigator-link" hash-for-method="runScenario(&quot;Validate that searching for dentist shows matching doctors&quot;, &quot;Practo Doctor Search&quot;)">runScenario("Validate that searching for dentist shows matching doctors", "Practo Doctor Search")</a> <!-- method navigator-link -->
+                        <a href="#" panel-name="suite-Default_suite" title="com.runner.TestRunnerTestNG" class="method navigator-link" hash-for-method="runScenario(&quot;Invalid mobile number shows error but OTP field appears&quot;, &quot;Home Page Footer Navigation&quot;)">runScenario("Invalid mobile number shows error but OTP field appears", "Home Page Footer Navigation")</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                     </div> <!-- method-list-content failed suite-Default_suite -->
@@ -126,17 +126,20 @@
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="runScenario(&quot;Validate that searching for dentist shows matching doctors&quot;, &quot;Practo Doctor Search&quot;)">
-                  </a> <!-- runScenario("Validate that searching for dentist shows matching doctors", "Practo Doctor Search") -->
+                  <a name="runScenario(&quot;Invalid mobile number shows error but OTP field appears&quot;, &quot;Home Page Footer Navigation&quot;)">
+                  </a> <!-- runScenario("Invalid mobile number shows error but OTP field appears", "Home Page Footer Navigation") -->
                   <span class="method-name">runScenario</span>
-                  <span class="parameters">("Validate that searching for dentist shows matching doctors","Practo Doctor Search")</span>
-                  <div class="stack-trace">java.lang.NullPointerException
-	at java.base/java.io.FileInputStream.&lt;init&gt;(FileInputStream.java:151)
-	at java.base/java.io.FileInputStream.&lt;init&gt;(FileInputStream.java:112)
-	at com.parameters.ExcelReader.getSpecializationFromExcel(ExcelReader.java:19)
-	at com.pages.ProfilePage.enterSpecialization(ProfilePage.java:31)
-	at com.stepDefinitionTestNG.Profile.the_user_searches_for_the_dentists(Profile.java:49)
-	at ✽.the user searches for the Dentists(file:///C:/training/Java/SprintPracto/Practo/src/test/resources/Features/Profile.feature:7)
+                  <span class="parameters">("Invalid mobile number shows error but OTP field appears","Home Page Footer Navigation")</span>
+                  <div class="stack-trace">io.cucumber.testng.UndefinedStepException: The step &apos;User applies a City filter from test data&apos; is undefined.
+You can implement this step using the snippet(s) below:
+
+@When(&quot;User applies a City filter from test data&quot;)
+public void user_applies_a_city_filter_from_test_data() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+	at ✽.User applies a City filter from test data(file:///C:/Training/SprintPracto/Practo/src/test/resources/Features/Profile.feature:29)
 
 </div> <!-- stack-trace -->
                   <em>
@@ -148,7 +151,7 @@
         </div> <!-- panel Default_suite -->
         <div panel-name="test-xml-Default_suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">C:\Users\arecha\AppData\Local\Temp\testng-eclipse-1073813564\testng-customsuite.xml</span>
+            <span class="header-content">C:\Users\sripath\AppData\Local\Temp\testng-eclipse--2009225852\testng-customsuite.xml</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <pre>
@@ -209,12 +212,12 @@ data.addRows(1);
 data.setCell(0, 0, 0)
 data.setCell(0, 1, 'runScenario')
 data.setCell(0, 2, 'com.runner.TestRunnerTestNG')
-data.setCell(0, 3, 10098);
+data.setCell(0, 3, 9074);
 window.suiteTableData['Default_suite']= { tableData: data, tableDiv: 'times-div-Default_suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 10 seconds</span>
+              <span class="suite-total-time">Total running time: 9 seconds</span>
               <div id="times-div-Default_suite">
               </div> <!-- times-div-Default_suite -->
             </div> <!-- times-div -->
@@ -242,18 +245,18 @@ return data;
             <div class="chronological-class">
               <div class="chronological-class-name">com.runner.TestRunnerTestNG</div> <!-- chronological-class-name -->
               <div class="configuration-class before">
-                <span class="method-name">setUpClass(org.testng.TestRunner@2c0b4c83)</span>
+                <span class="method-name">setUpClass(org.testng.TestRunner@6cbd0674)</span>
                 <span class="method-start">0 ms</span>
               </div> <!-- configuration-class before -->
               <div class="test-method">
                 <img src="failed.png">
                 </img>
-                <span class="method-name">runScenario("Validate that searching for dentist shows matching doctors", "Practo Doctor Search")</span>
-                <span class="method-start">892 ms</span>
+                <span class="method-name">runScenario("Invalid mobile number shows error but OTP field appears", "Home Page Footer Navigation")</span>
+                <span class="method-start">864 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-class after">
                 <span class="method-name">tearDownClass</span>
-                <span class="method-start">10997 ms</span>
+                <span class="method-start">9952 ms</span>
               </div> <!-- configuration-class after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

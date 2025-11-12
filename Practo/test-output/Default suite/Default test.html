@@ -57,9 +57,9 @@ function toggleAllBoxes() {
 <tr>
 <td>Tests passed/Failed/Skipped:</td><td>0/1/0</td>
 </tr><tr>
-<td>Started on:</td><td>Tue Nov 11 20:47:20 IST 2025</td>
+<td>Started on:</td><td>Wed Nov 12 18:01:43 IST 2025</td>
 </tr>
-<tr><td>Total time:</td><td>11 seconds (11140 ms)</td>
+<tr><td>Total time:</td><td>10 seconds (10087 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -76,25 +76,31 @@ function toggleAllBoxes() {
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='com.runner.TestRunnerTestNG.runScenario()'><b>runScenario</b><br>Test class: com.runner.TestRunnerTestNG<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Validate that searching for dentist shows matching doctors", "Practo Doctor Search"</td>
-<td><div><pre>java.lang.NullPointerException
-	at java.base/java.io.FileInputStream.&lt;init&gt;(FileInputStream.java:151)
-	at java.base/java.io.FileInputStream.&lt;init&gt;(FileInputStream.java:112)
-	at com.parameters.ExcelReader.getSpecializationFromExcel(ExcelReader.java:19)
-	at com.pages.ProfilePage.enterSpecialization(ProfilePage.java:31)
-	at com.stepDefinitionTestNG.Profile.the_user_searches_for_the_dentists(Profile.java:49)
-	at ✽.the user searches for the Dentists(file:///C:/training/Java/SprintPracto/Practo/src/test/resources/Features/Profile.feature:7)
-</pre></div><a href='#' onClick='toggleBox("stack-trace1957338226", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace1957338226'><pre>java.lang.NullPointerException
-	at java.base/java.io.FileInputStream.&lt;init&gt;(FileInputStream.java:151)
-	at java.base/java.io.FileInputStream.&lt;init&gt;(FileInputStream.java:112)
-	at com.parameters.ExcelReader.getSpecializationFromExcel(ExcelReader.java:19)
-	at com.pages.ProfilePage.enterSpecialization(ProfilePage.java:31)
-	at com.stepDefinitionTestNG.Profile.the_user_searches_for_the_dentists(Profile.java:49)
-	at ✽.the user searches for the Dentists(file:///C:/training/Java/SprintPracto/Practo/src/test/resources/Features/Profile.feature:7)
+<td title='com.runner.TestRunnerTestNG.runScenario()'><b>runScenario</b><br>Test class: com.runner.TestRunnerTestNG<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Invalid mobile number shows error but OTP field appears", "Home Page Footer Navigation"</td>
+<td><div><pre>io.cucumber.testng.UndefinedStepException: The step &apos;User applies a City filter from test data&apos; is undefined.
+You can implement this step using the snippet(s) below:
+
+@When(&quot;User applies a City filter from test data&quot;)
+public void user_applies_a_city_filter_from_test_data() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+	at ✽.User applies a City filter from test data(file:///C:/Training/SprintPracto/Practo/src/test/resources/Features/Profile.feature:29)
+</pre></div><a href='#' onClick='toggleBox("stack-trace2092870757", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace2092870757'><pre>io.cucumber.testng.UndefinedStepException: The step &apos;User applies a City filter from test data&apos; is undefined.
+You can implement this step using the snippet(s) below:
+
+@When(&quot;User applies a City filter from test data&quot;)
+public void user_applies_a_city_filter_from_test_data() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+	at ✽.User applies a City filter from test data(file:///C:/Training/SprintPracto/Practo/src/test/resources/Features/Profile.feature:29)
 </pre></div></td>
-<td>10</td>
-<td>com.runner.TestRunnerTestNG@1649b0e6</td></tr>
+<td>9</td>
+<td>com.runner.TestRunnerTestNG@17a7f733</td></tr>
 </table><p>
 </body>
 </html>

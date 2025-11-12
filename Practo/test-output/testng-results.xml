@@ -2,54 +2,68 @@
 <testng-results ignored="0" total="1" passed="0" failed="1" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-11-11T20:47:20 IST" name="Default suite" finished-at="2025-11-11T20:47:31 IST" duration-ms="11140">
+  <suite started-at="2025-11-12T18:01:43 IST" name="Default suite" finished-at="2025-11-12T18:01:53 IST" duration-ms="10087">
     <groups>
       <group name="cucumber">
-        <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.runner.TestRunnerTestNG@1649b0e6]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
+        <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.runner.TestRunnerTestNG@17a7f733]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
       </group> <!-- cucumber -->
     </groups>
-    <test started-at="2025-11-11T20:47:20 IST" name="Default test" finished-at="2025-11-11T20:47:31 IST" duration-ms="11140">
+    <test started-at="2025-11-12T18:01:43 IST" name="Default test" finished-at="2025-11-12T18:01:53 IST" duration-ms="10087">
       <class name="com.runner.TestRunnerTestNG">
-        <test-method is-config="true" signature="setUpClass(org.testng.ITestContext)[pri:0, instance:com.runner.TestRunnerTestNG@1649b0e6]" started-at="2025-11-11T20:47:20 IST" name="setUpClass" finished-at="2025-11-11T20:47:21 IST" duration-ms="877" status="PASS">
+        <test-method is-config="true" signature="setUpClass(org.testng.ITestContext)[pri:0, instance:com.runner.TestRunnerTestNG@17a7f733]" started-at="2025-11-12T18:01:43 IST" name="setUpClass" finished-at="2025-11-12T18:01:43 IST" duration-ms="845" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[org.testng.TestRunner@2c0b4c83]]>
+                <![CDATA[org.testng.TestRunner@6cbd0674]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpClass -->
-        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.runner.TestRunnerTestNG@1649b0e6]" started-at="2025-11-11T20:47:21 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2025-11-11T20:47:31 IST" duration-ms="10098" status="FAIL">
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.runner.TestRunnerTestNG@17a7f733]" started-at="2025-11-12T18:01:43 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2025-11-12T18:01:53 IST" duration-ms="9074" status="FAIL">
           <params>
             <param index="0">
               <value>
-                <![CDATA["Validate that searching for dentist shows matching doctors"]]>
+                <![CDATA["Invalid mobile number shows error but OTP field appears"]]>
               </value>
             </param>
             <param index="1">
               <value>
-                <![CDATA["Practo Doctor Search"]]>
+                <![CDATA["Home Page Footer Navigation"]]>
               </value>
             </param>
           </params>
-          <exception class="java.lang.NullPointerException">
+          <exception class="io.cucumber.testng.UndefinedStepException">
+            <message>
+              <![CDATA[The step 'User applies a City filter from test data' is undefined.
+You can implement this step using the snippet(s) below:
+
+@When("User applies a City filter from test data")
+public void user_applies_a_city_filter_from_test_data() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+]]>
+            </message>
             <full-stacktrace>
-              <![CDATA[java.lang.NullPointerException
-at java.base/java.io.FileInputStream.<init>(FileInputStream.java:151)
-at java.base/java.io.FileInputStream.<init>(FileInputStream.java:112)
-at com.parameters.ExcelReader.getSpecializationFromExcel(ExcelReader.java:19)
-at com.pages.ProfilePage.enterSpecialization(ProfilePage.java:31)
-at com.stepDefinitionTestNG.Profile.the_user_searches_for_the_dentists(Profile.java:49)
-at ✽.the user searches for the Dentists(file:///C:/training/Java/SprintPracto/Practo/src/test/resources/Features/Profile.feature:7)
+              <![CDATA[io.cucumber.testng.UndefinedStepException: The step 'User applies a City filter from test data' is undefined.
+You can implement this step using the snippet(s) below:
+
+@When("User applies a City filter from test data")
+public void user_applies_a_city_filter_from_test_data() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+at ✽.User applies a City filter from test data(file:///C:/Training/SprintPracto/Practo/src/test/resources/Features/Profile.feature:29)
 ]]>
             </full-stacktrace>
-          </exception> <!-- java.lang.NullPointerException -->
+          </exception> <!-- io.cucumber.testng.UndefinedStepException -->
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runScenario -->
-        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:com.runner.TestRunnerTestNG@1649b0e6]" started-at="2025-11-11T20:47:31 IST" name="tearDownClass" finished-at="2025-11-11T20:47:31 IST" duration-ms="112" status="PASS">
+        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:com.runner.TestRunnerTestNG@17a7f733]" started-at="2025-11-12T18:01:53 IST" name="tearDownClass" finished-at="2025-11-12T18:01:53 IST" duration-ms="102" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDownClass -->
