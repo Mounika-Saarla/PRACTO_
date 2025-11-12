@@ -1,40 +1,40 @@
-Feature: Home Page Footer Navigation
-#This feature deals with the Search for clinics
-#@search
-#Scenario Outline: Validate Footer Contains "Search for clinics" click
- #   Given User is on the Home page
-  #  And  User scrolls to the footer section
-   # When The footer should contain a visible link labeled "Search for clinics"
-    #And User clicks the "Search for clinics" link
-    #And User applies a location filter <RowIndex>
-    #And User applies a speciality filter <RowIndex>
-    #Then Filtered clinic results should be displayed
+
+Feature: Practo Doctor Search
+ #@Search
+#Scenario: Validate that searching for dentist shows matching doctors
+   #Given the user navigates to the Practo website
+    #When the user opens the Find Doctors page
+   #And the user searches for the Dentists
+    #Then matching doctors should be visible
     
-   # Examples:
-    #| RowIndex   | 
-    #| 1		| 
+    @Module
+    Scenario: Navigate from Practo home to Find Doctors and then to Consult with a doctor
+  Given User launches the Practo website 
+  When User clicks on Find Doctors option
+  #And User should be on the Find Doctors page
+  And User clicks on Consult with a doctor option
+  Then User should be on the Consult with a doctor page
+  
+ @Module2
+ Scenario: Validate that selecting Dermatologist from popular searches navigates through three pages
+    Given the user navigates to the Practo website
+    When the user opens the Find Doctors page
+    And the user selects Dermatologist from the popular searches section
+    Then the user should be navigated to the Dermatologist listing page
 
-#Scenario:navigate to required clinic details
-#Given  user launch practo website
-#When user clicks the search for clinics link
-#And user clicks on view profile of first clinic
-#Then clinic details shouls be displayed
+    @Spz
+    Scenario Outline: Search for a doctor by specialization
+  Given the user is on the Practo homepage
+  When the user enters "<specialization>" in the search bar
+  And selects the location as "<location>"
+  And clicks the search button
+  Then the results page should display doctors specialized in "<specialization>"
+  And the page should show filters and sorting options relevant to "<specialization>"
 
-
-@excel
-Scenario: Invalid mobile number shows error but OTP field appears
-Given user on the homepage
-When user click on the "Search for Clinics" footer link
-#And user enter a valid location and speciality from test data
-When  User applies a City filter from test data
-When  User applies a Role filter from test data
-And user select a doctor from the search results
-And user click on the "Book clinic visit" button
-And user select a time slot from test data
-And user enter an invalid mobile number from test data
-And user click on the "Continue" button
-Then user should see an error message in next page from test data
-
-
-
-
+Examples:
+  | specialization         | location   |
+  | Dermatologist          | Bangalore  |
+  | Pediatrician           | Mumbai     |
+  | Gynecologist           | Delhi      |
+  | Cardiologist           | Hyderabad  |
+  | Orthopedic Surgeon     | Chennai    |
