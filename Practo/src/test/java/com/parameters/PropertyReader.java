@@ -1,32 +1,25 @@
 package com.parameters;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
-import com.setup.BaseSteps;
 
-public class PropertyReader extends BaseSteps {
-    private static Properties prop = new Properties();
+public class PropertyReader {
+	public static Properties readProperty() {
+		Properties prop = null;
+		String fileName = ".\\src\\test\\resources\\PropertiesFile\\Profile.Properties";
+		try {
+			FileInputStream fis = new FileInputStream(fileName);
+			prop = new Properties();
+			prop.load(fis);
+		} catch (FileNotFoundException e) {
+			System.out.println("File name or file path is not correct");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 
-    public static Properties readProperty() {
-        try {
-            FileInputStream fis = new FileInputStream("src/test/resources/Properties/profile.properties");
-            prop.load(fis);
-        } catch (IOException e) {
-            throw new RuntimeException("Failed to load profile.properties file.");
-        }
-        return prop;
-    }
+		return prop;
 
-
-public static String getProperty(String key) {
-        String value = prop.getProperty(key);
-        if (value == null) {
-            throw new RuntimeException("Property '" + key + "' not found in profile.properties");
-        }
-        return value;
-    }
-
-
-   
+	}
 }
