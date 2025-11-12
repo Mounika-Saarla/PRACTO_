@@ -1,46 +1,24 @@
-//package com.parameters;
-// 
-//import java.io.FileInputStream;
-//import java.io.FileNotFoundException;
-//import java.io.IOException;
-//import java.util.Properties;
-// 
-//public class PropertyReader {
-//	public static Properties readProperty() {
-//		Properties prop = null;
-//		String fileName = ".\\src\\test\\resources\\Properties\\profile.properties";
-//		try {
-//			FileInputStream fis = new FileInputStream(fileName);
-//			prop = new Properties();
-//			prop.load(fis);
-//		} catch (FileNotFoundException e) {
-//			System.out.println("File name or file path is not correct");
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
-// 
-//		return prop;
-// 
-//	}
-//}
-// 
-
-
 package com.parameters;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
+
 public class PropertyReader {
-    private static Properties prop = new Properties();
+    private static Properties properties;
+
     static {
         try {
-            FileInputStream fis = new FileInputStream("src\\test\\resources\\Properties\\profile.properties");
-            prop.load(fis);
+            String filePath = System.getProperty("user.dir") + "/src/test/resources/Properties/profile.properties";
+            FileInputStream fis = new FileInputStream(filePath);
+            properties = new Properties();
+            properties.load(fis);
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException("Failed to load properties file.");
         }
     }
+
     public static String getProperty(String key) {
-        return prop.getProperty(key);
+        return properties.getProperty(key);
     }
 }
