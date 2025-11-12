@@ -1,87 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="2" passed="1" failed="1" skipped="0">
+<testng-results ignored="0" total="2" passed="2" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-11-11T17:50:22 IST" name="Default suite" finished-at="2025-11-11T17:51:01 IST" duration-ms="39073">
+  <suite started-at="2025-11-12T11:48:43 IST" name="Default suite" finished-at="2025-11-12T11:49:23 IST" duration-ms="40500">
     <groups>
       <group name="cucumber">
-        <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.runner.TestRunnerTestNG@17a7f733]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
+        <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.runner.TestRunner@1649b0e6]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
       </group> <!-- cucumber -->
     </groups>
-    <test started-at="2025-11-11T17:50:22 IST" name="Default test" finished-at="2025-11-11T17:51:01 IST" duration-ms="39073">
-      <class name="com.runner.TestRunnerTestNG">
-        <test-method is-config="true" signature="setUpClass(org.testng.ITestContext)[pri:0, instance:com.runner.TestRunnerTestNG@17a7f733]" started-at="2025-11-11T17:50:22 IST" name="setUpClass" finished-at="2025-11-11T17:50:23 IST" duration-ms="902" status="PASS">
+    <test started-at="2025-11-12T11:48:43 IST" name="Default test" finished-at="2025-11-12T11:49:23 IST" duration-ms="40500">
+      <class name="com.runner.TestRunner">
+        <test-method is-config="true" signature="setUpClass(org.testng.ITestContext)[pri:0, instance:com.runner.TestRunner@1649b0e6]" started-at="2025-11-12T11:48:43 IST" name="setUpClass" finished-at="2025-11-12T11:48:43 IST" duration-ms="821" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[org.testng.TestRunner@2506e949]]>
+                <![CDATA[org.testng.TestRunner@17d32e9b]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpClass -->
-        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.runner.TestRunnerTestNG@17a7f733]" started-at="2025-11-11T17:50:23 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2025-11-11T17:50:36 IST" duration-ms="13131" status="PASS">
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.runner.TestRunner@1649b0e6]" started-at="2025-11-12T11:48:43 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2025-11-12T11:49:01 IST" duration-ms="17764" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA["Validate Footer Contains "Search for clinics" click"]]>
+                <![CDATA["Navigate to Lab Tests page"]]>
               </value>
             </param>
             <param index="1">
               <value>
-                <![CDATA["Home Page Footer Navigation"]]>
+                <![CDATA["Lab Tests Navigation"]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runScenario -->
-        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.runner.TestRunnerTestNG@17a7f733]" started-at="2025-11-11T17:50:36 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2025-11-11T17:51:01 IST" duration-ms="24888" status="FAIL">
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.runner.TestRunner@1649b0e6]" started-at="2025-11-12T11:49:01 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2025-11-12T11:49:23 IST" duration-ms="21824" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA["Navigate to Doctor Details and Appointment Booking"]]>
+                <![CDATA["Navigate to Lab Tests page and add Lipid Profile to cart"]]>
               </value>
             </param>
             <param index="1">
               <value>
-                <![CDATA["Home Page Footer Navigation"]]>
+                <![CDATA["Lab Tests Navigation"]]>
               </value>
             </param>
           </params>
-          <exception class="org.openqa.selenium.TimeoutException">
-            <message>
-              <![CDATA[Expected condition failed: waiting for visibility of element located by By.xpath: //h1[contains(text(),'Clinic Details')] (tried for 20 second(s) with 500 milliseconds interval)
-Build info: version: '4.34.0', revision: '707dcb4246*'
-System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.8'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 142.0.7444.135, chrome: {chromedriverVersion: 142.0.7444.61 (9884f628acbc..., userDataDir: C:\Users\sripath\AppData\Lo...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:51817}, goog:processID: 22516, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:51817/devtoo..., se:cdpVersion: 142.0.7444.135, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: 63c41f56a7f4e7792b4cd5e03907de42]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of element located by By.xpath: //h1[contains(text(),'Clinic Details')] (tried for 20 second(s) with 500 milliseconds interval)
-Build info: version: '4.34.0', revision: '707dcb4246*'
-System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.8'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 142.0.7444.135, chrome: {chromedriverVersion: 142.0.7444.61 (9884f628acbc..., userDataDir: C:\Users\sripath\AppData\Lo...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:51817}, goog:processID: 22516, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:51817/devtoo..., se:cdpVersion: 142.0.7444.135, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: 63c41f56a7f4e7792b4cd5e03907de42
-at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)
-at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:228)
-at com.pages.userpage.isClinicDetailsPageDisplayed(userpage.java:90)
-at com.stepDefinitionTestNG.Profile.user_is_on_clinic_details_page(Profile.java:92)
-at ✽.user is on Clinic Details page(file:///C:/Training/SprintPracto/Practo/src/test/resources/Features/Profile.feature:20)
-]]>
-            </full-stacktrace>
-          </exception> <!-- org.openqa.selenium.TimeoutException -->
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runScenario -->
-        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:com.runner.TestRunnerTestNG@17a7f733]" started-at="2025-11-11T17:51:01 IST" name="tearDownClass" finished-at="2025-11-11T17:51:01 IST" duration-ms="86" status="PASS">
+        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:com.runner.TestRunner@1649b0e6]" started-at="2025-11-12T11:49:23 IST" name="tearDownClass" finished-at="2025-11-12T11:49:23 IST" duration-ms="28" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDownClass -->
-      </class> <!-- com.runner.TestRunnerTestNG -->
+      </class> <!-- com.runner.TestRunner -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

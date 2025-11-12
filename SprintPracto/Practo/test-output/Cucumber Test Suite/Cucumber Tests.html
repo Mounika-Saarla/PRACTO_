@@ -1,0 +1,95 @@
+<html>
+<head>
+<title>TestNG:  Cucumber Tests</title>
+<link href="../testng.css" rel="stylesheet" type="text/css" />
+<link href="../my-testng.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+.log { display: none;} 
+.stack-trace { display: none;} 
+</style>
+<script type="text/javascript">
+<!--
+function flip(e) {
+  current = e.style.display;
+  if (current == 'block') {
+    e.style.display = 'none';
+    return 0;
+  }
+  else {
+    e.style.display = 'block';
+    return 1;
+  }
+}
+
+function toggleBox(szDivId, elem, msg1, msg2)
+{
+  var res = -1;  if (document.getElementById) {
+    res = flip(document.getElementById(szDivId));
+  }
+  else if (document.all) {
+    // this is the way old msie versions work
+    res = flip(document.all[szDivId]);
+  }
+  if(elem) {
+    if(res == 0) elem.innerHTML = msg1; else elem.innerHTML = msg2;
+  }
+
+}
+
+function toggleAllBoxes() {
+  if (document.getElementsByTagName) {
+    d = document.getElementsByTagName('div');
+    for (i = 0; i < d.length; i++) {
+      if (d[i].className == 'log') {
+        flip(d[i]);
+      }
+    }
+  }
+}
+
+// -->
+</script>
+
+</head>
+<body>
+<h2 align='center'>Cucumber Tests</h2><table border='1' align="center">
+<tr>
+<td>Tests passed/Failed/Skipped:</td><td>0/1/0</td>
+</tr><tr>
+<td>Started on:</td><td>Mon Nov 10 15:21:09 IST 2025</td>
+</tr>
+<tr><td>Total time:</td><td>12 seconds (12318 ms)</td>
+</tr><tr>
+<td>Included groups:</td><td></td>
+</tr><tr>
+<td>Excluded groups:</td><td></td>
+</tr>
+</table><p/>
+<small><i>(Hover the method name to see the test class name)</i></small><p/>
+<table width='100%' border='1' class='invocation-failed'>
+<tr><td colspan='4' align='center'><b>FAILED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td><b>Attribute(s)</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='com.runner.TestRunnerTestNG.runScenario()'><b>runScenario</b><br>Test class: com.runner.TestRunnerTestNG<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Validate Lab Tests link and homepage navigation", "Lab Tests Navigation"</td>
+<td><div><pre>java.lang.AssertionError: Expected: Lab Tests - Practo but found: Blood Tests | Book Diagnostic Tests from Home at Best Prices | Practo expected [true] but found [false]
+	at com.stepDefinitionTestNG.Profile.user_should_see_the_lab_tests_page_with_title(Profile.java:25)
+	at ✽.user should see the Lab Tests page with title &quot;Lab Tests - Practo&quot;(file:///C:/training/java/SprintPracto/Practo/src/test/resources/feature/Profile.feature:7)
+... Removed 3 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace548258684", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace548258684'><pre>java.lang.AssertionError: Expected: Lab Tests - Practo but found: Blood Tests | Book Diagnostic Tests from Home at Best Prices | Practo expected [true] but found [false]
+	at org.testng.Assert.fail(Assert.java:111)
+	at org.testng.Assert.failNotEquals(Assert.java:1590)
+	at org.testng.Assert.assertTrue(Assert.java:57)
+	at com.stepDefinitionTestNG.Profile.user_should_see_the_lab_tests_page_with_title(Profile.java:25)
+	at ✽.user should see the Lab Tests page with title &quot;Lab Tests - Practo&quot;(file:///C:/training/java/SprintPracto/Practo/src/test/resources/feature/Profile.feature:7)
+</pre></div></td>
+<td>11</td>
+<td>com.runner.TestRunnerTestNG@7e9131d5</td></tr>
+</table><p>
+</body>
+</html>

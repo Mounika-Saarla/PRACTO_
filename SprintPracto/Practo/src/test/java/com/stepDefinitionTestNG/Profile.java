@@ -1,113 +1,99 @@
 package com.stepDefinitionTestNG;
 
-import java.time.Duration;
-import org.openqa.selenium.*;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
+import com.pages.HomePage;
+import com.parameters.PropertyReader;
 import com.setup.BaseSteps;
-import com.pages.userpage;
-import com.parameters.ExcelReader;
-
 import io.cucumber.java.en.*;
+import org.testng.Assert;
 
-public class Profile extends BaseSteps {
-    WebDriver driver;
-    userpage page;
-    ExcelReader reader = new ExcelReader();
-    String location;
-    String speciality;
-//-----------Scenario 1-----------------------
-    @Given("User is on the Home page")
-    public void user_is_on_the_home_page() {
-        BaseSteps.launchBrowser();
-        driver = BaseSteps.getDriver();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        page = new userpage(driver);
+public class Profile {
+    HomePage homepage;
+
+    @Given("user is on Practo Homepage")
+    public void user_is_on_practo_homepage() {
+        BaseSteps.driver.get(PropertyReader.getProperty("base.url"));
+        homepage = new HomePage(BaseSteps.driver);
     }
 
-    @And("User scrolls to the footer section")
-    public void user_scrolls_to_the_footer_section() {
-        WebElement footer = page.getFooterSection();
-        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", footer);
+    @When("user clicks on Lab Tests link")
+    public void user_clicks_on_lab_tests_link() {
+        homepage.clickLabTests();
     }
 
-    @When("The footer should contain a visible link labeled {string}")
-    public void footer_should_contain_a_visible_link_labeled(String linkText) {
-        Assert.assertTrue(page.isSearchForClinicsLinkVisible(), "Link with text '" + linkText + "' is not visible in the footer.");
+    @Then("Lab Tests page should be displayed")
+    public void lab_tests_page_should_be_displayed() {
+        Assert.assertTrue(BaseSteps.driver.getCurrentUrl().contains("tests"));
     }
 
-    @And("User clicks the {string} link")
-    public void user_clicks_the_link(String linkText) {
-        page.clickSearchForClinicsLink();
-        
+    @And("select Bangalore city")
+    public void select_bangalore_city() {
+        homepage.selectCity("Bangalore");
     }
 
-    @And("User applies a location filter {int}")
-    public void user_applies_location_filter(Integer rowIndex) throws Exception {
-        location = reader.getLocation(rowIndex);
-        page.applyLocationFilter(location);
-        System.out.println("Applied Location filter: " + location);
+    @When("user clicks on Lipid Profile link")
+    public void user_clicks_on_lipid_profile_link() {
+        homepage.clickLipidProfile();
     }
 
-    @And("User applies a speciality filter {int}")
-    public void user_applies_speciality_filter(Integer rowIndex) throws Exception {
-        speciality = reader.getSpeciality(rowIndex);
-        page.applySpecialityFilter(speciality);
-        System.out.println("Applied Speciality filter: " + speciality);
-    }
-
-    @Then("Filtered clinic results should be displayed")
-    public void filtered_clinic_results_should_be_displayed() {
-        Assert.assertTrue(page.isFilteredResultsDisplayed(), "Filtered clinic results are not displayed.");
-        System.out.println("Current URL: " + driver.getCurrentUrl());
-        System.out.println("Page Source snippet: " + driver.getPageSource().substring(0, 500));
+    @Then("verify Lipid Profile page URL")
+    public void verify_lipid_profile_page_url() {
+        String actualUrl = BaseSteps.driver.getCurrentUrl();
+        String expectedUrl = PropertyReader.getProperty("expected.lipidprofile.url");
+        Assert.assertEquals(actualUrl, expectedUrl, "Lipid Profile URL mismatch!");
     }
     
-    
-
-// ---------------- Scenario 2 Steps ----------------
-
-
-    @Given("user is on Clinic Details page")
-    public void user_is_on_clinic_details_page() {
-        driver = BaseSteps.getDriver();
-        if (driver == null) {
-            BaseSteps.launchBrowser();
-            driver = BaseSteps.getDriver();
-        }
-
-        // Navigate to Clinic Details page using property
-        BaseSteps.navigateToClinicDetailsUrl();
-        page = new userpage(driver);
-
-        // Debug logs
-        System.out.println("Navigated to Clinic Details URL: " + driver.getCurrentUrl());
-        System.out.println("Page Title: " + driver.getTitle());
-
-        // Wait for page load
-        new WebDriverWait(driver, Duration.ofSeconds(30))
-            .until(webDriver -> ((JavascriptExecutor) webDriver)
-            .executeScript("return document.readyState").equals("complete"));
-
-        Assert.assertTrue(page.isClinicDetailsPageDisplayed(), "Clinic Details page is not displayed.");
+    @And("click on Add to Cart button")
+    public void click_on_add_to_cart_button() {
+        homepage.clickAddToCart();
     }
 
-    @When("user selects a doctor and navigates to Doctor Details page")
-    public void user_selects_a_doctor_and_navigates_to_doctor_details_page() {
-        page.selectDoctor();
-        Assert.assertTrue(page.isDoctorDetailsPageDisplayed(), "Doctor Details page is not displayed.");
+
+@Then("verify item is added to cart")
+    public void verify_item_is_added_to_cart() {
+        Assert.assertTrue(homepage.isItemAddedToCart(), "Item was not added to cart!");
     }
 
-    @And("user chooses a time slot and proceeds to Appointment Booking page")
-    public void user_chooses_a_time_slot_and_proceeds_to_appointment_booking_page() {
-        page.selectTimeSlot();
-        page.proceedToAppointmentBooking();
-        Assert.assertTrue(page.isAppointmentBookingPageDisplayed(), "Appointment Booking page is not displayed.");
-    }
-
-    @Then("booking page should display selected doctor and time slot")
-    public void booking_page_should_display_selected_doctor_and_time_slot() {
-        Assert.assertTrue(page.verifyDoctorAndTimeSlot(), "Doctor and time slot details are incorrect on booking page.");
-    }
 
 }
+//package com.stepDefinitionTestNG;
+//
+//import com.pages.HomePage;
+//import com.parameters.PropertyReader;
+//import com.setup.BaseSteps;
+//import io.cucumber.java.en.*;
+//import org.testng.Assert;
+//
+//public class Profile {
+//    HomePage homepage;
+//
+//    @Given("user is on Practo Homepage")
+//    public void user_is_on_practo_homepage() {
+//        BaseSteps.driver.get(PropertyReader.getProperty("base.url"));
+//        homepage = new HomePage(BaseSteps.driver);
+//    }
+//
+//    @When("user clicks on Lab Tests link")
+//    public void user_clicks_on_lab_tests_link() {
+//        homepage.clickLabTests();
+//    }
+//
+//    @Then("Lab Tests page should be displayed")
+//    public void lab_tests_page_should_be_displayed() {
+//        Assert.assertTrue(BaseSteps.driver.getCurrentUrl().contains("tests"));
+//    }
+//    @And("select Bangalore city")
+//    public void select_bangalore_city() {
+//        homepage.selectCity("Bangalore");
+//    }
+//    @When("user clicks on Lipid Profile link")
+//    public void user_clicks_on_lipid_profile_link() {
+//        homepage.clickLipidProfile();
+//    }
+//
+//    @Then("verify Lipid Profile page URL")
+//    public void verify_lipid_profile_page_url() {
+//        String actualUrl = BaseSteps.driver.getCurrentUrl();
+//        String expectedUrl = PropertyReader.getProperty("expected.lipidprofile.url");
+//        Assert.assertEquals(actualUrl, expectedUrl, "Lipid Profile URL mismatch!");
+//    }
+//}
