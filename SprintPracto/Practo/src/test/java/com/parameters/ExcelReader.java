@@ -1,25 +1,43 @@
+
 package com.parameters;
 
-import org.apache.poi.ss.usermodel.*;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import java.io.FileInputStream;
+import java.io.IOException;
 
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+//public class ExcelReader {
+//
+//    public static String getCellData(String filePath, int sheetIndex, int rowIndex, int colIndex) {
+//        String cellValue = "";
+//        try (FileInputStream fis = new FileInputStream("src/test/resources/com/Excel/PractoTetSc1.xlsx");
+//             Workbook workbook = new XSSFWorkbook(fis)) {
+//            Sheet sheet = workbook.getSheetAt(sheetIndex);
+//            Row row = sheet.getRow(rowIndex);
+//            Cell cell = row.getCell(colIndex);
+//            cellValue = cell.getStringCellValue();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//        return cellValue;
+//    }
+//}
 public class ExcelReader {
-    public String getCellData(int row, int col) throws Exception {
-    	String excelPath = "C:\\Training\\SprintPracto\\Practo\\src\\test\\resources\\TestData\\Practo_Automation.xlsx";
-        FileInputStream fis = new FileInputStream(excelPath);
-        Workbook workbook = new XSSFWorkbook(fis);
-        Sheet sheet = workbook.getSheetAt(0);
-        String data = sheet.getRow(row).getCell(col).getStringCellValue();
-        workbook.close();
-        return data;
-    }
-
-    public String getLocation(int row) throws Exception {
-        return getCellData(row, 0); // Column 0 for Location
-    }
-
-    public String getSpeciality(int row) throws Exception {
-        return getCellData(row, 1); // Column 1 for Speciality
+    public static String getCellData(String filePath, int sheetIndex, int rowIndex, int colIndex) {
+        String cellValue = "";
+        try (FileInputStream fis = new FileInputStream("src/test/resources/com/Excel/PractoTetSc1.xlsx");
+             Workbook workbook = new XSSFWorkbook(fis)) {
+            Sheet sheet = workbook.getSheetAt(sheetIndex);
+            Row row = sheet.getRow(rowIndex);
+            Cell cell = row.getCell(colIndex);
+            cellValue = cell.getStringCellValue();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return cellValue;
     }
 }
+
