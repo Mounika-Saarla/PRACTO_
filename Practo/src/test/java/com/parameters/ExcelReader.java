@@ -1,29 +1,31 @@
-
 package com.parameters;
+
+import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.io.FileInputStream;
 import java.io.IOException;
-import org.apache.poi.ss.usermodel.*;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import java.util.HashMap;
+import java.util.Map;
+
 public class ExcelReader {
+    public static Map<String, String> getRowData(String filePath, int rowIndex) throws IOException {
+        FileInputStream fis = new FileInputStream(filePath);
+        Workbook workbook = new XSSFWorkbook(fis);
+        Sheet sheet = workbook.getSheetAt(0);
+        Row headerRow = sheet.getRow(0);
+        Row row = sheet.getRow(rowIndex);
 
-
-    public static String getSpecializationFromExcel() throws IOException {
-    	String filePath = System.getProperty("user.dir") + "/src/test/resources/ExcelData/TestSpecialization.xlsx";   
-    	
-   	try (FileInputStream fis = new FileInputStream(filePath);
-             Workbook workbook = new XSSFWorkbook(fis)) {
-
-
-   		
-    		Sheet sheet = workbook.getSheet("Sheet1");
-   		
-           Row row = sheet.getRow(0);            // Row 1 = index 0
-            
-            Cell cell = row.getCell(0);           // Column A = index 0
-            return cell.getStringCellValue().trim(); 
-           
+        Map<String, String> dataMap = new HashMap<>();
+        for (int j = 0; j < headerRow.getLastCellNum(); j++) {
+            String key = headerRow.getCell(j).getStringCellValue();
+            String value = row.getCell(j) != null ? row.getCell(j).toString() : "";
+            dataMap.put(key, value);
         }
-  
+
+        workbook.close();
+        fis.close();
+        return dataMap;
+    }
 }
-}
+	

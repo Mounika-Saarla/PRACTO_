@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Cucumber" time="3.722" tests="1" skipped="0" failures="1" errors="0" timestamp="2025-11-11T15:58:59.405927700Z">
+<testcase classname="Practo Lab Test Module Navigation" name="Book a diagnostic test from Top Booked Diagnostic Tests section" time="3.478">
+<failure type="java.lang.NullPointerException" message="Cannot invoke &quot;com.parameters.ExcelReader.getData(String)&quot; because &quot;reader&quot; is null">
+<![CDATA[java.lang.NullPointerException: Cannot invoke "com.parameters.ExcelReader.getData(String)" because "reader" is null
+	at com.parameters.ExcelReader.getData(ExcelReader.java:84)
+	at com.stepDefinitionTestNG.Profile.the_user_opens_the_practo_website(Profile.java:673)
+	at ✽.the user opens the Practo website(file:///C:/Users/dyamaa/SpritPracto/Practo/src/test/resources/Features/profile.feature:6)
+]]>
+</failure>
+<system-out><![CDATA[
+Given the user opens the Practo website.....................................failed
+When the user navigates to the Lab Test module..............................skipped
+And selects a city from the list............................................skipped
+And selects a diagnostic test from the Top Booked Diagnostic Tests section..skipped
+Then the user should be able to proceed with booking the selected diagnostic test.skipped
+]]></system-out>
+</testcase>
+</testsuite>

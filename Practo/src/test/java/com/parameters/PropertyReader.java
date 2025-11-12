@@ -1,25 +1,24 @@
 package com.parameters;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 
 public class PropertyReader {
-	public static Properties readProperty() {
-		Properties prop = null;
-		String fileName = ".\\src\\test\\resources\\PropertiesFile\\Profile.Properties";
-		try {
-			FileInputStream fis = new FileInputStream(fileName);
-			prop = new Properties();
-			prop.load(fis);
-		} catch (FileNotFoundException e) {
-			System.out.println("File name or file path is not correct");
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+    private static Properties properties;
 
-		return prop;
+    static {
+        try {
+            String filePath = System.getProperty("user.dir") + "/src/test/resources/Properties/profile.properties";
+            FileInputStream fis = new FileInputStream(filePath);
+            properties = new Properties();
+            properties.load(fis);
+        } catch (IOException e) {
+            throw new RuntimeException("Failed to load properties file.");
+        }
+    }
 
-	}
+    public static String getProperty(String key) {
+        return properties.getProperty(key);
+    }
 }

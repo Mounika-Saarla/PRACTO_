@@ -1,40 +1,49 @@
+#Feature: Lab Tests Navigation
 
-Feature: Practo Doctor Search
- #@Search
-#Scenario: Validate that searching for dentist shows matching doctors
-   #Given the user navigates to the Practo website
-    #When the user opens the Find Doctors page
-   #And the user searches for the Dentists
-    #Then matching doctors should be visible
-    
-    @Module
-    Scenario: Navigate from Practo home to Find Doctors and then to Consult with a doctor
-  Given User launches the Practo website 
-  When User clicks on Find Doctors option
-  #And User should be on the Find Doctors page
-  And User clicks on Consult with a doctor option
-  Then User should be on the Consult with a doctor page
-  
- @Module2
- Scenario: Validate that selecting Dermatologist from popular searches navigates through three pages
-    Given the user navigates to the Practo website
-    When the user opens the Find Doctors page
-    And the user selects Dermatologist from the popular searches section
-    Then the user should be navigated to the Dermatologist listing page
+#Scenario: Navigate to Labtest and book a package
+#Given user launch practo website
+#When user clicks the search for Lab Tests link
+#And user clicks on Know More button and Package details displayed
+#Then user clicks on Book Now and then booking site is displayed
 
-    @Spz
-    Scenario Outline: Search for a doctor by specialization
-  Given the user is on the Practo homepage
-  When the user enters "<specialization>" in the search bar
-  And selects the location as "<location>"
-  And clicks the search button
-  Then the results page should display doctors specialized in "<specialization>"
-  And the page should show filters and sorting options relevant to "<specialization>"
+
+
+
+
+ #Scenario: Navigate to Healthy Hair article and verify content
+    #Given user launches the Practo website
+    #When user clicks on See All Articles link
+   #And user navigates to Health Feed page
+    #And user clicks on Healthy Hair category
+    #And user navigates to Healthy Hair page
+    #And user selects the article "7 Health Benefits of Dates"
+    #And user clicks on the selected article
+    #Then user should be navigated to the article page
+   #And verify the article content is displayed
+   
+   
+Feature: Validate Health Checkup Packages and booking
+
+
+Scenario Outline: Validate Health Checkup Packages and booking
+    Given user launches the Practo website
+    When user navigates to Health Packages section
+    And user clicks on a package to view details
+    Then verify package details page displays correct info
+    And user clicks on Book Now button
+    And user enters details from row <RowIndex>
+    And user submits booking details
+    Then validate expected result from row <RowIndex>
 
 Examples:
-  | specialization         | location   |
-  | Dermatologist          | Bangalore  |
-  | Pediatrician           | Mumbai     |
-  | Gynecologist           | Delhi      |
-  | Cardiologist           | Hyderabad  |
-  | Orthopedic Surgeon     | Chennai    |
+    | RowIndex |
+    | 1        |
+    | 2        |
+
+
+    
+   
+Examples:
+    |RowIndex|
+    |1       |
+    |2       |
