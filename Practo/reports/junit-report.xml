@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Cucumber" time="23.347" tests="1" skipped="0" failures="0" errors="0" timestamp="2025-11-13T12:46:50.210094600Z">
+<testcase classname="Home Page Footer Navigation" name="navigate to required clinic details" time="22.369">
+<system-out><![CDATA[
+Given user launch practo website............................................passed
+When user clicks the search for clinics link................................passed
+And user clicks on view profile of first clinic.............................passed
+And clinic details shouls be displayed......................................passed
+Then user select the doctor in that clinic..................................passed
+]]></system-out>
+</testcase>
+</testsuite>
