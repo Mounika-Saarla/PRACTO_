@@ -1,67 +1,121 @@
-package com.setup;
 
-import java.time.Duration;
-import java.util.Properties;
+//---------------------Remove comments to execute scenario:1 and scenario:2
+
+/*package com.setup;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import com.parameters.PropertyReader;
 
+public class BaseSteps {
+
+	private static WebDriver driver;
+
+	public static void initializeDriver() {
+		String browser = PropertyReader.getProperty("browserName");
+		if (browser.equalsIgnoreCase("chrome")) {
+			// Correct path
+			System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/Drivers/chromedriver.exe");
+			driver = new ChromeDriver();
+		}
+		driver.manage().window().maximize();
+	}
+
+
+	public static WebDriver getDriver() {
+		return driver;
+	}
+
+	public static void quitDriver() {
+		if (driver != null) {
+			driver.quit();
+		}
+
+	}	}*/
+
+
+//----------------------scenario:3-------------------
+
+
+/*package com.setup;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
+import java.time.Duration;
+
 public class BaseSteps {
-    public static WebDriver driver;
-    public static Properties prop;
 
-    public static void launchBrowser() {
-    	WebDriverManager.chromedriver().setup();
-        prop = PropertyReader.readProperty();
-        String browser = prop.getProperty("browser");
-        String appUrl = prop.getProperty("appUrl");
+    private static WebDriver driver;
 
-        if (browser.equalsIgnoreCase("chrome")) {
+   
+    public static void initializeDriver() {
+        if (driver == null) {
+            // Use WebDriverManager to avoid hardcoding chromedriver path
             WebDriverManager.chromedriver().setup();
             driver = new ChromeDriver();
-        } else {
-            throw new RuntimeException("Invalid browser specified: " + browser);
+            driver.manage().window().maximize();
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+            System.out.println("ChromeDriver initialized successfully");
         }
-
-        driver.manage().window().maximize();
-        driver.get(appUrl); // Navigate here
-        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(30));
     }
-//    public static void navigateToSearchClinicUrl() {
-//        String searchClinicUrl = prop.getProperty("SearchClinicUrl");
-//        if (searchClinicUrl == null) {
-//            throw new RuntimeException("SearchClinicUrl is missing in profile.properties");
-//        }
-//        driver.get(searchClinicUrl);
-//    }
 
     public static WebDriver getDriver() {
+        if (driver == null) {
+            initializeDriver();
+        }
         return driver;
     }
 
-    public static void closeBrowser() {
+    
+    public static void quitDriver() {
         if (driver != null) {
             driver.quit();
             driver = null;
+            System.out.println("Browser closed successfully");
         }
     }
+}*/
 
-	public static void sleep(int msec) {
-		// TODO Auto-generated method stub
-		try {
-			Thread.sleep(msec);
-		}catch(InterruptedException e) {
-			e.printStackTrace();
-		}
-		
-	}
 
+//----------------------------------Scenario-outline----------------------------
+
+
+package com.setup;
+
+import java.time.Duration;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+public class BaseSteps{
+static WebDriver driver;
+public static void initializeDriver() {
+    WebDriverManager.chromedriver().setup(); // ✅ Auto-manages driver
+    ChromeOptions options = new ChromeOptions();
+    options.addArguments("--remote-allow-origins=*");
+    options.addArguments("--disable-notifications");
+    options.addArguments("--start-maximized");
+    driver = new ChromeDriver(options);
+    driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(60));
+    driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
 }
-    
+public static WebDriver getDriver() {
+    if (driver == null) {
+        initializeDriver();
+    }
+    return driver;
+}
 
-
-   
+public static void quitDriver() {
+    if (driver != null) {
+        driver.quit();
+        driver = null;
+        System.out.println("Browser closed successfully");
+    }
+}
+}
