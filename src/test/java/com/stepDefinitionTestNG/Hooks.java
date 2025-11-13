@@ -1,6 +1,8 @@
 package com.stepDefinitionTestNG;
 
 
+import org.openqa.selenium.WebDriver;
+
 /*
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
@@ -47,6 +49,11 @@ import io.cucumber.java.Scenario;  //what to track on report(tester name,data et
  
  
 public class Hooks extends BaseSteps{
+	public Hooks(WebDriver driver) {
+		super(driver);
+		// TODO Auto-generated constructor stub
+	}
+
 	public static ExtentSparkReporter spark;
     public static ExtentReports extReports;
     public static ExtentTest test;

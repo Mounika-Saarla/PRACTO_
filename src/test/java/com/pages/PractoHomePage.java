@@ -3,7 +3,9 @@ package com.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class PractoHomePage extends BasePage{
+import com.setup.BaseSteps;
+
+public class PractoHomePage extends BaseSteps{
 	
 public PractoHomePage(WebDriver driver) {
 		super(driver);

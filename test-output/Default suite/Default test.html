@@ -55,11 +55,11 @@ function toggleAllBoxes() {
 <body>
 <h2 align='center'>Default test</h2><table border='1' align="center">
 <tr>
-<td>Tests passed/Failed/Skipped:</td><td>0/2/0</td>
+<td>Tests passed/Failed/Skipped:</td><td>6/0/0</td>
 </tr><tr>
-<td>Started on:</td><td>Wed Nov 12 20:59:08 IST 2025</td>
+<td>Started on:</td><td>Thu Nov 13 15:23:09 IST 2025</td>
 </tr>
-<tr><td>Total time:</td><td>78 seconds (78157 ms)</td>
+<tr><td>Total time:</td><td>136 seconds (136078 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -67,8 +67,8 @@ function toggleAllBoxes() {
 </tr>
 </table><p/>
 <small><i>(Hover the method name to see the test class name)</i></small><p/>
-<table width='100%' border='1' class='invocation-failed'>
-<tr><td colspan='4' align='center'><b>FAILED TESTS</b></td></tr>
+<table width='100%' border='1' class='invocation-passed'>
+<tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
 <tr><td><b>Test method</b></td>
 <td><b>Attribute(s)</b></td>
 <td width="30%"><b>Exception</b></td>
@@ -76,28 +76,34 @@ function toggleAllBoxes() {
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='com.runner.TestRunnerTestNG.runScenario()'><b>runScenario</b><br>Test class: com.runner.TestRunnerTestNG<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Navigate from homepage and book hospital with valid details", "Practo Hospital Search and Booking"</td>
-<td><div><pre>java.lang.NullPointerException: Cannot invoke &quot;org.openqa.selenium.support.ui.FluentWait.until(java.util.function.Function)&quot; because &quot;wait&quot; is null
-	at com.stepDefinitionTestNG.PractoProfile.enterCityNameFromExcel(PractoProfile.java:256)
-	at ✽.user enters city name from sheet 0 and row 1 and selects suggestions(file:///C:/Training/SprintPracto/Practo/src/test/resources/com/features/Login.feature:80)
-</pre></div><a href='#' onClick='toggleBox("stack-trace2045188238", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace2045188238'><pre>java.lang.NullPointerException: Cannot invoke &quot;org.openqa.selenium.support.ui.FluentWait.until(java.util.function.Function)&quot; because &quot;wait&quot; is null
-	at com.stepDefinitionTestNG.PractoProfile.enterCityNameFromExcel(PractoProfile.java:256)
-	at ✽.user enters city name from sheet 0 and row 1 and selects suggestions(file:///C:/Training/SprintPracto/Practo/src/test/resources/com/features/Login.feature:80)
-</pre></div></td>
-<td>39</td>
+<td title='com.runner.TestRunnerTestNG.runScenario()'><b>runScenario</b><br>Test class: com.runner.TestRunnerTestNG<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Navigate from homepage and search City from name", "Practo Hospital Search and Booking"</td>
+<td></td>
+<td>23</td>
+<td>com.runner.TestRunnerTestNG@1649b0e6</td></tr>
+<tr>
+<td title='com.runner.TestRunnerTestNG.runScenario()'><b>runScenario</b><br>Test class: com.runner.TestRunnerTestNG<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Navigate from homepage and search hospital by name", "Practo Hospital Search and Booking"</td>
+<td></td>
+<td>23</td>
+<td>com.runner.TestRunnerTestNG@1649b0e6</td></tr>
+<tr>
+<td title='com.runner.TestRunnerTestNG.runScenario()'><b>runScenario</b><br>Test class: com.runner.TestRunnerTestNG<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Navigate from homepage to hospital overview page", "Practo Hospital Search and Booking"</td>
+<td></td>
+<td>22</td>
+<td>com.runner.TestRunnerTestNG@1649b0e6</td></tr>
+<tr>
+<td title='com.runner.TestRunnerTestNG.runScenario()'><b>runScenario</b><br>Test class: com.runner.TestRunnerTestNG<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Navigate from homepage and search City from name", "Practo Hospital Search and Booking"</td>
+<td></td>
+<td>22</td>
+<td>com.runner.TestRunnerTestNG@1649b0e6</td></tr>
+<tr>
+<td title='com.runner.TestRunnerTestNG.runScenario()'><b>runScenario</b><br>Test class: com.runner.TestRunnerTestNG<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Navigate from homepage and search hospital by name", "Practo Hospital Search and Booking"</td>
+<td></td>
+<td>19</td>
 <td>com.runner.TestRunnerTestNG@1649b0e6</td></tr>
 <tr>
 <td title='com.runner.TestRunnerTestNG.runScenario()'><b>runScenario</b><br>Test class: com.runner.TestRunnerTestNG<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Navigate from homepage and book hospital with valid details", "Practo Hospital Search and Booking"</td>
-<td><div><pre>java.lang.NullPointerException: Cannot invoke &quot;org.openqa.selenium.support.ui.FluentWait.until(java.util.function.Function)&quot; because &quot;wait&quot; is null
-	at com.stepDefinitionTestNG.PractoProfile.enterCityNameFromExcel(PractoProfile.java:256)
-	at ✽.user enters city name from sheet 0 and row 2 and selects suggestions(file:///C:/Training/SprintPracto/Practo/src/test/resources/com/features/Login.feature:80)
-</pre></div><a href='#' onClick='toggleBox("stack-trace1629032994", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace1629032994'><pre>java.lang.NullPointerException: Cannot invoke &quot;org.openqa.selenium.support.ui.FluentWait.until(java.util.function.Function)&quot; because &quot;wait&quot; is null
-	at com.stepDefinitionTestNG.PractoProfile.enterCityNameFromExcel(PractoProfile.java:256)
-	at ✽.user enters city name from sheet 0 and row 2 and selects suggestions(file:///C:/Training/SprintPracto/Practo/src/test/resources/com/features/Login.feature:80)
-</pre></div></td>
-<td>37</td>
+<td></td>
+<td>23</td>
 <td>com.runner.TestRunnerTestNG@1649b0e6</td></tr>
 </table><p>
 </body>

@@ -1,35 +1,64 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="Cucumber" time="77.453" tests="2" skipped="0" failures="2" errors="0" timestamp="2025-11-12T15:29:09.409965500Z">
-<testcase classname="Practo Hospital Search and Booking" name="Navigate from homepage and book hospital with valid details - #1.1" time="39.237">
-<failure type="java.lang.NullPointerException" message="Cannot invoke &quot;org.openqa.selenium.support.ui.FluentWait.until(java.util.function.Function)&quot; because &quot;wait&quot; is null">
-<![CDATA[java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.support.ui.FluentWait.until(java.util.function.Function)" because "wait" is null
-	at com.stepDefinitionTestNG.PractoProfile.enterCityNameFromExcel(PractoProfile.java:256)
-	at ✽.user enters city name from sheet 0 and row 1 and selects suggestions(file:///C:/Training/SprintPracto/Practo/src/test/resources/com/features/Login.feature:80)
-]]>
-</failure>
+<testsuite name="Cucumber" time="135.329" tests="6" skipped="0" failures="0" errors="0" timestamp="2025-11-13T09:53:09.629464400Z">
+<testcase classname="Practo Hospital Search and Booking" name="Navigate from homepage and book hospital with valid details" time="23.465">
 <system-out><![CDATA[
 Given user launches Practo application......................................passed
 When user clicks on Search for hospitals link on homepage...................passed
-And user enters city name from sheet 0 and row 1 and selects suggestions....failed
-Then user verifies hospital list page is displayed..........................skipped
-When user selects a hospital from the list..................................skipped
-And user clicks on Book Hospital Visit......................................skipped
+And user enters city name from Excel and selects suggestions................passed
+Then user verifies hospital list page is displayed..........................passed
+When user selects a hospital from the list..................................passed
+And user clicks on Book Hospital Visit......................................passed
+And user click on clinic button.............................................passed
+Then user looks contact details.............................................passed
 ]]></system-out>
 </testcase>
-<testcase classname="Practo Hospital Search and Booking" name="Navigate from homepage and book hospital with valid details - #1.2" time="37.341">
-<failure type="java.lang.NullPointerException" message="Cannot invoke &quot;org.openqa.selenium.support.ui.FluentWait.until(java.util.function.Function)&quot; because &quot;wait&quot; is null">
-<![CDATA[java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.support.ui.FluentWait.until(java.util.function.Function)" because "wait" is null
-	at com.stepDefinitionTestNG.PractoProfile.enterCityNameFromExcel(PractoProfile.java:256)
-	at ✽.user enters city name from sheet 0 and row 2 and selects suggestions(file:///C:/Training/SprintPracto/Practo/src/test/resources/com/features/Login.feature:80)
-]]>
-</failure>
+<testcase classname="Practo Hospital Search and Booking" name="Navigate from homepage to hospital overview page" time="22.163">
 <system-out><![CDATA[
 Given user launches Practo application......................................passed
 When user clicks on Search for hospitals link on homepage...................passed
-And user enters city name from sheet 0 and row 2 and selects suggestions....failed
-Then user verifies hospital list page is displayed..........................skipped
-When user selects a hospital from the list..................................skipped
-And user clicks on Book Hospital Visit......................................skipped
+And user enters city name from Excel and selects suggestions................passed
+Then user verifies hospital list page is displayed..........................passed
+Then user clicks hospital card so user see details..........................passed
+]]></system-out>
+</testcase>
+<testcase classname="Practo Hospital Search and Booking" name="Navigate from homepage and search City from name - #1.1" time="22.28">
+<system-out><![CDATA[
+Given user launches Practo application......................................passed
+When user clicks on Search for hospitals link on homepage...................passed
+And user enters city name from sheet 0 and row 1 and selects suggestions....passed
+Then user verifies hospital list page is displayed..........................passed
+When user selects a hospital from the list..................................passed
+Then user clicks on Book Hospital Visit.....................................passed
+]]></system-out>
+</testcase>
+<testcase classname="Practo Hospital Search and Booking" name="Navigate from homepage and search City from name - #1.2" time="23.138">
+<system-out><![CDATA[
+Given user launches Practo application......................................passed
+When user clicks on Search for hospitals link on homepage...................passed
+And user enters city name from sheet 0 and row 2 and selects suggestions....passed
+Then user verifies hospital list page is displayed..........................passed
+When user selects a hospital from the list..................................passed
+Then user clicks on Book Hospital Visit.....................................passed
+]]></system-out>
+</testcase>
+<testcase classname="Practo Hospital Search and Booking" name="Navigate from homepage and search hospital by name - #1.1" time="19.763">
+<system-out><![CDATA[
+Given user launches Practo application......................................passed
+When user clicks on Search for hospitals link on homepage...................passed
+And user enters hospital name from sheet 0 and row 1 and selects suggestions.passed
+Then user verifies hospital list page is displayed..........................passed
+When user selects a hospital from the list..................................passed
+Then user see suggestion Visit..............................................passed
+]]></system-out>
+</testcase>
+<testcase classname="Practo Hospital Search and Booking" name="Navigate from homepage and search hospital by name - #1.2" time="23.541">
+<system-out><![CDATA[
+Given user launches Practo application......................................passed
+When user clicks on Search for hospitals link on homepage...................passed
+And user enters hospital name from sheet 0 and row 2 and selects suggestions.passed
+Then user verifies hospital list page is displayed..........................passed
+When user selects a hospital from the list..................................passed
+Then user see suggestion Visit..............................................passed
 ]]></system-out>
 </testcase>
 </testsuite>

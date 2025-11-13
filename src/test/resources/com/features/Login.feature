@@ -36,24 +36,24 @@
 
 Feature: Practo Hospital Search and Booking
 
-#@valid
-#Scenario: Navigate from homepage and book hospital with valid details
-#   Given user launches Practo application
-#   When user clicks on Search for hospitals link on homepage
-#    And user enters city name from Excel and selects suggestions 
-#  Then user verifies hospital list page is displayed
-#    When user selects a hospital from the list
-#    And user clicks on Book Hospital Visit
-#    And user click on clinic button
-#   Then user looks contact details
+@valid
+Scenario: Navigate from homepage and book hospital with valid details
+   Given user launches Practo application
+   When user clicks on Search for hospitals link on homepage
+    And user enters city name from Excel and selects suggestions 
+   Then user verifies hospital list page is displayed
+    When user selects a hospital from the list
+    And user clicks on Book Hospital Visit
+    And user click on clinic button
+   Then user looks contact details
    
-#@overview
-#Scenario: Navigate from homepage to hospital overview page
- #  Given user launches Practo application
- #   When user clicks on Search for hospitals link on homepage
- #   And user enters city name from Excel and selects suggestions 
- #   Then user verifies hospital list page is displayed 
- #   Then user clicks hospital card so user see details
+@overview
+Scenario: Navigate from homepage to hospital overview page
+   Given user launches Practo application
+    When user clicks on Search for hospitals link on homepage
+    And user enters city name from Excel and selects suggestions 
+    Then user verifies hospital list page is displayed 
+    Then user clicks hospital card so user see details
     
 
 #@ExcelData
@@ -73,14 +73,14 @@ Feature: Practo Hospital Search and Booking
 
 
 
-
-Scenario Outline: Navigate from homepage and book hospital with valid details
+@city
+Scenario Outline: Navigate from homepage and search City from name 
    Given user launches Practo application
    When user clicks on Search for hospitals link on homepage
    And user enters city name from sheet <sheet> and row <row> and selects suggestions
    Then user verifies hospital list page is displayed
    When user selects a hospital from the list
-  And user clicks on Book Hospital Visit
+  Then  user clicks on Book Hospital Visit
    
 Examples:
     | sheet | row |
@@ -88,18 +88,34 @@ Examples:
 	|	0	|	2	|
 
 
+@hospital
+Scenario Outline: Navigate from homepage and search hospital by name
+  Given user launches Practo application
+  When user clicks on Search for hospitals link on homepage
+  And user enters hospital name from sheet <sheet> and row <row> and selects suggestions
+  Then user verifies hospital list page is displayed
+  When user selects a hospital from the list
+  Then user see suggestion Visit
+
+Examples:
+    | sheet | row |
+    |   0  |  1  |
+    |   0  |  2  |
     
+#Scenario Outline: Navigate from homepage and book hospital with valid details
+#   Given user launches Practo application
+#   When user clicks on Search for hospitals link on homepage
+#   And user enters city name from sheet Sheet3 and row <row> and selects suggestions
+#   Then user verifies hospital list page is displayed
+#   When user selects hospital from sheet Sheet3 and row <row>
+#   Then user clicks on Book Hospital Visit
+
+#Examples:
+ #   | sheet  | row |
+ #   | Sheet3 | 1   |
+ #   | Sheet3 | 2   |
     
-    
-    
-    
-    
-    
-    
-    
-    
-    #Then user verifies hospital Deatils page is displayed
-  
+   
     
 
 

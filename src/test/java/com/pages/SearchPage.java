@@ -1,15 +1,6 @@
 package com.pages;
 
-
-import java.io.FileInputStream;
 import java.time.Duration;
-import java.util.ArrayList;
-import java.util.List;
-
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
-import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -18,24 +9,14 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import com.parameters.PropertyReader;
+import com.setup.BaseSteps;
 
-public class SearchPage  extends BasePage{
-//    WebDriver driver;
-//    WebDriverWait wait;
-//
-//    public SearchPage(WebDriver driver) {
-//        this.driver = driver;
-//        this.wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-//    }
-
-
+public class SearchPage  extends BaseSteps{
     
     public SearchPage(WebDriver driver) {
 		super(driver);
 		// TODO Auto-generated constructor stub
 	}
-
-
 
 	public void enterCityAndHospital(String city, String hospital) throws Exception {
         // Get locators from properties
@@ -75,14 +56,6 @@ public class SearchPage  extends BasePage{
                 By.xpath("//div[contains(text(),'" + hospital + "')]")
             ));
         hospitalSuggestions.click();
-
-//        List<WebElement> hospitalSuggestions = wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath(hospitalSuggestionsXpath)));
-//        for (WebElement suggestion : hospitalSuggestions) {
-//            if (suggestion.getText().equalsIgnoreCase(hospital)) {
-//                suggestion.click();
-//                break;
-//            }
-//        }
 
         // Validate
         Assert.assertEquals(cityField.getAttribute("value"), city, "City not entered correctly");

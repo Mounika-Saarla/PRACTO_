@@ -7,12 +7,17 @@ import java.util.Map;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 
 import com.parameters.PropertyReader;
 
 public class BaseSteps {
     public static WebDriver driver;
+    public BaseSteps(WebDriver driver) {
+        this.driver = driver;
+        PageFactory.initElements(driver, this);
+    }
 
     public static void initDriver() throws Exception {
         String browser = PropertyReader.getProperty("profile.properties", "browser");
@@ -54,81 +59,9 @@ public class BaseSteps {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	/*public static WebDriver driver;
-	public static void launchBrowser() {
-		Properties prop = PropertyReader.readProperty();
-		String browser = prop.getProperty("browser");
- 
-        //chrome launches
-		if (browser.equalsIgnoreCase("chrome")) 
-		{
-			//System.setProperty("webdriver.chrome.driver","C:\\Users\\jakkul\\OneDrive - Capgemini\\Desktop\\SeleniumGrid\\chromedriver.exe");
-			//WebDriverManager.chromedriver().setup();
-
-			driver=new ChromeDriver();
-		} else if (browser.equalsIgnoreCase("firefox"))
-		{
-			driver = new FirefoxDriver();
-		} else if (browser.equalsIgnoreCase("edge")) 
-		{
-			driver = new EdgeDriver();
-		} else
-		{
-			System.out.println("Invalid browser specified in config.properties");
-			return;
-		}
-      String url=  prop.getProperty("app.url");
-      driver.get(url);
-		driver.manage().window().maximize();
- 
-	}
- 
-	public static void sleep(int msec) {
-		try 
-		{
-			Thread.sleep(msec);
-		} catch (InterruptedException e) 
-		{
-			e.printStackTrace();
-		}
-	}
- */
-    /*public static WebDriver driver;
-
-    @Before
-    public void setUp() {
-        String browser = PropertyReader.getProperty("browser");
-        String url = PropertyReader.getProperty("app.url");
-
-        if (browser.equalsIgnoreCase("chrome")) {
-            System.setProperty("webdriver.chrome.driver", "path/to/chromedriver");
-            driver = new ChromeDriver();
-        }
-        driver.manage().window().maximize();
-        driver.get(url);
-    }
-
 //    @After
 //    public void tearDown() {
 //        driver.quit();
-//    }o*/
+//    }*/
 
 

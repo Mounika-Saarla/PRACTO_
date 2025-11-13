@@ -3,22 +3,28 @@ package com.pages;
 
 import org.openqa.selenium.*;
 import com.parameters.PropertyReader;
+import com.setup.BaseSteps;
+
 import org.testng.Assert;
 
-public class BookingPage extends BasePage{
-//    WebDriver driver;
+public class BookingPage extends BaseSteps{
 
-//    public BookingPage(WebDriver driver) {
-//        this.driver = driver;
-//    }
-
-    public BookingPage(WebDriver driver) {
+	public BookingPage(WebDriver driver) {
 		super(driver);
 		// TODO Auto-generated constructor stub
 	}
+
 	public void clickBookHospital() throws Exception {
         driver.findElement(By.xpath(PropertyReader.getProperty("booking.properties", "bookButton"))).click();
+
+        
     }
+	public void clickBookClinic() throws Exception {
+		boolean suggest =driver.findElement(By.xpath(PropertyReader.getProperty("booking.properties", "bookButtonHos"))).isDisplayed();
+		Assert.assertTrue(suggest, "Error message not displayed for invalid suugest");
+	}
+	
+	
     public void clickClinic() throws Exception {
         driver.findElement(By.xpath(PropertyReader.getProperty("booking.properties", "clickButton"))).click();
     }

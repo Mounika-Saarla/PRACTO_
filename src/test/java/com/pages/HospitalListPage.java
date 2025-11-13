@@ -7,9 +7,11 @@ import org.openqa.selenium.support.ui.*;
 import java.io.IOException;
 import java.time.Duration;
 import com.parameters.PropertyReader;
+import com.setup.BaseSteps;
+
 import org.testng.Assert;
 
-public class HospitalListPage extends BasePage{
+public class HospitalListPage extends BaseSteps{
 	
     WebDriverWait wait;
 public HospitalListPage(WebDriver driver) {
