@@ -1,47 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+<testng-results ignored="0" total="1" passed="0" failed="1" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-11-13T18:16:49 IST" name="Default suite" finished-at="2025-11-13T18:17:13 IST" duration-ms="24099">
+  <suite started-at="2025-11-13T21:58:22 IST" name="Default suite" finished-at="2025-11-13T21:58:35 IST" duration-ms="13033">
     <groups>
       <group name="cucumber">
-        <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.runner.TestRunnerTestNG@17a7f733]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
+        <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.runner.TestRunner@dd05255]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
       </group> <!-- cucumber -->
     </groups>
-    <test started-at="2025-11-13T18:16:49 IST" name="Default test" finished-at="2025-11-13T18:17:13 IST" duration-ms="24099">
-      <class name="com.runner.TestRunnerTestNG">
-        <test-method is-config="true" signature="setUpClass(org.testng.ITestContext)[pri:0, instance:com.runner.TestRunnerTestNG@17a7f733]" started-at="2025-11-13T18:16:49 IST" name="setUpClass" finished-at="2025-11-13T18:16:50 IST" duration-ms="938" status="PASS">
+    <test started-at="2025-11-13T21:58:22 IST" name="Default test" finished-at="2025-11-13T21:58:35 IST" duration-ms="13033">
+      <class name="com.runner.TestRunner">
+        <test-method is-config="true" signature="setUpClass(org.testng.ITestContext)[pri:0, instance:com.runner.TestRunner@dd05255]" started-at="2025-11-13T21:58:22 IST" name="setUpClass" finished-at="2025-11-13T21:58:23 IST" duration-ms="738" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[org.testng.TestRunner@30bbcf91]]>
+                <![CDATA[org.testng.TestRunner@267f474e]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpClass -->
-        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.runner.TestRunnerTestNG@17a7f733]" started-at="2025-11-13T18:16:50 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2025-11-13T18:17:13 IST" duration-ms="22475" status="PASS">
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.runner.TestRunner@dd05255]" started-at="2025-11-13T21:58:23 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2025-11-13T21:58:35 IST" duration-ms="12180" status="FAIL">
           <params>
             <param index="0">
               <value>
-                <![CDATA["navigate to required clinic details"]]>
+                <![CDATA["Navigate from homepage and book health checkup with valid details"]]>
               </value>
             </param>
             <param index="1">
               <value>
-                <![CDATA["Home Page Footer Navigation"]]>
+                <![CDATA["Book Health Checkup Package on Practo"]]>
               </value>
             </param>
           </params>
+          <exception class="java.lang.RuntimeException">
+            <message>
+              <![CDATA[Package name is missing in Excel for row 1]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.RuntimeException: Package name is missing in Excel for row 1
+at com.stepDefinitionTestNG.Profile.user_selects_package_name_from_sheet_and_row(Profile.java:232)
+at ✽.user selects package name from sheet 0 and row 1(file:///C:/Users/dyamaa/SpritPracto/Practo/src/test/resources/Features/Profile.feature:41)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.RuntimeException -->
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runScenario -->
-        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:com.runner.TestRunnerTestNG@17a7f733]" started-at="2025-11-13T18:17:13 IST" name="tearDownClass" finished-at="2025-11-13T18:17:13 IST" duration-ms="634" status="PASS">
+        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:com.runner.TestRunner@dd05255]" started-at="2025-11-13T21:58:35 IST" name="tearDownClass" finished-at="2025-11-13T21:58:35 IST" duration-ms="40" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDownClass -->
-      </class> <!-- com.runner.TestRunnerTestNG -->
+      </class> <!-- com.runner.TestRunner -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

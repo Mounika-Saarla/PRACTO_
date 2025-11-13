@@ -1,29 +1,60 @@
-package com.parameters;
+//---------------------property reader for normal scenarios-----------------------------
+
+/*package com.parameters;
 
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
-import com.setup.BaseSteps;
 
-public class PropertyReader extends BaseSteps {
-    private static Properties prop = new Properties();
+public class PropertyReader {
+    private static Properties properties;
 
-    public static Properties readProperty() {
+    static {
         try {
-            FileInputStream fis = new FileInputStream("src/test/resources/Properties/profile.properties");
-            prop.load(fis);
+            String filePath = System.getProperty("user.dir") + "/src/test/resources/Properties/profile.properties";
+            FileInputStream fis = new FileInputStream(filePath);
+            properties = new Properties();
+            properties.load(fis);
+            System.out.println("Properties file loaded successfully from: " + filePath);
         } catch (IOException e) {
-            throw new RuntimeException("Failed to load profile.properties file." + e.getMessage());
+            System.err.println("Failed to load properties file.");
+            e.printStackTrace();
+            throw new RuntimeException("Properties file not found or unreadable.");
         }
-        return prop;
     }
 
+    public static String getProperty(String key) {
+        String value = properties.getProperty(key);
+        System.out.println("Property fetched: " + key + " = " + value);
+        return value;
+    }
+}*/
 
-public static String getProperty(String key) {
-        String value = prop.getProperty(key);
-        if (value == null) {
-            throw new RuntimeException("Property '" + key + "' not found in profile.properties");
+
+//-------------------------propertyReader for scenario-outline-----------------------------
+
+package com.parameters;
+
+import java.io.InputStream;
+import java.util.Properties;
+
+public class PropertyReader {
+    private static Properties props = new Properties();
+
+    static {
+        try {
+            // If file is inside Properties folder
+            InputStream input = PropertyReader.class.getClassLoader().getResourceAsStream("Properties/profile.properties");
+            if (input == null) {
+                throw new RuntimeException("profile.properties file not found in Properties folder under resources");
+            }
+            props.load(input);
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to load properties file: " + e.getMessage());
         }
-        return value.trim();
+    }
+
+    public static String get(String key) {
+        return props.getProperty(key);
     }
 }
