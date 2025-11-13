@@ -1,85 +1,51 @@
-//package com.parameters;
-//
-//import java.io.FileInputStream;
-//import org.apache.poi.ss.usermodel.*;
-//import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-//
-//public class ExcelReader {
-//    public static String getCellData(String filePath, String sheetName, int rowNum, int colNum) throws Exception {
-//        FileInputStream fis = new FileInputStream(filePath);
-//        Workbook workbook = new XSSFWorkbook(fis);
-//        Sheet sheet = workbook.getSheet(sheetName);
-//        Row row = sheet.getRow(rowNum);
-//        Cell cell = row.getCell(colNum);
-//
-//        String cellValue = cell.getStringCellValue();
-//
-//        workbook.close();
-//        fis.close();
-//        return cellValue;
-//    }
-//}
-
-//package com.parameters;
-//
-//import java.io.FileInputStream;
-//import org.apache.poi.ss.usermodel.*;
-//import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-//
-//public class ExcelReader{
-//
-//    public static String getCellData(String filePath, String sheetName, int rowNum, int colNum) throws Exception {
-//        FileInputStream fis = new FileInputStream(filePath);
-//        Workbook workbook = new XSSFWorkbook(fis);
-//        Sheet sheet = workbook.getSheet(sheetName);
-//
-//        if (sheet == null) {
-//            workbook.close();
-//            fis.close();
-//            throw new Exception("Sheet '" + sheetName + "' not found in file: " + filePath);
-//        }
-//
-//        Row row = sheet.getRow(rowNum);
-//        if (row == null) {
-//            workbook.close();
-//            fis.close();
-//            throw new Exception("Row " + rowNum + " not found in sheet: " + sheetName);
-//        }
-//
-//        Cell cell = row.getCell(colNum);
-//        if (cell == null) {
-//            workbook.close();
-//            fis.close();
-//            throw new Exception("Cell " + colNum + " not found in row: " + rowNum);
-//        }
-//
-//        String cellValue = cell.getStringCellValue();
-//
-//        workbook.close();
-//        fis.close();
-//        return cellValue;
-//    }
-//}
-
-
 package com.parameters;
-import org.apache.poi.ss.usermodel.*;
+ 
 import java.io.FileInputStream;
 import java.io.IOException;
+import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+ 
 public class ExcelReader {
-    public static String getCellData(String sheetName, int rowNum, int colNum) {
-        String value = "";
-        try {
-            FileInputStream fis = new FileInputStream("C:\\Users\\dyamaa\\SpritPracto\\Practo\\src\\test\\resources\\Excel\\TestData.xlsx");
-            Workbook wb = WorkbookFactory.create(fis);
-            Sheet sheet = wb.getSheet(sheetName);
-            Row row = sheet.getRow(rowNum);
-            Cell cell = row.getCell(colNum);
-            value = cell.getStringCellValue();
-            wb.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return value;
-    }
+	public static String[] getRowData(int sheetNo, int rowNum) throws IOException {
+	    String filePath = "src/test/resources/Excel/PractoTestSc1.xlsx";
+	    FileInputStream file = new FileInputStream(filePath);
+	    Workbook workbook = new XSSFWorkbook(file);
+	    Sheet sheet = workbook.getSheetAt(sheetNo);
+	    DataFormatter formatter = new DataFormatter();
+ 
+	    // Get header row to determine column count
+	    Row headerRow = sheet.getRow(0);
+	    int colCount = headerRow.getLastCellNum();
+ 
+	    // Read target row
+	    Row row = sheet.getRow(rowNum);
+	    String[] rowData = new String[colCount];
+	    for (int j = 0; j < colCount; j++) {
+	        Cell cell = (row != null) ? row.getCell(j) : null;
+	        rowData[j] = (cell != null) ? formatter.formatCellValue(cell) : "";
+	    }
+ 
+	    workbook.close();
+	    file.close();
+	    return rowData;
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
