@@ -24,7 +24,6 @@ import io.cucumber.messages.types.Duration;
 public class LabTest {
 	HomePage homepage=new HomePage(BaseSteps.driver);;
 	Properties prop = PropertyReader.readProperty();
-	//ExcelReader reader = new ExcelReader("src\\test\\resources\\Excel\\PractoTestSc1.xlsx");
 
 
 	@Given("user is on Practo Homepage")
@@ -45,12 +44,12 @@ public class LabTest {
 	}
 
 	@And("select Bangalore city")
-	public void select_bangalore_city() {
+	public void select_bangalore_city() throws InterruptedException {
 		homepage.selectCity("Bangalore");
 	}
 
 	@When("user clicks on Lipid Profile link")
-	public void user_clicks_on_lipid_profile_link() {
+	public void user_clicks_on_lipid_profile_link() throws InterruptedException {
 		homepage.clickLipidProfile();
 	}
 

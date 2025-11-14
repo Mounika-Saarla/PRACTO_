@@ -1,11 +1,9 @@
-
-package com.parameters;
- 
+package com.parameters; 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
- 
+
 public class PropertyReader {
  
 	public static Properties readProperty() {
@@ -23,9 +21,7 @@ public class PropertyReader {
 		catch(IOException e) {
 			e.printStackTrace();
 		}
- 
 		return prop;
- 
 	}
 	
 	 private static Properties props = new Properties();

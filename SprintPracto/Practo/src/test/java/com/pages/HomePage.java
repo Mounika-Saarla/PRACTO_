@@ -26,12 +26,14 @@ public class HomePage {
 	@FindBy(xpath = "//span[contains(@class,'u-text--bold')]")
 	private WebElement currentCity;
 
-	@FindBy(xpath = "//a[contains(@href,'lipid-profile-blood')]")
+	@FindBy(xpath = "//a[text()='Lipid Profile']")
 	private WebElement lipidProfileLink;
 
+	@FindBy(xpath = "(//div[text()='Bangalore'])[1]")
+	private WebElement currentCityElement;
 
 	// Locator for Add to Cart button on Lipid Profile page
-	@FindBy(xpath = "//*[@id=\"root-app\"]/div/div/div[2]/div/div[2]/div/div/div/div[2]/div/div/div[2]/div/div[2]/div[2]/div[2]/div/div")
+	@FindBy(xpath = "//span[text()='Your Cart']")
 	private WebElement addToCartButton;
 
 	// Locator for cart item count or confirmation (adjust based on Practo UI)
@@ -103,21 +105,17 @@ public class HomePage {
 	}
 
 
-	public void selectCity(String cityName) {
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
-
-		// Click city in header
-		WebElement currentCityElement = wait.until(ExpectedConditions.elementToBeClickable(
-				By.xpath("/html/body/div[3]/div/div/div/div/div/div/div/div[3]/ul/li[1]/div[2]")));
+	public void selectCity(String cityName) throws InterruptedException {
+		Thread.sleep(5000);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		currentCityElement.click();
-
+		
 	}
 
-	public void clickLipidProfile() {
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
-		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//a[contains(@href,'lipid-profile-blood')]")));
-		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", lipidProfileLink);
-		wait.until(ExpectedConditions.elementToBeClickable(lipidProfileLink)).click();
+	public void clickLipidProfile() throws InterruptedException {
+		Thread.sleep(5000);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        lipidProfileLink.click();
 	}
 
 	//Ts_02

@@ -9,7 +9,7 @@ import io.cucumber.testng.CucumberOptions;
 @CucumberOptions(
 	    features = "src/test/resources/com/feature",  // ✅ Correct path
 	    glue = {"com.stepDefinitionTestNG"},
-	   // tags = "@AddToCart",
+	    //tags = "@lipidProfilePage",
 	    plugin = {"pretty", "html:target/cucumber-reports.html"}
 	)
 public class TestRunnerTestNG extends AbstractTestNGCucumberTests {
