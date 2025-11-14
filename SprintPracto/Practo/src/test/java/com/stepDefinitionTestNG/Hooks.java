@@ -12,8 +12,6 @@ public class Hooks {
     @Before
     public void setUp() {
         if (BaseSteps.driver == null) {
-            //BaseSteps.driver = new ChromeDriver();
-            //BaseSteps.driver.manage().window().maximize();
         }
     }
 

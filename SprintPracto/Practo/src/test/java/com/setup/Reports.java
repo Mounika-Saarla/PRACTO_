@@ -1,6 +1,5 @@
-
 package com.setup;
-
+ 
 import java.io.File;
 
 import java.io.IOException;
@@ -8,7 +7,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 
 import java.util.Date;
-
+ 
 import org.apache.commons.io.FileUtils;
 
 import org.openqa.selenium.OutputType;
@@ -18,13 +17,13 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 
 import org.openqa.selenium.WebDriverException;
-
+ 
 import com.aventstack.extentreports.ExtentTest;
 
 import com.aventstack.extentreports.MediaEntityBuilder;
 
 import com.aventstack.extentreports.Status;
-
+ 
 public class Reports {
 
 	public static void generateReport(WebDriver driver, ExtentTest test, Status status, String stepMessage) 
@@ -117,3 +116,4 @@ public class Reports {
 
 }
 
+ 

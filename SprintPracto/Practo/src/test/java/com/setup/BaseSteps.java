@@ -23,7 +23,6 @@ public class BaseSteps {
        } 
        else if (browser.equalsIgnoreCase("firefox")) 
        {
-       	//System.setProperty("webdriver.firefox.driver", "C:\\Users\\koteru\\OneDrive - Capgemini\\Desktop\\SeleniumGrid\\chromedriver.exe");
            driver = new FirefoxDriver();//firebox will launch
        } 
        else if (browser.equalsIgnoreCase("edge")) 
@@ -39,9 +38,6 @@ public class BaseSteps {
        String url=prop.getProperty("source.url");
        driver.get(url);
        driver.manage().window().maximize();
-//       String targeturl=prop.getProperty("targetUrl");
-//       driver.get(targeturl);
-
    }
    public static void sleep(int msec) {//handling waits 
        try 
