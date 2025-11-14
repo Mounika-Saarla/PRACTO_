@@ -1,6 +1,5 @@
 package com.setup;
-
-
+ 
 import java.io.File;
 
 import java.io.IOException;
@@ -24,40 +23,30 @@ import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.MediaEntityBuilder;
 
 import com.aventstack.extentreports.Status;
-
+ 
 public class Reports {
 
-	public static void generateReport(WebDriver driver, ExtentTest test, Status status, String stepMessage) 
+	//capturing ss and
 
-	{
+	public static void generateReport(WebDriver driver, ExtentTest test, Status status, String stepMessage) {
 
-		if (status.equals(Status.PASS)) 
+		if (status.equals(Status.PASS)) {
 
-		{
+			test.log(status, stepMessage);//finds the extent report
 
-			test.log(status, stepMessage);                 // it will find in extent report
-
-		} 
-
-		else if (status.equals(Status.FAIL))
-
-		{
+		} else if (status.equals(Status.FAIL)) {
 
 			// Take screenshot if status is FAIL
 
-			String screenshotPath = captureScreenshot(driver, stepMessage);  // if test case fails it takes screenshot
+			String screenshotPath = captureScreenshot(driver, stepMessage);//if testcase fail gets ss
 
-			try 
+			try {
 
-			{
+				test.log(status, stepMessage,
 
-				test.log(status, stepMessage, MediaEntityBuilder.createScreenCaptureFromPath(screenshotPath).build()); // to attach screenshot to extent report
+						MediaEntityBuilder.createScreenCaptureFromPath(screenshotPath).build());
 
-			} 
-
-			catch (WebDriverException e) 
-
-			{
+			} catch (WebDriverException e) {
 
 				e.printStackTrace();
 
@@ -65,57 +54,46 @@ public class Reports {
 
 			}
 
-		} 
-
-		else 
-
-		{
+		} else {
 
 			test.log(status, stepMessage);
 
 		}
 
 	}
+ 
+ 
+	public static String captureScreenshot(WebDriver driver, String fileLabel) {
 
+		String folderPath = System.getProperty("user.dir") + "/reports/screenshots/";//capture ss and save it in one location
 
-	public static String captureScreenshot(WebDriver driver, String fileLabel) 
+		new File(folderPath).mkdirs();//empty folder
+ 
+		String timeStamp = new SimpleDateFormat("dd-MM-yyyy_HH_mm_ss").format(new Date());//unique ss
 
-	{
+		String safeFileName = fileLabel.replaceAll("[^a-zA-Z0-9]", "_") + "_" + timeStamp + ".png";//.png image
+ 
+		File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);//capture ss
 
-		String folderPath = System.getProperty("user.dir") + "/reports/screenshots/";  // capture the screenshot and save in one location
+		File destFile = new File(folderPath + safeFileName);//dest of where to save
+ 
+		try {
 
-		new File(folderPath).mkdirs();            // creating a folder
+			FileUtils.copyFile(screenshot, destFile);//store the captured ss into the destination folder
 
-		String timeStamp = new SimpleDateFormat("dd-MM-yyyy_HH_mm_ss").format(new Date());   //To generate a unique name for Screenshot //o/p is string
-
-		String safeFileName = fileLabel.replaceAll("[^a-zA-Z0-9]", "_") + "_" + timeStamp + ".png"; //Characters will replaced by _
-
-		File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);   //capturing screenshot
-
-		File destFile = new File(folderPath + safeFileName);  //where we save our file
-
-		try 
-
-		{
-
-			FileUtils.copyFile(screenshot, destFile);
-
-			// it will save the captured screenshot
-
-		} catch (Exception e) 
-
-		{
+		} catch (IOException e) {
 
 			e.printStackTrace();
 
 		}
-
-
-		return "./screenshots/" + safeFileName;           //returning the screenshot folder with files
+ 
+ 
+		return "./screenshots/" + safeFileName;
 
 	}
-
-
+ 
+ 
 }
+
 
  

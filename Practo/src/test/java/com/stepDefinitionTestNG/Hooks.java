@@ -1,58 +1,83 @@
 package com.stepDefinitionTestNG;
+
+import org.openqa.selenium.WebDriver;
  
-import com.aventstack.extentreports.ExtentReports;
-import com.aventstack.extentreports.ExtentTest;
-import com.aventstack.extentreports.reporter.ExtentSparkReporter;
-import com.setup.BaseSteps;
+/*
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
+import com.setup.BaseSteps;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
+import java.io.File;
+import java.nio.file.Files;
  
-public class Hooks extends BaseSteps {
- 
-    private static ExtentReports extentReports;
-    private static ThreadLocal<ExtentTest> extentTest = new ThreadLocal<>();
+public class Hooks {
  
     @Before
-    public void beforeScenario(Scenario scenario) {
-        if (extentReports == null) {
-            ExtentSparkReporter spark = new ExtentSparkReporter("target/ExtentReport.html");
-            extentReports = new ExtentReports();
-            extentReports.attachReporter(spark);
-        }
- 
-        ExtentTest test = extentReports.createTest(scenario.getName());
-        extentTest.set(test);
- 
-        initializeDriver(); // From BaseSteps
-        navigateTo("homepage.url"); // From BaseSteps
- 
-        extentTest.get().info("Browser launched and navigated to: " + prop.getProperty("homepage.url"));
+    public void startTest() throws Exception {
+        BaseSteps.initDriver();
     }
  
     @After
-    public void afterScenario(Scenario scenario) {
-        try {
-            if (scenario.isFailed()) {
-                byte[] screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
-                scenario.attach(screenshot, "image/png", "Failure Screenshot");
- 
-                String base64Screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BASE64);
-                extentTest.get().addScreenCaptureFromBase64String(base64Screenshot, "Failure Screenshot");
- 
-                extentTest.get().fail("Scenario failed: " + scenario.getName());
-            } else {
-                extentTest.get().pass("Scenario passed: " + scenario.getName());
-            }
-        } catch (Exception e) {
-            extentTest.get().warning("Error during afterScenario: " + e.getMessage());
-        } finally {
-            if (driver != null) {
-                driver.quit();
-            }
-            extentReports.flush();
+    public void endTest(Scenario scenario) {
+        if (scenario.isFailed()) {
+            byte[] screenshot = ((TakesScreenshot) BaseSteps.driver).getScreenshotAs(OutputType.BYTES);
+            scenario.attach(screenshot, "image/png", "Failed Screenshot");
         }
+//        BaseSteps.quitDriver();
+    }
+}
+ 
+package com.stepDefinitionTestNG;
+*/
+ 
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
+//import com.aventstack.extentreports.gherkin.model.Scenario;
+import com.aventstack.extentreports.reporter.ExtentSparkReporter;
+import com.setup.BaseSteps;
+import io.cucumber.java.After;
+import io.cucumber.java.AfterAll;
+import io.cucumber.java.Before;
+import io.cucumber.java.BeforeAll;
+import io.cucumber.java.Scenario;  //what to track on report(tester name,data etc...)
+
+public class Hooks extends BaseSteps {
+ 
+	public static ExtentSparkReporter spark;
+    public static ExtentReports extReports;
+    public static ExtentTest test;
+    @BeforeAll
+    public static void beforeAll() {
+        spark = new ExtentSparkReporter("C:\\Training\\SprintPracto\\Practo\\target\\ExtentReport.html");
+        extReports = new ExtentReports();
+        extReports.attachReporter(spark);
+    }
+    @AfterAll
+    public static void afterAll() {
+        //after feature file ends this will run
+    	//to generate extent report like commit method
+    	if(extReports != null) {
+        extReports.flush();
+    }
+    }
+//    @Before
+    public void beforeScenario(Scenario scenario){
+       System.out.println("hi...");//before every scenario
+       //on the test track the name of the scenario
+       //Fresh browser will launch
+        test = extReports.createTest(scenario.getName());
+       launchBrowser();
+        getDriver();
+    }
+ 
+    @After
+    public void afterScenario() {
+//        sleep(4000);
+//        driver.quit();   //after every scenario
+    	if(driver != null) {
+    		driver.quit();
+    	}
     }
 }
