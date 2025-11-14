@@ -1,182 +1,121 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="7" passed="6" failed="1" skipped="0">
+<testng-results ignored="0" total="3" passed="0" failed="3" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-11-14T18:28:50 IST" name="Default suite" finished-at="2025-11-14T18:30:19 IST" duration-ms="88335">
+  <suite started-at="2025-11-14T20:31:40 IST" name="Default suite" finished-at="2025-11-14T20:31:56 IST" duration-ms="15587">
     <groups>
       <group name="cucumber">
-        <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.runner.TestRunnerTestNG@17a7f733]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
+        <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.runner.TestRunner@dd05255]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
       </group> <!-- cucumber -->
     </groups>
-    <test started-at="2025-11-14T18:28:50 IST" name="Default test" finished-at="2025-11-14T18:30:19 IST" duration-ms="88335">
-      <class name="com.runner.TestRunnerTestNG">
-        <test-method is-config="true" signature="setUpClass(org.testng.ITestContext)[pri:0, instance:com.runner.TestRunnerTestNG@17a7f733]" started-at="2025-11-14T18:28:50 IST" name="setUpClass" finished-at="2025-11-14T18:28:51 IST" duration-ms="1084" status="PASS">
+    <test started-at="2025-11-14T20:31:40 IST" name="Default test" finished-at="2025-11-14T20:31:56 IST" duration-ms="15587">
+      <class name="com.runner.TestRunner">
+        <test-method is-config="true" signature="setUpClass(org.testng.ITestContext)[pri:0, instance:com.runner.TestRunner@dd05255]" started-at="2025-11-14T20:31:40 IST" name="setUpClass" finished-at="2025-11-14T20:31:41 IST" duration-ms="873" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[org.testng.TestRunner@fceab5d]]>
+                <![CDATA[org.testng.TestRunner@2b34e38c]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpClass -->
-        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.runner.TestRunnerTestNG@17a7f733]" started-at="2025-11-14T18:28:51 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2025-11-14T18:29:03 IST" duration-ms="12028" status="PASS">
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.runner.TestRunner@dd05255]" started-at="2025-11-14T20:31:41 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2025-11-14T20:31:50 IST" duration-ms="9121" status="FAIL">
           <params>
             <param index="0">
               <value>
-                <![CDATA["Validate Footer Contains Search for clinics click"]]>
+                <![CDATA["Navigate to provider pages using Excel data"]]>
               </value>
             </param>
             <param index="1">
               <value>
-                <![CDATA["Home Page Footer Navigation"]]>
+                <![CDATA["Lab Tests Navigation"]]>
               </value>
             </param>
           </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- runScenario -->
-        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.runner.TestRunnerTestNG@17a7f733]" started-at="2025-11-14T18:29:03 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2025-11-14T18:29:13 IST" duration-ms="9291" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA["Validate Footer Contains Search for clinics click"]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA["Home Page Footer Navigation"]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- runScenario -->
-        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.runner.TestRunnerTestNG@17a7f733]" started-at="2025-11-14T18:29:13 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2025-11-14T18:29:30 IST" duration-ms="16893" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA["navigate to required clinic details"]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA["Home Page Footer Navigation"]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- runScenario -->
-        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.runner.TestRunnerTestNG@17a7f733]" started-at="2025-11-14T18:29:30 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2025-11-14T18:29:43 IST" duration-ms="13338" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA["Navigate to doctor details in Gopalapuram"]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA["Home Page Footer Navigation"]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- runScenario -->
-        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.runner.TestRunnerTestNG@17a7f733]" started-at="2025-11-14T18:29:43 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2025-11-14T18:29:47 IST" duration-ms="3908" status="FAIL">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA["Navigate to anesthesiology-clinics details"]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA["Home Page Footer Navigation"]]>
-              </value>
-            </param>
-          </params>
-          <exception class="org.openqa.selenium.NoSuchSessionException">
-            <message>
-              <![CDATA[Session ID is null. Using WebDriver after calling quit()?
-Build info: version: '4.34.0', revision: '707dcb4246*'
-System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.8'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [null, findElement {using=link text, value=Search for clinics}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 142.0.7444.135, chrome: {chromedriverVersion: 142.0.7444.162 (c076baf266c..., userDataDir: C:\Users\sripath\AppData\Lo...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:60901}, goog:processID: 37992, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:60901/devtoo..., se:cdpVersion: 142.0.7444.135, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}]]>
-            </message>
+          <exception class="java.lang.ExceptionInInitializerError">
             <full-stacktrace>
-              <![CDATA[org.openqa.selenium.NoSuchSessionException: Session ID is null. Using WebDriver after calling quit()?
-Build info: version: '4.34.0', revision: '707dcb4246*'
-System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.8'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [null, findElement {using=link text, value=Search for clinics}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 142.0.7444.135, chrome: {chromedriverVersion: 142.0.7444.162 (c076baf266c..., userDataDir: C:\Users\sripath\AppData\Lo...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:60901}, goog:processID: 37992, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:60901/devtoo..., se:cdpVersion: 142.0.7444.135, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:176)
-at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
-at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
-at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:544)
-at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:165)
-at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
-at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:367)
-at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:361)
-at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:68)
-at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
-at jdk.proxy2/jdk.proxy2.$Proxy27.isDisplayed(Unknown Source)
-at org.openqa.selenium.support.ui.ExpectedConditions.elementIfVisible(ExpectedConditions.java:304)
-at org.openqa.selenium.support.ui.ExpectedConditions$10.apply(ExpectedConditions.java:290)
-at org.openqa.selenium.support.ui.ExpectedConditions$10.apply(ExpectedConditions.java:287)
-at org.openqa.selenium.support.ui.ExpectedConditions$23.apply(ExpectedConditions.java:656)
-at org.openqa.selenium.support.ui.ExpectedConditions$23.apply(ExpectedConditions.java:652)
-at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:203)
-at com.pages.userpage.clickSearchClinic(userpage.java:419)
-at com.stepDefinitionTestNG.Profile.user_is_clicking_on_search_for_clinic(Profile.java:191)
-at ✽.user is clicking on search for clinic(file:///C:/Training/SprintPracto/Practo/src/test/resources/Features/Profile.feature:46)
+              <![CDATA[java.lang.ExceptionInInitializerError
+at com.pages.UserPage.launchApplication(UserPage.java:343)
+at com.stepDefinitionTestNG.Profile.user_launches_practo_application(Profile.java:294)
+at ✽.user launches Practo application(file:///C:/Users/dyamaa/SpritPracto/Practo/src/test/resources/Features/Profile.feature:56)
+Caused by: java.lang.RuntimeException: Failed to load profile.properties file.
+at com.parameters.PropertyReader.<clinit>(PropertyReader.java:88)
+... 3 more
 ]]>
             </full-stacktrace>
-          </exception> <!-- org.openqa.selenium.NoSuchSessionException -->
+          </exception> <!-- java.lang.ExceptionInInitializerError -->
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runScenario -->
-        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.runner.TestRunnerTestNG@17a7f733]" started-at="2025-11-14T18:29:47 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2025-11-14T18:30:09 IST" duration-ms="22414" status="PASS">
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.runner.TestRunner@dd05255]" started-at="2025-11-14T20:31:50 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2025-11-14T20:31:53 IST" duration-ms="2657" status="FAIL">
           <params>
             <param index="0">
               <value>
-                <![CDATA["Validate Footer Contains Search for clinics click"]]>
+                <![CDATA["Navigate to provider pages using Excel data"]]>
               </value>
             </param>
             <param index="1">
               <value>
-                <![CDATA["Home Page Footer Navigation"]]>
+                <![CDATA["Lab Tests Navigation"]]>
               </value>
             </param>
           </params>
+          <exception class="java.lang.NoClassDefFoundError">
+            <message>
+              <![CDATA[Could not initialize class com.parameters.PropertyReader]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.NoClassDefFoundError: Could not initialize class com.parameters.PropertyReader
+at com.pages.UserPage.launchApplication(UserPage.java:343)
+at com.stepDefinitionTestNG.Profile.user_launches_practo_application(Profile.java:294)
+at ✽.user launches Practo application(file:///C:/Users/dyamaa/SpritPracto/Practo/src/test/resources/Features/Profile.feature:56)
+Caused by: java.lang.ExceptionInInitializerError: Exception java.lang.RuntimeException: Failed to load profile.properties file. [in thread "main"]
+at com.parameters.PropertyReader.<clinit>(PropertyReader.java:88)
+... 3 more
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.NoClassDefFoundError -->
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runScenario -->
-        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.runner.TestRunnerTestNG@17a7f733]" started-at="2025-11-14T18:30:09 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2025-11-14T18:30:18 IST" duration-ms="8808" status="PASS">
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.runner.TestRunner@dd05255]" started-at="2025-11-14T20:31:53 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2025-11-14T20:31:56 IST" duration-ms="2824" status="FAIL">
           <params>
             <param index="0">
               <value>
-                <![CDATA["Validate Footer Contains Search for clinics click"]]>
+                <![CDATA["Navigate to provider pages using Excel data"]]>
               </value>
             </param>
             <param index="1">
               <value>
-                <![CDATA["Home Page Footer Navigation"]]>
+                <![CDATA["Lab Tests Navigation"]]>
               </value>
             </param>
           </params>
+          <exception class="java.lang.NoClassDefFoundError">
+            <message>
+              <![CDATA[Could not initialize class com.parameters.PropertyReader]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.NoClassDefFoundError: Could not initialize class com.parameters.PropertyReader
+at com.pages.UserPage.launchApplication(UserPage.java:343)
+at com.stepDefinitionTestNG.Profile.user_launches_practo_application(Profile.java:294)
+at ✽.user launches Practo application(file:///C:/Users/dyamaa/SpritPracto/Practo/src/test/resources/Features/Profile.feature:56)
+Caused by: java.lang.ExceptionInInitializerError: Exception java.lang.RuntimeException: Failed to load profile.properties file. [in thread "main"]
+at com.parameters.PropertyReader.<clinit>(PropertyReader.java:88)
+... 3 more
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.NoClassDefFoundError -->
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runScenario -->
-        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:com.runner.TestRunnerTestNG@17a7f733]" started-at="2025-11-14T18:30:18 IST" name="tearDownClass" finished-at="2025-11-14T18:30:19 IST" duration-ms="498" status="PASS">
+        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:com.runner.TestRunner@dd05255]" started-at="2025-11-14T20:31:56 IST" name="tearDownClass" finished-at="2025-11-14T20:31:56 IST" duration-ms="48" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDownClass -->
-      </class> <!-- com.runner.TestRunnerTestNG -->
+      </class> <!-- com.runner.TestRunner -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
