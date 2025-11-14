@@ -40,8 +40,8 @@ Feature: Lab Tests Navigation
       | 0 | 2 |    
       | 0 | 3 |
 
-    @SearchTests
-  Scenario Outline: Search for items in Lipid Profile page
+    @SearchCity
+    Scenario Outline: Search for items in Lipid Profile page
     Given user is on Practo Homepage
     When user clicks on Lab Tests link
     Then Lab Tests page should be displayed                                   
@@ -49,6 +49,7 @@ Feature: Lab Tests Navigation
     When user clicks on Lipid Profile link
     Then verify Lipid Profile page URL            
     And click on search City
+    Then click on select a City for search 
     And Enter the City from <sheet> and <row> in Lipid Profile page for search
     And click Entered City in search
     Then verify City results for SearchBox 
@@ -56,24 +57,19 @@ Feature: Lab Tests Navigation
     Examples:
       | sheet  | row|
       | 1 | 1 |
-     # | 1 | 2 |
-     # | 1 | 3 |
+      | 1 | 2 |
+      | 1 | 3 |
     
-#@AddTests
-#Scenario Outline: Navigate to LabTest page and add Tests to Cart
+@BookNow
+Scenario: Navigate to LabTest page and Book Now Cart
 
-# Given user is on Practo Homepage
-#  When user clicks on Lab Tests link
-#  Then Lab Tests page should be displayed
-#  And add first test <sheetNo> <rowNum>
-#  And add second test <sheetNo> <rowNum>
-#  And click Proceed to Checkout 
-#  Then verify Add patient details
-    
- # Examples:
- # | sheetNo | rowNum |
- # | 1 | 1 | 
- #| 0 | 2 |
- # | 0 | 3 |
-     
+    Given user is on Practo Homepage
+    When user clicks on Lab Tests link
+    Then Lab Tests page should be displayed
+    And select Bangalore city
+    When user clicks on Lipid Profile link
+    Then verify Lipid Profile page URL
+    And click on Book Now 
+    Then verify  Add Patient Details
+
 
