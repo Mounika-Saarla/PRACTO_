@@ -38,7 +38,7 @@ public class HomePage {
 	@FindBy(xpath = "//span[contains(text(),'1 item')]")
 	private WebElement cartItemCount;
 
-	@FindBy(xpath = "//span[text()='Your Cart']")
+	@FindBy(xpath = "//span[text()='You Cart']")
 	private WebElement goToCartButton;
 
 
@@ -48,6 +48,8 @@ public class HomePage {
 	@FindBy(xpath = "//*[@id=\"root-app\"]/div/div/div[2]/div/div[2]/div/div/div")
 	private WebElement searchResultsContainer;
 
+	//Ts_03
+
 	//@FindBy(xpath = "//input[@class='c-search__input']")
 	@FindBy(css = "#omniSearch")
 	private WebElement searchForTests;
@@ -55,18 +57,37 @@ public class HomePage {
 	@FindBy(xpath = "//span[text()='Your Cart']")
 	private WebElement testVerify;
 
-	@FindBy(xpath = "(//div[text()='ADD'])[1]")
-	private WebElement addfirst;
+	//Ts_04
+
+
+	@FindBy(xpath = "//input[@class='c-search__input--location']")
+	private WebElement searchForCity;
+
+	@FindBy(xpath = "//input[@class='c-search__input citylist']")
+	private WebElement selectACity;
+
+	@FindBy(xpath = "//span[text()='Your Cart']")
+	private WebElement verifyCity;
+
+	@FindBy(xpath = "(//div[text()='Hyderabad'])[1]")
+	private WebElement selectHyderabad;
 	
-	@FindBy(xpath = "(//div[text()='ADD'])[2]")
-	private WebElement addSecond;
+	@FindBy(xpath = "(//div[text()='Delhi'])[1]")
+	private WebElement selectDelhi;
 	
-	@FindBy(xpath = "//div[text()='Proceed to Checkout']")
-	private WebElement checkout;
+	@FindBy(xpath = "(//div[text()='Chennai'])[1]")
+	private WebElement selectChennai;
 	
+	@FindBy(xpath = "//h1[text()='Lipid Profile']")
+	private WebElement verifyFinalPage;
+
+	//Ts_05
+	@FindBy(xpath = "//div[text()='Book Now']")
+	private WebElement selectBookNow;
+
 	@FindBy(xpath = "//div[text()='Add patient details']")
-	private WebElement patientDetails;
-	
+	private WebElement verifyAddPatient;
+
 
 	public HomePage(WebDriver driver) {
 		this.driver = driver;
@@ -99,7 +120,7 @@ public class HomePage {
 		wait.until(ExpectedConditions.elementToBeClickable(lipidProfileLink)).click();
 	}
 
-
+	//Ts_02
 	public void clickAddToCart() {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		wait.until(ExpectedConditions.visibilityOf(addToCartButton));
@@ -115,25 +136,18 @@ public class HomePage {
 
 
 	//Ts_03
-
-	Map<String, String> formData;
-
-	public void clickTests() {
+	public void clickTests() throws InterruptedException {
+		Thread.sleep(5000);
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-		//By searchBoxLocator = By.xpath("//input[@id='omniSearch']");
-		By searchBoxLocator =By.cssSelector("#omniSearch");
-
-		WebElement searchBox = wait.until(ExpectedConditions.refreshed(
-				ExpectedConditions.elementToBeClickable(searchBoxLocator)));
-		searchBox.click();
+		searchForTests.click();
 	}
 
-	public void enterTest(String[] TestName) throws IOException   {
-
+	public void enterTest(int sheet , int row ) throws IOException   {
+		String[] testData = ExcelReader.getRowData(sheet, row); 
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		((JavascriptExecutor)driver).executeScript("arguments[0].click();", searchForTests);
-		searchBox.sendKeys(TestName);
-		System.out.println("DEBUG: Sent to search box -> " + TestName);
+		searchForTests.sendKeys(testData);
+		//System.out.println("DEBUG: Sent to search box -> " + TestName);
 	}
 	public void verifyTest() {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
@@ -142,26 +156,58 @@ public class HomePage {
 	}
 
 	//Ts_04
-	public void addFirstTest(int sheetNo, int rowNum) throws IOException {
-		String[] firstTestpath = ExcelReader.getRowData(sheetNo, rowNum);
-		wait.until(ExpectedConditions.visibilityOf(addfirst));
-		 ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({behavior: 'smooth', block: 'center'});", addfirst);
-		 ((JavascriptExecutor) driver).executeScript("arguments[0].click();", firstTestpath);
-
+	public void searchCity() throws InterruptedException {
+		Thread.sleep(5000);
+		wait.until(ExpectedConditions.visibilityOf(searchForCity));
+		searchForCity.click();
 	}
 
-	public void addSecondTest(int sheetNo, int rowNum) {
-
+	public void selectACity() throws InterruptedException {
+		Thread.sleep(5000);
+		wait.until(ExpectedConditions.visibilityOf(selectACity));
+		selectACity.click();
 	}
 
-	public void proceedToCheckout() {
+	public void enterCityName(int sheet, int row) throws IOException {
+	    String[] cityData = ExcelReader.getRowData(sheet, row); // Assuming ExcelReader returns String[]
+	    String cityName = cityData[0]; // First column contains city name
 
+	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+
+	    // Click input box using JS to avoid interception
+	    ((JavascriptExecutor) driver).executeScript("arguments[0].click();", selectACity);
+	    selectACity.clear();
+	    selectACity.sendKeys(cityName);
+
+	    // Wait for dropdown and click matching city
+	    if (cityName.equalsIgnoreCase("Hyderabad")) {
+	        wait.until(ExpectedConditions.elementToBeClickable(selectHyderabad)).click();
+	    } else if (cityName.equalsIgnoreCase("Delhi")) {
+	        wait.until(ExpectedConditions.elementToBeClickable(selectDelhi)).click();
+	    } else if (cityName.equalsIgnoreCase("Chennai")) {
+	        wait.until(ExpectedConditions.elementToBeClickable(selectChennai)).click();
+	    }
 	}
 
-	public void verifyPatientDetails() {
-
+	public void clickCityToSearch() {
+		wait.until(ExpectedConditions.visibilityOf(selectACity));
+		selectACity.click();
 	}
 
+	public void verifyCity() {
+		wait.until(ExpectedConditions.visibilityOf(verifyFinalPage));
+	}
+
+
+	//Ts_05
+	public void bookNow() {
+		wait.until(ExpectedConditions.visibilityOf(selectBookNow));
+		selectBookNow.click();
+	}
+
+	public void addPatientDetails() {
+		wait.until(ExpectedConditions.visibilityOf(verifyAddPatient));
+	}
 
 
 }
