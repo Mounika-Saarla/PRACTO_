@@ -17,7 +17,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 public class ExcelReader {
 
 	    public static final int CITY_COLUMN_INDEX = 0; // Assuming city is in first column
-//	     public static final int HOSPITAL_COLUMN_INDEX=0;
+
 	public static final String FILE_PATH = "C:\\Training\\SprintPracto\\Practo\\src\\test\\resources\\Exceldata\\Data.xlsx";
     public static String getCellData(String sheetName, int row, int col) throws Exception {
         FileInputStream fis = new FileInputStream("src/test/resources/Exceldata/Data.xlsx");
@@ -26,19 +26,6 @@ public class ExcelReader {
         return sheet.getRow(row).getCell(col).getStringCellValue();
     }
 
-
-
-    
-
-        /**
-         * Reads a cell value from an Excel file based on sheet, row, and column index.
-         *
-         * @param filePath   Path to the Excel file
-         * @param sheetIndex Index of the sheet (0-based)
-         * @param rowIndex   Index of the row (0-based)
-         * @param colIndex   Index of the column (0-based)
-         * @return Cell value as String
-         */
         public static String getCellData(String filePath, int sheetIndex, int rowIndex, int colIndex) {
             String cellValue = "";
             FileInputStream fis = null;

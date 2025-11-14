@@ -5,6 +5,7 @@
   
         <classes>
             <class name="com.runner.TestRunnerTestNG"/>
+             <class name="com.runner.TestRunnerParallel"/>
         </classes>
 
   </test> <!-- Test -->

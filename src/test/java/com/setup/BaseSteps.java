@@ -12,6 +12,8 @@ import org.testng.Assert;
 
 import com.parameters.PropertyReader;
 
+import io.cucumber.java.After;
+
 public class BaseSteps {
     public static WebDriver driver;
     public BaseSteps(WebDriver driver) {
@@ -44,8 +46,6 @@ public class BaseSteps {
         Assert.assertTrue(driver.getCurrentUrl().contains("practo.com"), "Failed to launch Practo");
     }
 	public static WebDriver getDriver() throws Exception {
-		// TODO Auto-generated method stub
-//		return null;
 
         if (driver == null) {
             System.setProperty("webdriver.chrome.driver", "path/to/chromedriver");
@@ -55,13 +55,26 @@ public class BaseSteps {
         return driver;
 
 	}
-}
 
 
+	public static void sleep(int msec) {
+		try 
+		{
+			Thread.sleep(msec);
+		} catch (InterruptedException e) 
+		{
+			e.printStackTrace();
+		}
+	}
 
 //    @After
-//    public void tearDown() {
+    public static void tearDown() {
+//    	Thread.sleep(1000);
+//    	if (driver != null) {
+//			driver.quit(); // ✅ Close browser once after all scenarios
+//		}
+    
 //        driver.quit();
-//    }*/
+    }
 
-
+}

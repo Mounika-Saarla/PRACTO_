@@ -7,12 +7,15 @@ import io.cucumber.testng.CucumberOptions;
 @CucumberOptions(
         features = "src/test/resources/com/features/Login.feature",   // ✅ Path to .feature files
         glue = {"com.stepDefinitionTestNG"},                           // ✅ Package where step defs exist
-        plugin = {"pretty", "html:target/cucumber-report.html",
-        		"pretty","html:reports/HTMLReports.html",
+//        tags="@service",
+        plugin = {"pretty:reports/PreetyReports.html", 
+        		"html:target/cucumber-report.html",
+        		"html:reports/HTMLReports.html",
     			"json:reports/json-report.json",
     			"junit:reports/junit_report.xml"},
         monochrome = true
 )
 public class TestRunnerTestNG extends AbstractTestNGCucumberTests {
+	
 }
 	

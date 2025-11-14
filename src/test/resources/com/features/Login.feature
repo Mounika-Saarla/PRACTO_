@@ -115,7 +115,18 @@ Examples:
  #   | Sheet3 | 1   |
  #   | Sheet3 | 2   |
     
-   
+
+@service
+ Scenario: Search for hospital and select service
+    Given user launches Practo application
+   When user clicks on Search for hospitals link on homepage
+    And user enters city name from Excel and selects suggestions 
+   Then user verifies hospital list page is displayed
+   And user clicks on Doctor for Skin Whitening in Bangalore
+    Then user should see the list of doctors for skin whitening in Bangalore
+
+
+
     
 
 

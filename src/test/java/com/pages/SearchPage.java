@@ -20,10 +20,10 @@ public class SearchPage  extends BaseSteps{
 
 	public void enterCityAndHospital(String city, String hospital) throws Exception {
         // Get locators from properties
-        String cityFieldXpath = PropertyReader.getProperty("search.properties", "cityField");
-        String citySuggestionsXpath = PropertyReader.getProperty("search.properties", "citySuggestionList");
-        String hospitalFieldXpath = PropertyReader.getProperty("search.properties", "hospitalField");
-        String hospitalSuggestionsXpath = PropertyReader.getProperty("search.properties", "hospitalSuggestionList");
+        String cityFieldXpath = PropertyReader.getProperty("profile.properties", "cityField");
+        String citySuggestionsXpath = PropertyReader.getProperty("profile.properties", "citySuggestionList");
+        String hospitalFieldXpath = PropertyReader.getProperty("profile.properties", "hospitalField");
+        String hospitalSuggestionsXpath = PropertyReader.getProperty("profile.properties", "hospitalSuggestionList");
 
         if (cityFieldXpath == null || citySuggestionsXpath == null || hospitalFieldXpath == null || hospitalSuggestionsXpath == null) {
             throw new IllegalArgumentException("One or more XPath values are null. Check search.properties file.");
@@ -65,8 +65,8 @@ public class SearchPage  extends BaseSteps{
 
    
     public void enterCity(String city) throws Exception {
-        String cityFieldXpath = PropertyReader.getProperty("search.properties", "cityField");
-        String citySuggestionsXpath = PropertyReader.getProperty("search.properties", "citySuggestionList");
+        String cityFieldXpath = PropertyReader.getProperty("profile.properties", "cityField");
+        String citySuggestionsXpath = PropertyReader.getProperty("profile.properties", "citySuggestionList");
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
         WebElement cityField = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(cityFieldXpath)));
         cityField.clear();

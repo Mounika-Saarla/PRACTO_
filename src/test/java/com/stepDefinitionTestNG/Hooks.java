@@ -2,6 +2,7 @@ package com.stepDefinitionTestNG;
 
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 
 /*
 import io.cucumber.java.After;
@@ -44,15 +45,21 @@ import io.cucumber.java.AfterAll;
 import io.cucumber.java.Before;
 import io.cucumber.java.BeforeAll;
 import io.cucumber.java.Scenario;  //what to track on report(tester name,data etc...)
-//it will track the test cases
-//it will run the code
  
- 
-public class Hooks extends BaseSteps{
+public class Hooks extends BaseSteps {
+	
+
+	public static WebDriver driver;
+
+	public Hooks() {
+		super(null); // or handle driver initialization differently
+	}	
+	
 	public Hooks(WebDriver driver) {
 		super(driver);
 		// TODO Auto-generated constructor stub
 	}
+
 
 	public static ExtentSparkReporter spark;
     public static ExtentReports extReports;
@@ -80,10 +87,25 @@ public class Hooks extends BaseSteps{
     }
 
     @After
-    public void afterScenario() {
+    public void afterScenario() throws InterruptedException  {
+//    	try {
+//			BaseSteps.tearDown();
+//		} catch (Exception e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+    	
+//    	BaseSteps.tearDown();
+    	
+    	
 //        sleep(4000);
 //        driver.quit();   //after every scenario
+//    	if (driver != null) {
+//			driver.quit(); // ✅ Close browser once after all scenarios
+//		}
+    	
     }
+    
+    
 }
-
 

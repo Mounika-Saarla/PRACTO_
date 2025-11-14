@@ -19,7 +19,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import com.pages.BasePage;
+//import com.pages.BasePage;
 import com.pages.BookingPage;
 import com.pages.HomePage;
 import com.pages.HospitalListPage;
@@ -345,6 +345,22 @@ public void clickHospitalCard() throws Exception {
 //            throw new Exception("Hospital name '" + hospitalName + "' not found in suggestions.");
 //        }
 //    }
+   
+   
+//   /////////////////////////////
+   
+   @And("user clicks on Doctor for Skin Whitening in Bangalore")
+   public void user_clicks_on_doctor_for_skin_whitening_in_bangalore() throws Exception {
+
+	   new HomePage(BaseSteps.driver).clickService();;
+
+   }
+
+   @Then("user should see the list of doctors for skin whitening in Bangalore")
+   public void user_should_see_the_list_of_doctors_for_skin_whitening_in_bangalor() throws Exception {
+
+	   new HospitalListPage(BaseSteps.driver).verifyHospitalServiceDisplayed();
+   }
 
 }
 

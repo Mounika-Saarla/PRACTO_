@@ -26,34 +26,39 @@ public HospitalListPage(WebDriver driver) {
 //    }
 
     public void verifyHospitalListDisplayed() throws Exception {
-        By listLocator = By.xpath(PropertyReader.getProperty("hospitalList.properties", "hospitalListSection"));
+        By listLocator = By.xpath(PropertyReader.getProperty("profile.properties", "hospitalListSection"));
         wait.until(ExpectedConditions.visibilityOfElementLocated(listLocator));
         Assert.assertTrue(driver.findElement(listLocator).isDisplayed(), "Hospital list page not displayed");
     }
     public void verifyCallDisplayed() throws Exception {
-        By listLocators = By.xpath(PropertyReader.getProperty("hospitalList.properties", "call"));
+        By listLocators = By.xpath(PropertyReader.getProperty("profile.properties", "call"));
         wait.until(ExpectedConditions.visibilityOfElementLocated(listLocators));
         Assert.assertTrue(driver.findElement(listLocators).isDisplayed(), "Hospital list page not displayed");
     }
     public void selectHospital() throws Exception {
-        By hospitalLocator = By.xpath(PropertyReader.getProperty("hospitalList.properties", "selectHospital"));
+        By hospitalLocator = By.xpath(PropertyReader.getProperty("profile.properties", "selectHospital"));
         wait.until(ExpectedConditions.elementToBeClickable(hospitalLocator));
         driver.findElement(hospitalLocator).click();
     }
     public void clickHospitalCard() throws Exception {
-        By hospitalCard = By.xpath(PropertyReader.getProperty("hospitalList.properties", "hospitalLink"));
+        By hospitalCard = By.xpath(PropertyReader.getProperty("profile.properties", "hospitalLink"));
         wait.until(ExpectedConditions.elementToBeClickable(hospitalCard));
         driver.findElement(hospitalCard).click();
     }
     public void verifyHospitalDetailsDisplayed() throws Exception {
-        By detailsLocator = By.xpath(PropertyReader.getProperty("hospitalList.properties", "hospitalDetails"));
+        By detailsLocator = By.xpath(PropertyReader.getProperty("profile.properties", "hospitalDetails"));
         wait.until(ExpectedConditions.visibilityOfElementLocated(detailsLocator));
         Assert.assertTrue(driver.findElement(detailsLocator).isDisplayed(), "Hospital Deatils page not displayed");
     }
     public void verifyDetailOverviewDisplayed() throws IOException  {
-    	 driver.findElement(By.xpath(PropertyReader.getProperty("hospitalList.properties", "hospitalDetails"))).click();
+    	 driver.findElement(By.xpath(PropertyReader.getProperty("profile.properties", "hospitalDetails"))).click();
     }
     
+    public void verifyHospitalServiceDisplayed() throws Exception {
+        By serviceLocator = By.xpath(PropertyReader.getProperty("profile.properties", "serviceCard"));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(serviceLocator));
+        Assert.assertTrue(driver.findElement(serviceLocator).isDisplayed(), "Hospital service page not displayed");
+    }
     
 
 }
