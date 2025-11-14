@@ -1,462 +1,389 @@
-//package com.pages;
-//
-//import java.time.Duration;
-//import org.openqa.selenium.*;
-//import org.openqa.selenium.support.ui.ExpectedConditions;
-//import org.openqa.selenium.support.ui.WebDriverWait;
-//import com.aventstack.extentreports.ExtentTest;
-//import com.aventstack.extentreports.Status;
-//import com.setup.Reports;
-//
-//public class UserPage {
-//    private static WebDriver driver;
-//    private static WebDriverWait wait;
-//    static ExtentTest test;
-//
-//    private static By labTestsLink = By.cssSelector("a[href*='/tests']");
-//    private static By popupContainer = By.xpath("/html/body/div[5]/div/div/div/div/div/div/div");
-//    private static By cityInput = By.xpath("/html/body/div[5]/div/div/div/div/div/div/div/div[2]/div/input");
-//    private static By applyButton = By.xpath("//button[contains(text(),'Apply')]");
-//    private static By topBookedSection = By.xpath("//h2[contains(text(),'Top Booked Diagnostic Tests')]");
-//    private static By addToCartButton = By.cssSelector("div.c-qc__qc-button.hollow.u-marginr--std");
-//
-//    public UserPage(WebDriver driver, ExtentTest test) {
-//        UserPage.driver = driver;
-//        UserPage.test = test;
-//        wait = new WebDriverWait(driver, Duration.ofSeconds(20));
-//    }
-//
-//    public static boolean clickLabTestsLink() {
-//        try {
-//            wait.until(ExpectedConditions.elementToBeClickable(labTestsLink)).click();
-//            Reports.generateReport(driver, test, Status.PASS, "Lab Tests link clicked successfully");
-//            return true;
-//        } catch (TimeoutException e) {
-//            Reports.generateReport(driver, test, Status.FAIL, "Lab Tests link not clickable");
-//            return false;
-//        }
-//    }
-//
-//    public static boolean selectCityFromPopup(String cityName) {
-//        try {
-//            WebElement popup = wait.until(ExpectedConditions.visibilityOfElementLocated(popupContainer));
-//            WebElement input = wait.until(ExpectedConditions.visibilityOfElementLocated(cityInput));
-//            input.clear();
-//            input.sendKeys(cityName);
-//
-//            wait.until(ExpectedConditions.elementToBeClickable(applyButton)).click();
-//            wait.until(ExpectedConditions.invisibilityOf(popup));
-//
-//            Reports.generateReport(driver, test, Status.PASS, "City selected: " + cityName);
-//            return true;
-//        } catch (TimeoutException e) {
-//            Reports.generateReport(driver, test, Status.FAIL, "City selection failed");
-//            return false;
-//        }
-//    }
-//
-//    public static boolean verifyCity(String expectedCity) {
-//        try {
-//            String actualCity = driver.findElement(By.id("locationInput")).getAttribute("value");
-//            if (!actualCity.equalsIgnoreCase(expectedCity)) {
-//                Reports.generateReport(driver, test, Status.FAIL, "City mismatch! Expected: " + expectedCity + ", Actual: " + actualCity);
-//                return false;
-//            }
-//            Reports.generateReport(driver, test, Status.PASS, "City verified: " + actualCity);
-//            return true;
-//        } catch (Exception e) {
-//            Reports.generateReport(driver, test, Status.FAIL, "City verification failed");
-//            return false;
-//        }
-//    }
-//
-//    public static boolean clickDiagnosticTest(String testName) {
-//        try {
-//            WebElement section = wait.until(ExpectedConditions.visibilityOfElementLocated(topBookedSection));
-//            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", section);
-//
-//            WebElement testLink = wait.until(ExpectedConditions.elementToBeClickable(
-//                By.xpath("//a[.//div[text()='" + testName + "']]")));
-//            testLink.click();
-//
-//            Reports.generateReport(driver, test, Status.PASS, "Clicked on diagnostic test: " + testName);
-//            return true;
-//        } catch (Exception e) {
-//            Reports.generateReport(driver, test, Status.FAIL, "Diagnostic test not found: " + testName);
-//            return false;
-//        }
-//    }
-//
-//    public static boolean clickAddToCart() {
-//        try {
-//            wait.until(ExpectedConditions.elementToBeClickable(addToCartButton)).click();
-//            Reports.generateReport(driver, test, Status.PASS, "Add to Cart clicked successfully");
-//            return true;
-//        } catch (TimeoutException e) {
-//            Reports.generateReport(driver, test, Status.FAIL, "Add to Cart button not found");
-//            return false;
-//        }
-//    }
-//
-//    public static boolean verifyBookingPage() {
-//        try {
-//            wait.until(ExpectedConditions.visibilityOfElementLocated(addToCartButton));
-//            Reports.generateReport(driver, test, Status.PASS, "Booking page verified successfully");
-//            return true;
-//        } catch (TimeoutException e) {
-//            Reports.generateReport(driver, test, Status.FAIL, "Booking page verification failed");
-//            return false;
-//        }
-//    
-//}}
 
+//----------------Scenario:1-------------------------------
 
-//package com.pages;
-//
-//import java.time.Duration;
-//import org.openqa.selenium.*;
-//import org.openqa.selenium.support.ui.ExpectedConditions;
-//import org.openqa.selenium.support.ui.WebDriverWait;
-//import com.aventstack.extentreports.ExtentTest;
-//import com.aventstack.extentreports.Status;
-//import com.setup.Reports;
-//
-//public class UserPage {
-//    private static WebDriver driver;
-//    private static WebDriverWait wait;
-//    static ExtentTest test;
-//
-//    // Locators
-//    private static By labTestsLink = By.cssSelector("a[href*='/tests']");
-//    private static By popupContainer = By.xpath("/html/body/div[5]/div/div/div/div/div/div/div");
-//    private static By cityInput = By.xpath("/html/body/div[5]/div/div/div/div/div/div/div/div[2]/div/input");
-//    private static By applyButton = By.xpath("//button[contains(text(),'Apply')]");
-//    private static By locationDisplay = By.id("locationInput");
-//    private static By topBookedSection = By.xpath("//h2[contains(text(),'Top Booked Diagnostic Tests')]");
-//    private static By addToCartButton = By.cssSelector("div.c-qc__qc-button.hollow.u-marginr--std");
-//
-//    public UserPage(WebDriver driver, ExtentTest test) {
-//        UserPage.driver = driver;
-//        UserPage.test = test;
-//        wait = new WebDriverWait(driver, Duration.ofSeconds(20));
-//    }
-//
-//    // Click Lab Tests link
-//    public static boolean clickLabTestsLink() {
-//        try {
-//            wait.until(ExpectedConditions.elementToBeClickable(labTestsLink)).click();
-//            Reports.generateReport(driver, test, Status.PASS, "Lab Tests link clicked successfully");
-//            return true;
-//        } catch (TimeoutException e) {
-//            Reports.generateReport(driver, test, Status.FAIL, "Lab Tests link not clickable");
-//            return false;
-//        }
-//    }
-//
-//    // Select city from popup
-//    public static boolean selectCityFromPopup(String cityName) {
-//        try {
-//            WebElement popup = wait.until(ExpectedConditions.visibilityOfElementLocated(popupContainer));
-//            WebElement input = wait.until(ExpectedConditions.visibilityOfElementLocated(cityInput));
-//            input.clear();
-//            input.sendKeys(cityName);
-//
-//            wait.until(ExpectedConditions.elementToBeClickable(applyButton)).click();
-//            wait.until(ExpectedConditions.invisibilityOf(popup));
-//
-//            Reports.generateReport(driver, test, Status.PASS, "City selected: " + cityName);
-//            return true;
-//        } catch (TimeoutException e) {
-//            Reports.generateReport(driver, test, Status.FAIL, "City selection failed");
-//            return false;
-//        }
-//    }
-//
-//    // Verify city after popup closes
-//    public static boolean verifyCity(String expectedCity) {
-//        try {
-//            String actualCity = wait.until(ExpectedConditions.visibilityOfElementLocated(locationDisplay))
-//                                    .getAttribute("value");
-//            if (!actualCity.equalsIgnoreCase(expectedCity)) {
-//                Reports.generateReport(driver, test, Status.FAIL, "City mismatch! Expected: " + expectedCity + ", Actual: " + actualCity);
-//                return false;
-//            }
-//            Reports.generateReport(driver, test, Status.PASS, "City verified: " + actualCity);
-//            return true;
-//        } catch (Exception e) {
-//            Reports.generateReport(driver, test, Status.FAIL, "City verification failed");
-//            return false;
-//        }
-//    }
-//
-//    // Scroll and click diagnostic test
-//    public static boolean clickDiagnosticTest(String testName) {
-//        try {
-//            WebElement section = wait.until(ExpectedConditions.visibilityOfElementLocated(topBookedSection));
-//            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", section);
-//
-//            WebElement testLink = wait.until(ExpectedConditions.elementToBeClickable(
-//                By.xpath("//a[.//div[text()='" + testName + "']]")));
-//            testLink.click();
-//
-//            Reports.generateReport(driver, test, Status.PASS, "Clicked on diagnostic test: " + testName);
-//            return true;
-//        } catch (Exception e) {
-//            Reports.generateReport(driver, test, Status.FAIL, "Diagnostic test not found: " + testName);
-//            return false;
-//        }
-//    }
-//
-//    // Click Add to Cart
-//    public static boolean clickAddToCart() {
-//        try {
-//            wait.until(ExpectedConditions.elementToBeClickable(addToCartButton)).click();
-//            Reports.generateReport(driver, test, Status.PASS, "Add to Cart clicked successfully");
-//            return true;
-//        } catch (TimeoutException e) {
-//            Reports.generateReport(driver, test, Status.FAIL, "Add to Cart button not found");
-//            return false;
-//        }
-//    }
-//
-//    // Verify booking page
-//    public static boolean verifyBookingPage() {
-//        try {
-//            wait.until(ExpectedConditions.visibilityOfElementLocated(addToCartButton));
-//            Reports.generateReport(driver, test, Status.PASS, "Booking page verified successfully");
-//            return true;
-//        } catch (TimeoutException e) {
-//            Reports.generateReport(driver, test, Status.FAIL, "Booking page verification failed");
-//            return false;
-//        }
-//    }
-//}
+/*package com.pages;
 
-
-//
-//package com.pages;
-//
-//import java.time.Duration;
-//import org.openqa.selenium.*;
-//import org.openqa.selenium.support.ui.ExpectedConditions;
-//import org.openqa.selenium.support.ui.WebDriverWait;
-//
-//public class UserPage {
-//    private WebDriver driver;
-//    private WebDriverWait wait;
-//
-//    // Locators
-//    private By labTestsLink = By.cssSelector("a[href*='/tests']");
-//    private By labTestsHeader = By.xpath("//h1[contains(text(),'Lab Tests')]");
-//    private By diagnosticTestHeader = By.xpath("//h1[contains(text(),'Diagnostic Test')]");
-//    private By bookingPageElement = By.cssSelector("div.c-qc__qc-button.hollow.u-marginr--std");
-//
-//    public UserPage(WebDriver driver) {
-//        this.driver = driver;
-//        this.wait = new WebDriverWait(driver, Duration.ofSeconds(20));
-//    }
-//
-//    // Navigate to Lab Tests page
-//    public boolean navigateToLabTestsPage() {
-//        try {
-//            wait.until(ExpectedConditions.elementToBeClickable(labTestsLink)).click();
-//            wait.until(ExpectedConditions.visibilityOfElementLocated(labTestsHeader));
-//            System.out.println("Navigated to Lab Tests page successfully.");
-//            return true;
-//        } catch (TimeoutException e) {
-//            System.out.println("Failed to navigate to Lab Tests page.");
-//            return false;
-//        }
-//    }
-//
-//    // Verify Diagnostic Test details page
-//    public boolean verifyDiagnosticTestPage() {
-//        try {
-//            String currentUrl = driver.getCurrentUrl();
-//            if (!currentUrl.contains("/tests/")) {
-//                System.out.println("Not on Diagnostic Test details page!");
-//                return false;
-//            }
-//            wait.until(ExpectedConditions.visibilityOfElementLocated(diagnosticTestHeader));
-//            System.out.println("Navigated to Diagnostic Test details page successfully.");
-//            return true;
-//        } catch (TimeoutException e) {
-//            System.out.println("Diagnostic Test details page verification failed.");
-//            return false;
-//        }
-//    }
-//
-//    // Verify Booking page
-//    public boolean verifyBookingPage() {
-//        try {
-//            WebElement bookingElement = wait.until(ExpectedConditions.visibilityOfElementLocated(bookingPageElement));
-//            if (bookingElement.isDisplayed()) {
-//                System.out.println("Navigated to Booking page successfully.");
-//                return true;
-//            }
-//            return false;
-//        } catch (TimeoutException e) {
-//            System.out.println("Booking page not displayed.");
-//            return false;
-//        }
-//    }
-//}
-
-
-
-//package com.pages;
-//import java.time.Duration;
-// 
-//import org.openqa.selenium.By;
-//import org.openqa.selenium.TimeoutException;
-//import org.openqa.selenium.WebDriver;
-//import org.openqa.selenium.support.ui.ExpectedConditions;
-//import org.openqa.selenium.support.ui.WebDriverWait;
-// 
-//import com.aventstack.extentreports.ExtentTest;
-//import com.aventstack.extentreports.Status;
-//import com.setup.Reports;
-//public class UserPage {
-// 
-//	private static WebDriver driver;
-//    private static WebDriverWait wait;
-// 
-//    static ExtentTest test;
-// 
-//    private static By LabTests=By.xpath("//div[text()='Lab Tests']");
-//	private static By LipidTests=By.xpath("//a[text()='Lipid Profile']");
-// 
-//	public UserPage(WebDriver driver, ExtentTest test)
-// 
-//	{
-//		this.driver=driver;
-//		this.test=test;	
-//		wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-//	}
-//	public static boolean verifyLabTests()
-//	{
-//		boolean actResult = true;
-//        try 
-//        {
-//            wait.until(ExpectedConditions.visibilityOfElementLocated(LabTests));
-//            Reports.generateReport(driver, test, Status.PASS, "LabTests Functionality is displayed");
-//        } 
-//        catch (TimeoutException te) 
-//        {
-//            actResult = false;
-//            Reports.generateReport(driver, test, Status.FAIL, "LabTests Functionality is not displayed");
-//        }
-//        return actResult;
-//	}
-//	public static boolean click_Lab_Tests()
-//	{
-//		boolean actResult = true;
-//        try 
-//        {
-//            wait.until(ExpectedConditions.visibilityOfElementLocated(LabTests));
-//            Reports.generateReport(driver, test, Status.PASS, "LabTests path is found");
-//            driver.findElement(LabTests).click();
-//        } 
-//        catch (TimeoutException te) 
-//        {
-//            actResult = false;
-//            Reports.generateReport(driver, test, Status.FAIL, "LabTests path is not found");
-//        }
-//        return actResult;
-//	}
-//	public boolean click_Lipid_Tests()
-//	{
-//		boolean actResult = true;
-//        try 
-//        {
-//            wait.until(ExpectedConditions.visibilityOfElementLocated(LipidTests));
-//            Reports.generateReport(driver, test, Status.PASS, "LipidTests Page is opened");
-//        } 
-//        catch (TimeoutException te) 
-//        {
-//            actResult = false;
-//            Reports.generateReport(driver, test, Status.FAIL, "LipidTests Page is not opened");
-//        }
-//        return actResult;
-//	}
-//}
-// 
-
-
-package com.pages;
 import java.time.Duration;
- 
+import java.util.Map;
+
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import com.parameters.PropertyReader;
+
+public class UserPage {
+
+	WebDriver driver;
+	private WebDriverWait wait;
+
+	// Constructor
+	public UserPage(WebDriver driver) {
+		this.driver = driver;
+		this.wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+	}
+
+	// Locators
+	private By labTestsLink = By.linkText("Lab Tests");
+	private By knowMoreButton = By.xpath("//button[contains(text(),'Know More')]");
+	private By packageDetailsHeader = By.xpath("//h1[contains(text(),'Package Details')]");
+	private By bookNowButton = By.xpath("//button[contains(text(),'Book Now')]");
+
+	// Actions
+	public void openHomePage(String url) {
+		driver.get(url);
+		driver.manage().window().maximize();
+	}
+
+	public void clickLabTestsLink() {
+		driver.findElement(labTestsLink).click();
+	}
+
+	public void clickKnowMoreButton() {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+		WebElement knowMoreButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[contains(text(),'Know More')]")));
+		knowMoreButton.click();
+	}
+
+	public boolean isPackageDetailsDisplayed() {
+
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+		try {
+			WebElement header = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h1")));
+			return header.isDisplayed();
+		} catch (TimeoutException e) {
+			return false;}
+
+	}
+
+	public void clickBookNowButton() {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+		try {
+			// Wait until the Book Now button is clickable
+			WebElement bookNowBtn = wait.until(
+					ExpectedConditions.elementToBeClickable(By.xpath("//div[@data-aid='package-book-btn']"))
+					);
+
+			// Scroll into view to avoid hidden element issues
+			((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", bookNowBtn);
+
+			// Click the Book Now button
+			bookNowBtn.click();
+
+			System.out.println("Book Now button clicked successfully.");
+		} catch (TimeoutException e) {
+			System.err.println("Book Now button was not found or clickable within the timeout.");
+			throw e; // Fail the test if button is not found
+		}
+	}
+
+
+	public boolean isBookingPageDisplayed() {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+		try {
+			// Wait until the URL contains "user-details" or "booking"
+			return wait.until(ExpectedConditions.urlContains("user-details"));
+			// If your URL pattern changes, you can also check for "booking" as fallback:
+			// return wait.until(ExpectedConditions.urlContains("booking"));
+		} catch (TimeoutException e) {
+			System.err.println("Booking page did not load within the timeout.");
+			return false;
+		}
+	}
+
+	public void closeBrowser() {
+		driver.quit();
+	}*/
+
+
+
+//-------------------Scenario:2-----------------------------
+
+
+
+
+/*  private void waitForPageLoad() {
+	        new WebDriverWait(driver, Duration.ofSeconds(15))
+	                .until(webDriver -> ((JavascriptExecutor) webDriver)
+	                .executeScript("return document.readyState").equals("complete"));
+	    }
+
+	    public void clickSeeAllArticles() {
+	        String locator = PropertyReader.getProperty("SeeAllArticlesXpath");
+	        WebElement seeAllArticlesLink = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(locator)));
+	        seeAllArticlesLink.click();
+	        waitForPageLoad(); 
+	    }
+
+	    public boolean isHealthFeedPageDisplayed() {
+	        return wait.until(ExpectedConditions.urlContains("healthfeed"));
+	    }
+
+	    public void clickHealthyHairCategory() {
+	        String locator = PropertyReader.getProperty("HealthyHairXpath");
+	        WebElement healthyHairLink = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(locator)));
+	        healthyHairLink.click();
+	        waitForPageLoad(); 
+	    }
+
+	    public boolean isHealthyHairPageDisplayed() {
+	        return wait.until(ExpectedConditions.urlContains("healthy-hair"));
+	    }
+
+
+	    public void selectArticle(String articleTitle) {
+	        String locatorTemplate = PropertyReader.getProperty("ArticleTitleXpath");
+	        String finalLocator = locatorTemplate.replace("${articleTitle}", articleTitle);
+
+	        WebElement articleElement = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(finalLocator)));
+	        articleElement.click();
+	        waitForPageLoad(); 
+
+
+	        for (String handle : driver.getWindowHandles()) {
+	            driver.switchTo().window(handle);
+	        }
+	    }
+
+	    public boolean isArticlePageDisplayed() {
+	        return wait.until(ExpectedConditions.urlContains("healthfeed"));
+	    }
+
+	    public boolean isArticleContentDisplayed() {
+	        String locator = PropertyReader.getProperty("ArticleContentXpath");
+	        try {
+	            WebElement content = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(locator)));
+	            return content.isDisplayed();
+	        } catch (TimeoutException e) {
+	            System.err.println("Article content not found within timeout.");
+	            return false;
+	        }
+	    }*/
+
+
+
+//--------------------Scenario:3------------------------------
+
+
+
+
+/*package com.pages;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+public class UserPage {
+    WebDriver driver;
+
+    // Constructor
+    public UserPage(WebDriver driver) {
+        this.driver = driver;
+    }
+
+    // Locator for Health Packages section
+    private By healthPackagesSection = By.xpath("//h1[contains(text(),'Health Packages')]");
+
+    // Locator for Book Now button
+    private By bookNowButton = By.xpath("//button[contains(text(),'Book Now')]");
+
+    // Method to verify Health Packages section is visible
+    public boolean isHealthPackagesSectionVisible() {
+        try {
+            WebElement section = driver.findElement(healthPackagesSection);
+            return section.isDisplayed();
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    // Method to click Book Now button
+    public void clickBookNow() {
+        try {
+            WebElement button = driver.findElement(bookNowButton);
+            button.click();
+        } catch (Exception e) {
+            System.out.println("Book Now button not found or not clickable: " + e.getMessage());
+        }
+    }
+}*/
+
+
+//---------------------------Scenario- outline------------------------
+
+/*package com.pages;
+
+import java.time.Duration;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
- 
-import com.aventstack.extentreports.ExtentTest;
-import com.aventstack.extentreports.Status;
-import com.setup.Reports;
+
+import com.parameters.PropertyReader;
+
 public class UserPage {
- 
-	private static WebDriver driver;
-    private static WebDriverWait wait;
- 
-    static ExtentTest test;
- 
-    private static By LabTests=By.xpath("//div[text()='Lab Tests']");
-	private static By diagnosticTestHeader=By.xpath("//h1[contains(text(),'Diagnostic Test')]");
- 
-	public UserPage(WebDriver driver, ExtentTest test)
- 
-	{
-		this.driver=driver;
-		this.test=test;	
-		wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-	}
-	public static boolean verifyLabTests()
-	{
-		boolean actResult = true;
-        try 
-        {
-            wait.until(ExpectedConditions.visibilityOfElementLocated(LabTests));
-            Reports.generateReport(driver, test, Status.PASS, "LabTests Functionality is displayed");
-        } 
-        catch (TimeoutException te) 
-        {
-            actResult = false;
-            Reports.generateReport(driver, test, Status.FAIL, "LabTests Functionality is not displayed");
+
+    WebDriver driver;
+    private WebDriverWait wait;
+
+    // Constructor
+    public UserPage(WebDriver driver) {
+        this.driver = driver;
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+    }
+
+    // Locators
+    private By labTestsLink = By.linkText("Lab Tests");
+    private By fever = By.xpath("//div[contains(text(),'Fever')]");
+    private By diabetes = By.xpath("//div[contains(text(),'Diabetes')]");
+    private By skin = By.xpath("//div[contains(text(),'Skin')]");
+
+    // ✅ Handle overlay by clicking city directly
+    public void handleCityOverlay() {
+        try {
+            String cityName = PropertyReader.getProperty("overlayCityInput"); // e.g., Bangalore
+            By cityDirectElement = By.xpath("//div[text()='" + cityName + "']");
+
+            // Wait for city element and click it
+            WebElement cityOption = wait.until(ExpectedConditions.elementToBeClickable(cityDirectElement));
+            cityOption.click(); // ✅ Direct click, no scroll, no JS
+
+            System.out.println("Overlay closed by selecting city: " + cityName);
+        } catch (Exception e) {
+            System.out.println("City overlay not present, continuing...");
         }
-        return actResult;
-	}
-	public static boolean click_Lab_Tests()
-	{
-		boolean actResult = true;
-        try 
-        {
-            wait.until(ExpectedConditions.visibilityOfElementLocated(LabTests));
-            Reports.generateReport(driver, test, Status.PASS, "LabTests path is found");
-            driver.findElement(LabTests).click();
-        } 
-        catch (TimeoutException te) 
-        {
-            actResult = false;
-            Reports.generateReport(driver, test, Status.FAIL, "LabTests path is not found");
+    }
+
+    public void openHomePage(String url) {
+        driver.get(url);
+        driver.manage().window().maximize();
+    }
+
+    public void clickLabTestsLink() {
+        driver.findElement(labTestsLink).click();
+    }
+
+    public boolean clickfever() {
+        try {
+            WebElement element = wait.until(ExpectedConditions.elementToBeClickable(fever));
+            element.click();
+
+            WebElement element1 = wait.until(ExpectedConditions.elementToBeClickable(diabetes));
+            element1.click();
+
+            WebElement element2 = wait.until(ExpectedConditions.elementToBeClickable(skin));
+            element2.click();
+
+            return true;
+        } catch (Exception e) {
+            return false;
         }
-        return actResult;
-	}
-	public boolean click__Tests()
-	{
-		boolean actResult = true;
-        try 
-        {
-            wait.until(ExpectedConditions.visibilityOfElementLocated(LabTests));
-            Reports.generateReport(driver, test, Status.PASS, "LabTests Page is opened");
-        } 
-        catch (TimeoutException te) 
-        {
-            actResult = false;
-            Reports.generateReport(driver, test, Status.FAIL, "LabTests Page is not opened");
+    }
+    public boolean clickdiab() {
+        try {
+
+
+            WebElement element1 = wait.until(ExpectedConditions.elementToBeClickable(diabetes));
+            element1.click();
+
+
+
+            return true;
+        } catch (Exception e) {
+            return false;
         }
-        return actResult;
-	}
+    }
+    public boolean clickski() {
+        try {
+
+            WebElement element2 = wait.until(ExpectedConditions.elementToBeClickable(skin));
+            element2.click();
+
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+}*/
+
+//-------------------------------Scenario_outline:2---------------------------------------
+
+package com.pages;
+
+import com.parameters.PropertyReader;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
+import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
+import java.io.FileInputStream;
+import java.io.IOException;
+
+public class UserPage {
+
+    private WebDriver driver;
+
+    // Constructor
+    public UserPage(WebDriver driver) {
+        this.driver = driver;
+    }
+
+    // Launch Practo application
+    public void launchApplication() {
+        driver.get(PropertyReader.getProperty("app.url"));
+    }
+
+    // Click Lab Tests link
+    public void clickLabTests() {
+        WebElement labTestsLink = driver.findElement(By.linkText(PropertyReader.getProperty("labtests.linktext")));
+        labTestsLink.click();
+    }
+
+    // Click For Providers link
+    public void clickForProviders() {
+        WebElement forProvidersLink = driver.findElement(By.linkText(PropertyReader.getProperty("forproviders.linktext")));
+        forProvidersLink.click();
+    }
+
+    // Select Software for Providers from dropdown
+    public void selectSoftwareForProviders() {
+        WebElement dropdown = driver.findElement(By.id(PropertyReader.getProperty("provider.dropdown.id")));
+        Select select = new Select(dropdown);
+        select.selectByVisibleText(PropertyReader.getProperty("provider.dropdown.option"));
+    }
+
+    // Navigate to provider link from Excel
+    public void navigateToProviderLink(int sheetIndex, int rowIndex) {
+        String excelPath = PropertyReader.getProperty("excel.path");
+        try (FileInputStream fis = new FileInputStream(excelPath);
+             Workbook workbook = new XSSFWorkbook(fis)) {
+
+            Sheet sheet = workbook.getSheetAt(sheetIndex);
+            Row row = sheet.getRow(rowIndex);
+            Cell cell = row.getCell(0); // Assuming link is in first column
+            String providerLink = cell.getStringCellValue();
+
+            driver.get(providerLink);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            throw new RuntimeException("Failed to read Excel file: " + excelPath);
+        }
+    }
+
+    // Verify provider page
+    public static boolean isProviderPageDisplayed(WebDriver driver) {
+        String expectedKeyword = PropertyReader.getProperty("provider.page.keyword");
+        return driver.getCurrentUrl().contains(expectedKeyword);
+    }
 }
- 

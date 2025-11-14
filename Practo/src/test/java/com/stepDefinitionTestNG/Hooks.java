@@ -1,83 +1,68 @@
-package com.stepDefinitionTestNG;
-
-import org.openqa.selenium.WebDriver;
+//package com.stepDefinitionTestNG;
+// 
+//import com.aventstack.extentreports.ExtentReports;
+// 
+//import com.aventstack.extentreports.ExtentTest;
+////import com.aventstack.extentreports.gherkin.model.Scenario;
+//import com.aventstack.extentreports.reporter.ExtentSparkReporter;
+//import com.setup.BaseSteps;
+// 
+//import io.cucumber.java.After;
+//import io.cucumber.java.AfterAll;
+//import io.cucumber.java.Before;
+//import io.cucumber.java.BeforeAll;
+//import io.cucumber.java.Scenario;
+// 
+//public class Hooks extends BaseSteps {
+// 
+//	public static ExtentSparkReporter spark;                     // classes of extent reports what should be color of report& gui
+//	public static ExtentReports extReports;                      // what to track on report (tester name , date etc..,)
+//	public static ExtentTest test;                               // It will track the test cases
+// 
+//	@BeforeAll                                                   // it will run the code before feature file starts
+//	public static void beforeAll() 
+//	{
+// 
+//		spark = new ExtentSparkReporter(".\\target\\ExtentReport.html");   //for extent report
+//		extReports = new ExtentReports();
+//		extReports.attachReporter(spark);
+//	}
+// 
+//	@AfterAll                                                     // after feature file ends this will run
+//	public static void afterAll() 
+//	{
+// 
+//		extReports.flush();                                       // to generate extent report like commit method
+//	}
+// 
+//	@Before                                                        // before every scenario   
+//	public void beforeScenario(Scenario scenario) 
+//	{
+// 
+//		test = extReports.createTest(scenario.getName());           // on the test track the name of scenario
+//		launchBrowser();                                            //Fresh browser will launch
+//	}
+// 
+// 
+//	private void launchBrowser() {
+//		// TODO Auto-generated method stub
+//		
+//	}
+//
+//	@After                                                         // after every scenario
+//	public void afterScenario() 
+//	{
+// 
+//		//        sleep(4000);
+//		//        driver.quit();
+////
+//		if (driver != null) {
+//			driver.quit(); // ✅ Close browser once after all scenarios
+//		}
+//
+// 
+// 
+// 
+//	}
  
-/*
-import io.cucumber.java.After;
-import io.cucumber.java.Before;
-import io.cucumber.java.Scenario;
-import com.setup.BaseSteps;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-import java.io.File;
-import java.nio.file.Files;
  
-public class Hooks {
- 
-    @Before
-    public void startTest() throws Exception {
-        BaseSteps.initDriver();
-    }
- 
-    @After
-    public void endTest(Scenario scenario) {
-        if (scenario.isFailed()) {
-            byte[] screenshot = ((TakesScreenshot) BaseSteps.driver).getScreenshotAs(OutputType.BYTES);
-            scenario.attach(screenshot, "image/png", "Failed Screenshot");
-        }
-//        BaseSteps.quitDriver();
-    }
-}
- 
-package com.stepDefinitionTestNG;
-*/
- 
-import com.aventstack.extentreports.ExtentReports;
-import com.aventstack.extentreports.ExtentTest;
-//import com.aventstack.extentreports.gherkin.model.Scenario;
-import com.aventstack.extentreports.reporter.ExtentSparkReporter;
-import com.setup.BaseSteps;
-import io.cucumber.java.After;
-import io.cucumber.java.AfterAll;
-import io.cucumber.java.Before;
-import io.cucumber.java.BeforeAll;
-import io.cucumber.java.Scenario;  //what to track on report(tester name,data etc...)
-
-public class Hooks extends BaseSteps {
- 
-	public static ExtentSparkReporter spark;
-    public static ExtentReports extReports;
-    public static ExtentTest test;
-    @BeforeAll
-    public static void beforeAll() {
-        spark = new ExtentSparkReporter("C:\\Training\\SprintPracto\\Practo\\target\\ExtentReport.html");
-        extReports = new ExtentReports();
-        extReports.attachReporter(spark);
-    }
-    @AfterAll
-    public static void afterAll() {
-        //after feature file ends this will run
-    	//to generate extent report like commit method
-    	if(extReports != null) {
-        extReports.flush();
-    }
-    }
-//    @Before
-    public void beforeScenario(Scenario scenario){
-       System.out.println("hi...");//before every scenario
-       //on the test track the name of the scenario
-       //Fresh browser will launch
-        test = extReports.createTest(scenario.getName());
-       launchBrowser();
-        getDriver();
-    }
- 
-    @After
-    public void afterScenario() {
-//        sleep(4000);
-//        driver.quit();   //after every scenario
-    	if(driver != null) {
-    		driver.quit();
-    	}
-    }
-}
