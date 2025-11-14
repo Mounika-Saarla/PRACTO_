@@ -1,650 +1,20 @@
-//package com.stepDefinitionTestNG;
-//
-//import java.time.Duration;
-//
-//import org.openqa.selenium.By;
-//import org.openqa.selenium.Keys;
-//import org.openqa.selenium.WebDriver;
-//import org.openqa.selenium.WebElement;
-//import org.openqa.selenium.chrome.ChromeDriver;
-//import org.openqa.selenium.support.ui.ExpectedConditions;
-//import org.openqa.selenium.support.ui.WebDriverWait;
-//import org.testng.Assert;
-//
-//import com.setup.BaseSteps;
-//
-//import io.cucumber.java.en.And;
-//import io.cucumber.java.en.Given;
-//import io.cucumber.java.en.Then;
-//import io.cucumber.java.en.When;
-//import io.github.bonigarcia.wdm.WebDriverManager;
-//
-//public class Profile {
-//	static WebDriver driver;
-//
-//	@Given("user is on Practo Homepage")
-//	public void user_is_on_practo_homepage() {
-//
-//
-//		BaseSteps.initializeDriver();
-//		driver = BaseSteps.getDriver();
-//
-//		driver.get("https://www.practo.com");
-//	}
-//
-//
-//	@When("user clicks on Lab Tests Link")
-//	public void user_clicks_on_lab_tests_link() {
-//		driver.findElement(By.cssSelector("a[href*='/tests']")).click();
-//	}
-//
-//
-//	@And("user selects a city from the popup")
-//	public void user_selects_a_city_from_the_popup() {
-//
-//		WebElement cityInput = driver.findElement(By.id("locationInput"));
-//		cityInput.clear();
-//		CharSequence cityName = null;
-//		cityInput.sendKeys(cityName );
-//		cityInput.sendKeys(Keys.ENTER);
-//	}
-//
-//	@Then("Lab Tests page for the selected city should be displayed")
-//	public void lab_tests_page_for_the_selected_city_should_be_displayed() {
-//
-//		String actualCity = driver.findElement(By.id("locationInput")).getAttribute("value");
-//		String expectedCity = null;
-//		Assert.assertEquals(actualCity, expectedCity , "City mismatch!");
-//
-//	}
-//
-//	@When("user clicks on a diagnostic test named {string} from Top Booked Diagnostic Tests section")
-//	public void user_clicks_on_a_diagnostic_test_named(String testName) {
-//		WebElement section = driver.findElement(By.xpath("//h2[contains(text(),'Top Booked Diagnostic Tests')]"));
-//		((org.openqa.selenium.JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", section);
-//
-//		// Click on the test by its name dynamically
-//		WebElement testLink = driver.findElement(By.xpath("//a[.//div[text()='" + testName + "']]"));
-//		testLink.click();
-//	}
-//
-//
-//	@And("user clicks on Book Now or Add to Cart")
-//	public void user_clicks_on_book_now_or_add_to_cart() {
-//		// Locate the Add to Cart button dynamically using its class
-//		WebElement addToCartButton = driver.findElement(By.cssSelector("div.c-qc__qc-button.hollow.u-marginr--std"));
-//
-//		// Click the button
-//		addToCartButton.click();
-//	}
-//
-//
-//	@Then("the booking page for the selected test should be displayed")
-//	public void the_booking_page_for_the_selected_test_should_be_displayed() {
-//		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-//		WebElement bookingElement = wait.until(ExpectedConditions.visibilityOfElementLocated(
-//				By.cssSelector("div.c-qc__qc-button.hollow.u-marginr--std"))); // Example: Add to Cart button
-//		if (!bookingElement.isDisplayed()) {
-//			throw new AssertionError("Booking page element not found!");
-//		}
-//		System.out.println("Booking page verified successfully.");
-//	}
-//
-//
-//
-//
-//
-//
-//
-//}
+package com.stepDefinitionTestNG;
 
-//
-//package com.stepDefinitionTestNG;
-//
-//import java.time.Duration;
-//
-//import org.openqa.selenium.By;
-//import org.openqa.selenium.Keys;
-//import org.openqa.selenium.WebDriver;
-//import org.openqa.selenium.WebElement;
-//import org.openqa.selenium.support.ui.ExpectedConditions;
-//import org.openqa.selenium.support.ui.WebDriverWait;
-//import org.testng.Assert;
-//
-//import com.parameters.ExcelReader;
-//import com.setup.BaseSteps;
-//import io.cucumber.java.en.And;
-//import io.cucumber.java.en.Given;
-//import io.cucumber.java.en.Then;
-//import io.cucumber.java.en.When;
-//
-//public class Profile {
-//    static WebDriver driver;
-//
-//    @Given("user is on Practo Homepage")
-//    public void user_is_on_practo_homepage() {
-//        BaseSteps.initializeDriver();
-//        driver = BaseSteps.getDriver();
-//        driver.get("https://www.practo.com");
-//    }
-//
-//    public void user_clicks_on_lab_tests_link() {
-//        driver.findElement(By.cssSelector("a[href*='/tests']")).click();
-//    }
-//
-//    @And("user selects a city from the popup")
-//    public void user_selects_a_city_from_the_popup() throws Exception {
-//        // Read city name from Excel
-//        String cityName = ExcelReader.getCellData("src/test/resources/TestData.xlsx", "LabTests", 1, 0);
-//        WebElement cityInput = driver.findElement(By.id("locationInput"));
-//        cityInput.clear();
-//        cityInput.sendKeys(cityName);
-//        cityInput.sendKeys(Keys.ENTER);
-//    }
-//
-//    @Then("Lab Tests page for the selected city should be displayed")
-//    public void lab_tests_page_for_the_selected_city_should_be_displayed() throws Exception {
-//        String expectedCity = ExcelReader.getCellData("src/test/resources/TestData.xlsx", "LabTests", 1, 0);
-//        String actualCity = driver.findElement(By.id("locationInput")).getAttribute("value");
-//        Assert.assertEquals(actualCity, expectedCity, "City mismatch!");
-//    }
-//
-//    @When("user clicks on a diagnostic test from the list")
-//    public void user_clicks_on_a_diagnostic_test_from_the_list() throws Exception {
-//        String testName = ExcelReader.getCellData("src/test/resources/TestData.xlsx", "LabTests", 1, 1);
-//        WebElement section = driver.findElement(By.xpath("//h2[contains(text(),'Top Booked Diagnostic Tests')]"));
-//        ((org.openqa.selenium.JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", section);
-//
-//        WebElement testLink = driver.findElement(By.xpath("//a[.//div[text()='" + testName + "']]"));
-//        testLink.click();
-//    }
-//
-//    @And("user clicks on Book Now or Add to Cart")
-//    public void user_clicks_on_book_now_or_add_to_cart() {
-//        WebElement addToCartButton = driver.findElement(By.cssSelector("div.c-qc__qc-button.hollow.u-marginr--std"));
-//        addToCartButton.click();
-//    }
-//
-//    @Then("the booking page for the selected test should be displayed")
-//    public void the_booking_page_for_the_selected_test_should_be_displayed() {
-//        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-//        WebElement bookingElement = wait.until(ExpectedConditions.visibilityOfElementLocated(
-//                By.cssSelector("div.c-qc__qc-button.hollow.u-marginr--std")));
-//        if (!bookingElement.isDisplayed()) {
-//            throw new AssertionError("Booking page element not found!");
-//        }
-//        System.out.println("Booking page verified successfully.");
-//    }
-//}
+import java.time.Duration;
+import java.util.List;
 
-
-
-//package com.stepDefinitionTestNG;
-//
-//import java.time.Duration;
-//
-//import org.openqa.selenium.By;
-//import org.openqa.selenium.Keys;
-//import org.openqa.selenium.WebDriver;
-//import org.openqa.selenium.WebElement;
-//import org.openqa.selenium.chrome.ChromeDriver;
-//import org.openqa.selenium.support.ui.ExpectedConditions;
-//import org.openqa.selenium.support.ui.WebDriverWait;
-//import org.testng.Assert;
-//
-//import com.setup.BaseSteps;
-//import com.parameters.ExcelReader;
-//
-//import io.cucumber.java.Before;
-//import io.cucumber.java.en.And;
-//import io.cucumber.java.en.Given;
-//import io.cucumber.java.en.Then;
-//import io.cucumber.java.en.When;
-//
-//public class Profile {
-//	static WebDriver driver;
-//
-//	@Before
-//	public void setUp() {
-//		driver = new ChromeDriver(); // or whichever driver you're using
-//	}
-//
-//
-//	@Given("user is on Practo Homepage")
-//	public void user_is_on_practo_homepage() {
-//		BaseSteps.initializeDriver();
-//		driver.get("https://www.practo.com");
-//	}
-//
-//	@When("user clicks on Lab Tests Link")
-//	public void user_clicks_on_lab_tests_link() {
-//		driver.findElement(By.cssSelector("a[href*='/tests']")).click();
-//	}
-//
-//	@And("user selects a city from the popup")
-//	public void user_selects_a_city_from_the_popup() throws Exception {
-//		String cityName = ExcelReader.getCellData("src/test/resources/TestData.xlsx", "LabTests", 1, 0);
-//		WebElement cityInput = driver.findElement(By.id("locationInput"));
-//		cityInput.clear();
-//		cityInput.sendKeys(cityName);
-//		cityInput.sendKeys(Keys.ENTER);
-//	}
-//
-//	@Then("Lab Tests page for the selected city should be displayed")
-//	public void lab_tests_page_for_the_selected_city_should_be_displayed() throws Exception {
-//		String expectedCity = ExcelReader.getCellData("src/test/resources/TestData.xlsx", "LabTests", 1, 0);
-//		String actualCity = driver.findElement(By.id("locationInput")).getAttribute("value");
-//		Assert.assertEquals(actualCity, expectedCity, "City mismatch!");
-//	}
-//
-//	@When("user scrolls to Top Booked Diagnostic Tests section")
-//	public void user_scrolls_to_top_booked_diagnostic_tests_section() {
-//		WebElement section = driver.findElement(By.xpath("//h2[contains(text(),'Top Booked Diagnostic Tests')]"));
-//		((org.openqa.selenium.JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", section);
-//	}
-//
-//	@And("user clicks on a diagnostic test from the list")
-//	public void user_clicks_on_a_diagnostic_test_from_the_list() throws Exception {
-//		String testName = ExcelReader.getCellData("src/test/resources/TestData.xlsx", "LabTests", 1, 1);
-//		WebElement testLink = driver.findElement(By.xpath("//a[.//div[text()='" + testName + "']]"));
-//		testLink.click();
-//	}
-//
-//	@Then("the diagnostic test details page should be displayed")
-//	public void the_diagnostic_test_details_page_should_be_displayed() {
-//		String currentUrl = driver.getCurrentUrl();
-//		if (!currentUrl.contains("/tests/")) {
-//			throw new AssertionError("Diagnostic test details page not displayed! Current URL: " + currentUrl);
-//		}
-//		System.out.println("Diagnostic test details page verified successfully.");
-//	}
-//
-//	@When("user clicks on Book Now or Add to Cart")
-//	public void user_clicks_on_book_now_or_add_to_cart() {
-//		WebElement addToCartButton = driver.findElement(By.cssSelector("div.c-qc__qc-button.hollow.u-marginr--std"));
-//		addToCartButton.click();
-//	}
-//
-//	@Then("the booking page for the selected test should be displayed")
-//	public void the_booking_page_for_the_selected_test_should_be_displayed() {
-//		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-//		WebElement bookingElement = wait.until(ExpectedConditions.visibilityOfElementLocated(
-//				By.cssSelector("div.c-qc__qc-button.hollow.u-marginr--std")));
-//		if (!bookingElement.isDisplayed()) {
-//			throw new AssertionError("Booking page element not found!");
-//		}
-//		System.out.println("Booking page verified successfully.");
-//	}
-//
-//	@Then("user should see options to confirm booking or proceed to payment")
-//	public void user_should_see_options_to_confirm_booking_or_proceed_to_payment() {
-//		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-//		WebElement confirmButton = wait.until(ExpectedConditions.visibilityOfElementLocated(
-//				By.xpath("//button[contains(text(),'Proceed to Payment')]")));
-//		if (!confirmButton.isDisplayed()) {
-//			throw new AssertionError("Proceed to Payment option not found!");
-//		}
-//		System.out.println("Booking options verified successfully.");
-//	}
-//}
-
-
-
-
-
-
-
-
-
-//package com.stepDefinitionTestNG;
-//
-//import java.time.Duration;
-//
-//import org.openqa.selenium.By;
-//import org.openqa.selenium.Keys;
-//import org.openqa.selenium.WebDriver;
-//import org.openqa.selenium.WebElement;
-//import org.openqa.selenium.JavascriptExecutor;
-//import org.openqa.selenium.NoSuchElementException;
-//import org.openqa.selenium.ElementNotInteractableException;
-//import org.openqa.selenium.support.ui.ExpectedConditions;
-//import org.openqa.selenium.support.ui.WebDriverWait;
-//import org.testng.Assert;
-//
-//import com.setup.BaseSteps;
-//import com.parameters.ExcelReader;
-//
-//import io.cucumber.java.Before;
-//import io.cucumber.java.After;
-//import io.cucumber.java.en.*;
-//
-//public class Profile {
-//    static WebDriver driver;
-//    WebDriverWait wait;
-//
-//    @Before
-//    public void setUp() {
-//        BaseSteps.initializeDriver();
-//        driver = BaseSteps.getDriver();
-//        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-//    }
-//
-//    @After
-//    public void tearDown() {
-//        BaseSteps.quitDriver();
-//    }
-//
-//    @Given("user is on Practo Homepage")
-//    public void user_is_on_practo_homepage() {
-//        driver.get("https://www.practo.com");
-//        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("a[href*='/tests']")));
-//    }
-//
-//    @When("user clicks on Lab Tests Link")
-//    public void user_clicks_on_lab_tests_link() {
-//        try {
-//            // Optional: handle popup if present
-//            try {
-//                WebElement popupClose = driver.findElement(By.cssSelector(".some-popup-close")); // 🔧 Replace with actual selector
-//                if (popupClose.isDisplayed()) {
-//                    popupClose.click();
-//                }
-//            } catch (NoSuchElementException ignored) {}
-//
-//            WebElement labTestsLink = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("a[href*='/tests']")));
-//            labTestsLink.click();
-//        } catch (ElementNotInteractableException e) {
-//            System.out.println("Lab Tests link not interactable: " + e.getMessage());
-//        }
-//    }
-//
-//    @And("user selects a city from the popup")
-//    public void user_selects_a_city_from_the_popup() throws Exception {
-//        String cityName = ExcelReader.getCellData("src/test/resources/TestData.xlsx", "LabTests", 1, 0);
-//
-//        WebElement cityInput = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("locationInput")));
-//
-//        // Use JavaScript to set the value
-//        JavascriptExecutor js = (JavascriptExecutor) driver;
-//        js.executeScript("arguments[0].value = arguments[1]; arguments[0].dispatchEvent(new Event('input'));", cityInput, cityName);
-//
-//        // Press ENTER to confirm selection
-//        cityInput.sendKeys(Keys.ENTER);
-//
-//        // Wait for the city to reflect in the input field
-//        wait.until(driver -> {
-//            String value = cityInput.getAttribute("value");
-//            return value != null && value.trim().equalsIgnoreCase(cityName);
-//        });
-//    }
-//    
-//
-//    @Then("Lab Tests page for the selected city should be displayed")
-//    public void lab_tests_page_for_the_selected_city_should_be_displayed() throws Exception {
-//        String expectedCity = ExcelReader.getCellData("src//test//resources//Excel//TestData.xlsx", "LabTests", 1, 0);
-//        WebElement cityInput = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("locationInput")));
-//
-//        // Wait until the value is not empty
-//        wait.until(driver -> {
-//            String value = cityInput.getAttribute("value");
-//            return value != null && !value.trim().isEmpty();
-//        });
-//
-//        String actualCity = cityInput.getAttribute("value").trim();
-//        Assert.assertEquals(actualCity, expectedCity, "City mismatch!");
-//    }
-//    
-//
-//    @When("user scrolls to Top Booked Diagnostic Tests section")
-//    public void user_scrolls_to_top_booked_diagnostic_tests_section() {
-//        WebElement section = wait.until(ExpectedConditions.visibilityOfElementLocated(
-//                By.xpath("//h2[contains(text(),'Top Booked Diagnostic Tests')]")));
-//        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", section);
-//    }
-//
-//    @And("user clicks on a diagnostic test from the list")
-//    public void user_clicks_on_a_diagnostic_test_from_the_list() throws Exception {
-//        String testName = ExcelReader.getCellData("src/test/resources/TestData.xlsx", "LabTests", 1, 1);
-//        WebElement testLink = wait.until(ExpectedConditions.elementToBeClickable(
-//                By.xpath("//a[.//div[text()='" + testName + "']]")));
-//        testLink.click();
-//    }
-//
-//    @Then("the diagnostic test details page should be displayed")
-//    public void the_diagnostic_test_details_page_should_be_displayed() {
-//        String currentUrl = driver.getCurrentUrl();
-//        if (!currentUrl.contains("/tests/")) {
-//            throw new AssertionError("Diagnostic test details page not displayed! Current URL: " + currentUrl);
-//        }
-//        System.out.println("Diagnostic test details page verified successfully.");
-//    }
-//
-//    @When("user clicks on Book Now or Add to Cart")
-//    public void user_clicks_on_book_now_or_add_to_cart() {
-//        WebElement addToCartButton = wait.until(ExpectedConditions.elementToBeClickable(
-//                By.cssSelector("div.c-qc__qc-button.hollow.u-marginr--std")));
-//        addToCartButton.click();
-//    }
-//
-//    @Then("the booking page for the selected test should be displayed")
-//    public void the_booking_page_for_the_selected_test_should_be_displayed() {
-//        WebElement bookingElement = wait.until(ExpectedConditions.visibilityOfElementLocated(
-//                By.cssSelector("div.c-qc__qc-button.hollow.u-marginr--std")));
-//        if (!bookingElement.isDisplayed()) {
-//            throw new AssertionError("Booking page element not found!");
-//        }
-//        System.out.println("Booking page verified successfully.");
-//    }
-//
-//    @Then("user should see options to confirm booking or proceed to payment")
-//    public void user_should_see_options_to_confirm_booking_or_proceed_to_payment() {
-//        WebElement confirmButton = wait.until(ExpectedConditions.visibilityOfElementLocated(
-//                By.xpath("//button[contains(text(),'Proceed to Payment')]")));
-//        if (!confirmButton.isDisplayed()) {
-//            throw new AssertionError("Proceed to Payment option not found!");
-//        }
-//        System.out.println("Booking options verified successfully.");
-//    }
-//}
-
-
-
-
-//package com.stepDefinitionTestNG;
-//
-//import java.time.Duration;
-//import org.openqa.selenium.*;
-//import org.openqa.selenium.support.ui.ExpectedConditions;
-//import org.openqa.selenium.support.ui.WebDriverWait;
-//import org.testng.Assert;
-//import com.setup.BaseSteps;
-//import com.parameters.ExcelReader;
-//import io.cucumber.java.Before;
-//import io.cucumber.java.After;
-//import io.cucumber.java.en.*;
-//
-//public class Profile {
-//    static WebDriver driver;
-//    WebDriverWait wait;
-//
-//    @Before
-//    public void setUp() {
-//        BaseSteps.initializeDriver();
-//        driver = BaseSteps.getDriver();
-//        wait = new WebDriverWait(driver, Duration.ofSeconds(20));
-//    }
-//
-//    @After
-//    public void tearDown() {
-//        BaseSteps.quitDriver();
-//    }
-//
-//    @Given("user is on Practo Homepage")
-//    public void user_is_on_practo_homepage() {
-//        driver.get("https://www.practo.com");
-//        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("a[href*='/tests']")));
-//    }
-//
-//    @When("user clicks on Lab Tests Link")
-//    public void user_clicks_on_lab_tests_link() {
-//        WebElement labTestsLink = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("a[href*='/tests']")));
-//        labTestsLink.click();
-//    }
-//
-//    @And("user selects a city from the popup")
-//    public void user_selects_a_city_from_the_popup() throws Exception {
-//        String cityName = ExcelReader.getCellData(
-//            "C:\\Users\\dyamaa\\SpritPracto\\Practo\\src\\test\\resources\\Excel\\TestData.xlsx",
-//             1, 0);
-//
-//        WebElement popupContainer = wait.until(ExpectedConditions.visibilityOfElementLocated(
-//            By.cssSelector("div.c-location-popup"))); // Update selector if needed
-//
-//        
-//        WebElement cityInput = popupContainer.findElement(By.id("locationInput"));
-//        cityInput.clear();
-//        cityInput.sendKeys(cityName);
-//
-//       
-//        WebElement applyButton = popupContainer.findElement(By.cssSelector("button[data-qa-id='location-apply']")); // Update selector if needed
-//        applyButton.click();
-//
-//        
-//        wait.until(ExpectedConditions.invisibilityOf(popupContainer));
-//
-//        WebElement cityDisplay = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("locationInput")));
-//        wait.until(driver -> cityDisplay.getAttribute("value").trim().equalsIgnoreCase(cityName));
-//
-//        System.out.println("City selected successfully: " + cityDisplay.getAttribute("value"));
-//    }
-//
-//    @Then("Lab Tests page for the selected city should be displayed")
-//    public void lab_tests_page_for_the_selected_city_should_be_displayed() throws Exception {
-//        String expectedCity = ExcelReader.getCellData(
-//            "C:\\Users\\dyamaa\\SpritPracto\\Practo\\src\\test\\resources\\Excel\\TestData.xlsx",
-//             1, 0);
-//
-//        WebElement cityInput = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("locationInput")));
-//        String actualCity = cityInput.getAttribute("value").trim();
-//        Assert.assertEquals(actualCity, expectedCity, "City mismatch!");
-//    }
-//
-//    @When("user scrolls to Top Booked Diagnostic Tests section")
-//    public void user_scrolls_to_top_booked_diagnostic_tests_section() {
-//        WebElement section = wait.until(ExpectedConditions.visibilityOfElementLocated(
-//            By.xpath("//h2[contains(text(),'Top Booked Diagnostic Tests')]")));
-//        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", section);
-//    }
-//
-//    @And("user clicks on a diagnostic test from the list")
-//    public void user_clicks_on_a_diagnostic_test_from_the_list() throws Exception {
-//        String testName = ExcelReader.getCellData(
-//            "C:\\Users\\dyamaa\\SpritPracto\\Practo\\src\\test\\resources\\Excel\\TestData.xlsx",
-//             1, 1);
-//        WebElement testLink = wait.until(ExpectedConditions.elementToBeClickable(
-//            By.xpath("//a[.//div[text()='" + testName + "']]")));
-//        testLink.click();
-//    }
-//
-//    @Then("the diagnostic test details page should be displayed")
-//    public void the_diagnostic_test_details_page_should_be_displayed() {
-//        String currentUrl = driver.getCurrentUrl();
-//        Assert.assertTrue(currentUrl.contains("/tests/"), "Diagnostic test details page not displayed!");
-//    }
-//
-//    @When("user clicks on Book Now or Add to Cart")
-//    public void user_clicks_on_book_now_or_add_to_cart() {
-//        WebElement addToCartButton = wait.until(ExpectedConditions.elementToBeClickable(
-//            By.cssSelector("div.c-qc__qc-button.hollow.u-marginr--std")));
-//        addToCartButton.click();
-//    }
-//
-//    @Then("the booking page for the selected test should be displayed")
-//    public void the_booking_page_for_the_selected_test_should_be_displayed() {
-//        WebElement bookingElement = wait.until(ExpectedConditions.visibilityOfElementLocated(
-//            By.cssSelector("div.c-qc__qc-button.hollow.u-marginr--std")));
-//        Assert.assertTrue(bookingElement.isDisplayed(), "Booking page element not found!");
-//    }
-//
-//    @Then("user should see options to confirm booking or proceed to payment")
-//    public void user_should_see_options_to_confirm_booking_or_proceed_to_payment() {
-//        WebElement confirmButton = wait.until(ExpectedConditions.visibilityOfElementLocated(
-//            By.xpath("//button[contains(text(),'Proceed to Payment')]")));
-//        Assert.assertTrue(confirmButton.isDisplayed(), "Proceed to Payment option not found!");
-//    }
-//}
-
-
-
-//
-//package com.stepDefinitionTestNG;
-//
-//import java.time.Duration;
-//import org.openqa.selenium.*;
-//import org.openqa.selenium.support.ui.ExpectedConditions;
-//import org.openqa.selenium.support.ui.WebDriverWait;
-//import org.testng.Assert;
-//import com.setup.BaseSteps;
-//import com.parameters.ExcelReader;
-//import io.cucumber.java.Before;
-//import io.cucumber.java.After;
-//import io.cucumber.java.en.*;
-//
-//public class Profile {
-//    static WebDriver driver;
-//    WebDriverWait wait;
-//
-//    @Before
-//    public void setUp() {
-//        BaseSteps.initializeDriver();
-//        driver = BaseSteps.getDriver();
-//        wait = new WebDriverWait(driver, Duration.ofSeconds(20));
-//    }
-//
-//    @After
-//    public void tearDown() {
-//        BaseSteps.quitDriver();
-//    }
-//
-//    @Given("user is on Practo Homepage")
-//    public void user_is_on_practo_homepage() {
-//        driver.get("https://www.practo.com");
-//        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("a[href*='/tests']")));
-//    }
-//
-//    @When("user navigates to Lab Tests page")
-//    public void user_navigates_to_lab_tests_page() {
-//        // Wait for Lab Tests page to load by checking a unique element
-//        WebElement labTestsHeader = wait.until(ExpectedConditions.visibilityOfElementLocated(
-//            By.xpath("//h1[contains(text(),'Lab Tests')]"))); // Adjust selector if needed
-//        System.out.println("Navigated to Lab Tests page successfully.");
-//    }
-//
-//    @And("user navigates to Diagnostic Test details page")
-//    public void user_navigates_to_diagnostic_test_details_page() {
-//        // Verify URL contains /tests/ or check for a unique element on details page
-//        String currentUrl = driver.getCurrentUrl();
-//        Assert.assertTrue(currentUrl.contains("/tests/"), "Not on Diagnostic Test details page!");
-//        System.out.println("Navigated to Diagnostic Test details page successfully.");
-//    }
-//
-//    @Then("user navigates to Booking page")
-//    public void user_navigates_to_booking_page() {
-//        // Wait for booking page element to confirm navigation
-//        WebElement bookingElement = wait.until(ExpectedConditions.visibilityOfElementLocated(
-//            By.cssSelector("div.c-qc__qc-button.hollow.u-marginr--std"))); // Adjust selector if needed
-//        Assert.assertTrue(bookingElement.isDisplayed(), "Booking page not displayed!");
-//        System.out.println("Navigated to Booking page successfully.");
-//    }
-//
-//}
-
-package com.stepDefinitionTestNG;                                                                                                                                                                             
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
-import com.pages.HomePage;
-import com.pages.LabTestsPage;
-
+import com.pages.userpage;
+import com.parameters.ExcelReader;
+import com.parameters.PropertyReader;
 import com.setup.BaseSteps;
 
 import io.cucumber.java.en.And;
@@ -653,64 +23,238 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class Profile extends BaseSteps {
-	HomePage homePage;
-	LabTestsPage labTestsPage;
+	WebDriver driver;
+	WebDriverWait wait;
+	userpage page;
+	ExcelReader reader = new ExcelReader();
+	String location;
+	String speciality;
+	String City;
+	String Role;
+	userpage UserPage = new userpage(BaseSteps.getDriver()); // PageFactory initialized in UserPage constructor
 
+	//-----------Scenario 1----------------------- (passed)
 
-	@Given("user is on Practo Homepage")
-	public void user_is_on_practo_homepage() {
-		homePage=new HomePage(driver);
-
+	@Given("User is on the Home page")
+	public void user_is_on_the_home_page() {
+		BaseSteps. launchBrowser() ;
+		driver = BaseSteps.getDriver();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		page = new userpage(driver);
 	}
 
-	@When("user clicks on Lab Tests link")
-	public void user_clicks_on_lab_tests_link() {
-		homePage.clickLabTestsLink();
-		labTestsPage = new LabTestsPage(driver);
+	@And("User scrolls to the footer section")
+	public void user_scrolls_to_the_footer_section() {
 
+		WebElement footer = page.getFooterSection();
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", footer);
 	}
 
-	@And("Lab Tests page should be displayed")
-	public void lab_tests_page_should_be_displayed() {
-		String actualUrl = driver.getCurrentUrl();
-		System.out.println("Current URL: " + actualUrl);
-		Assert.assertTrue(actualUrl.contains("tests"),
-				"Lab Tests page is not displayed correctly! Actual: " + actualUrl);
+	@When("The footer should contain a visible link labeled Search for clinics")
+	public void the_footer_should_contain_a_visible_link_labeled_search_for_clinics() {
+		Assert.assertTrue(page.isSearchForClinicsLinkVisible(),
+				"Link labeled 'Search for clinics' is not visible in the footer.");
 	}
 
-	@Then("user clicks on TopBooked Diagnosttic Tests  link")
-	public void user_clicks_on_top_booked_diagnosttic_tests_link() {
-		driver.get(prop.getProperty("topbookedtests.url"));
+	@And("User clicks on the {string} link")
+	public void user_clicks_on_the_link(String linkText) {
+		
+		page.clickSearchForClinicsLink();
+		System.out.println("Clicked on link: " + linkText);
 	}
 
-	@And("TopBooked Diagnosttic Tests page should be displayed correctly")
-	public void top_booked_diagnosttic_tests_page_should_be_displayed_correctly() {
-		String expectedUrl = prop.getProperty("topbookedtests.url");
-        Assert.assertTrue(driver.getCurrentUrl().contains(expectedUrl),
-                "topbookedtests is not displayed correctly!");
+
+	@And("User applies a location filter from sheet {int} at RowIndex {int}")
+	public void user_applies_a_location_filter_from_sheet_at_row_index(Integer sheetIndex, Integer rowIndex) throws Exception {
+		String location = reader.getCellData(sheetIndex, rowIndex, 0);
+		page.applylocationFilter(location);
+		System.out.println("Applied Location filter: " + location);
 	}
 
+	@Then("Filtered clinic results should be displayed")
+	public void filtered_clinic_results_should_be_displayed() {
+		Assert.assertTrue(page.verifyFilteredResults(), "Filtered clinic results are not displayed.");
+		System.out.println("Current URL: " + driver.getCurrentUrl());
+		System.out.println("Page Source snippet: " + driver.getPageSource().substring(0, 500));
+	}
+
+
+	// ---------------- Scenario 2 Steps (@firstclinic) ----------------(passed)
+
+	@Given("user launch practo website")
+	public void user_launch_practo_website() {
+		wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		// Write code here that turns the phrase above into concrete actions
+		// throw new io.cucumber.java.PendingException();
+		BaseSteps.launchBrowser();
+		driver = BaseSteps.getDriver();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		page = new userpage(driver);
+	}
+
+	@When("user clicks the search for clinics link")
+	public void user_clicks_the_search_for_clinics_link() {
+		// Write code here that turns the phrase above into concrete actions
+		//throw new io.cucumber.java.PendingException();
+		page.clickSearchForClinicsLink();
+	}
+
+	@And("user clicks on view profile of first clinic")
+	public void user_clicks_on_view_profile_of_first_clinic() {
+		// Click on 'View Profile' button
+		//		page.selectFirstClinic();
+		//		page.clickViewProfile();
+		WebElement viewProfileBtn = driver.findElement(By.xpath("//button[contains(text(),'View Profile')]"));
+		viewProfileBtn.click();
+	}
+
+
+	@And("clinic details shouls be displayed")
+	public void clinic_details_shouls_be_displayed() {
+		//		// Verify clinic details page is displayed
+		WebElement clinicName = driver.findElement(By.xpath("//h1[@data-qa-id='clinic-name']"));
+		if (clinicName.isDisplayed()) {
+			System.out.println("Clinic details page displayed successfully: " + clinicName.getText());
+		} else {
+			throw new AssertionError("Clinic details page not displayed");
+		}
+
+		//		 boolean isDisplayed = page.isClinicDetailsDisplayed();
+		//		        if (!isDisplayed) {
+		//		            throw new AssertionError("Clinic details page not displayed!");
+		//		        }
+
+		//		driver.quit();
+	}
+	@Then("user select the doctor in that clinic")
+	public void user_select_the_doctor_in_that_clinic() {
+		WebElement firstDoctorLink = page.getDoctorElement();
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block: 'center'});", firstDoctorLink);
+		firstDoctorLink.click();
+		System.out.println("Doctor selected successfully.");
+	}
+
+
+
+	//	  @Then("doctor details should be displayed")
+	//	    public void doctor_details_should_be_displayed() {
+	//	        String doctorName = page.getDoctorDetails();
+	//	        System.out.println("Doctor details displayed: " + doctorName);
+	//	        BaseSteps.closeBrowser();
+	//	    }
+
+	//	@Then("doctor details should be displayed")
+	//	public void doctor_details_should_be_displayed() {
+	//		//		WebElement doctorDetails = wait.until(ExpectedConditions.visibilityOfElementLocated(
+	//		//				By.xpath("//h1[contains(@class,'u-title-font')]")));
+	//		//		System.out.println("Doctor details displayed: " + doctorDetails.getText());
+	//
+	//		String doctorName = page.doctorName();  // ✅ Use page object method
+	//		System.out.println("Doctor details displayed: " + doctorName);
+	//		BaseSteps.closeBrowser();
+
+	
+	//-------------------------scenario 3 (@clinicinGopalapuram)--------------------------(passed)
+
+	    @And("User clicks on Clinics in Gopalapuram link")
+	    public void user_clicks_on_clinics_in_gopalapuram_link() {
+	        page.clickGopalapuramLink();
+	        // Assertion: URL should contain 'gopalapuram'
+	        Assert.assertTrue(driver.getCurrentUrl().contains("gopalapuram"), "Failed to navigate to Gopalapuram clinics page");
+	    }
+	    @Then("User click on Call Clinic")
+	    public void user_click_on_call_clinic() {
+	        page.clickCallClinic();
+	        // Assertion: Verify that the call popup or confirmation appears
+	        Assert.assertTrue(driver.getPageSource().contains("Call"), "Call Clinic action did not trigger correctly");
+	    }
+
+
+
+	//----------------scenario 4(@sidesearch)----------------------------(passed)
+    @Given("User enters on homepage")
+    public void user_enters_on_homepage() {
+        BaseSteps.launchBrowser(); // Initializes driver
+        prop = BaseSteps.prop;     // Load properties
+//        UserPage = new userpage(BaseSteps.getDriver(), prop); // ✅ PageFactory initialized
+        page = new userpage(driver);
+    }
+
+    @And("user navigates to footer part of homepage")
+    public void user_navigates_to_footer_part_of_homepage() {
+        ((JavascriptExecutor) BaseSteps.getDriver()).executeScript("window.scrollTo(0, document.body.scrollHeight)");
+        System.out.println("Scrolled to footer.");
+    }
+
+    @And("user is clicking on search for clinic")
+    public void user_is_clicking_on_search_for_clinic() {
+        boolean isClicked = UserPage.clickSearchClinic();
+        Assert.assertTrue(isClicked, "Search Clinic link not clickable");
+    }
+
+    @And("user should see clinic details")
+    public void user_should_see_clinic_details() {
+        String expectedText = prop.getProperty("expectedClinicText");
+        boolean isClinicVisible = BaseSteps.getDriver().getPageSource().contains(expectedText);
+        Assert.assertTrue(isClinicVisible, "Expected text not found");
+    }
+
+    @When("user clicks on Anesthesiology Clinics in rightside link")
+    public void user_clicks_on_anesthesiology_clinics_in_rightside_link() {
+        UserPage.clickAnesthesiologyLink();
+    }
+
+    @And("user selects a view profile button in Apollo Clinic")
+    public void user_selects_a_view_profile_button_in_apollo_clinic() {
+        UserPage.clickViewProfile();
+    }
+
+
+@Then("selected Apollo clinic should be displayed")
+public void selected_apollo_clinic_should_be_displayed() {
+    String actualClinicName = UserPage.getClinicDetails();
+    String expectedClinicName = prop.getProperty("expectedClinicName");
+    Assert.assertTrue(actualClinicName.contains(expectedClinicName),
+            "Clinic name mismatch! Expected to contain: " + expectedClinicName + " but found: " + actualClinicName);
+    BaseSteps.closeBrowser();
+}
+
+//---------------------------scenario 5 (@outline2) ---------------------
+//
+//@And("User applies a speciality filter from sheet {int} at RowIndex {int}")
+//public void user_applies_a_speciality_filter_from_sheet_at_row_index(Integer sheetIndex, Integer rowIndex) throws Exception {
+//	String speciality = reader.getCellData(sheetIndex, rowIndex, 0);
+//	
+//	page.applylocationFilter(speciality);
+//	System.out.println("Applied speciality filter: " + speciality);
+//}
+//@When("User clicks on the Search for clinics link")
+//public void user_clicks_on_the_search_for_clinics_link() {
+////	page.applyspecialityFilter(speciality);
+////	System.out.println("Clicked on link " );
+//}
+@And("User applies a speciality filter from sheet {int} at RowIndex {int}")
+public void user_applies_a_speciality_filter_from_sheet_at_row_index(Integer sheetIndex, Integer rowIndex) throws Exception {
+//	System.out.println("Reading from sheet: " + sheetIndex + ", row: " + (rowIndex + 1));
+//	String speciality = reader.getCellData1(sheetIndex, rowIndex, 0);
+//	System.out.println("Speciality from Excel: '" + speciality + "'");
+//    String speciality = reader.getCellData1(sheetIndex, rowIndex, 0); // rowIndex is logical (0 = first data row)
+//    page.applyspecialityFilter(speciality);
+//    System.out.println("Applied speciality filter: " + speciality);
+	        String hospitalName = ExcelReader.getCellDatas(ExcelReader.FILE_PATH2, sheetIndex, rowIndex, ExcelReader.HOSPITAL_COLUMN_INDEX);
+	        System.out.println("Hospital from Excel: " + hospitalName);
+	//
+	        WebDriver driver = BaseSteps.getDriver();
+	        WebElement hospitalInput = driver.findElement(By.xpath("//*[@id=\"c-omni-container\"]/div/div[2]/div[1]/input"));
+	        
+	        hospitalInput.click();
+	        hospitalInput.clear();
+	        hospitalInput.sendKeys(hospitalName);
+	        hospitalInput.sendKeys(Keys.ARROW_DOWN);
+	        hospitalInput.sendKeys(Keys.ENTER);
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}
 
 
