@@ -1,22 +1,19 @@
-//-----------------Scenario:1------------------------------------
-
-
 package com.stepDefinitionTestNG;
 
 import java.time.Duration;
+import java.util.List;
 import java.util.Properties;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
-import com.aventstack.extentreports.ExtentTest;
-import com.pages.UserPage;
+import com.pages.userpage;
 import com.parameters.ExcelReader;
 import com.parameters.PropertyReader;
 import com.setup.BaseSteps;
@@ -26,324 +23,220 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-public class Profile {
+public class Profile extends BaseSteps {
+	WebDriver driver;
+	//	WebDriverWait wait;
+	userpage page;
+	//   private userpage userPage; // ✅ Declare at class level
+	ExcelReader reader = new ExcelReader();
+	String location;
+	String speciality;
+	String City;
+	String Role;
+	//	userpage UserPage = new userpage(BaseSteps.getDriver()); // PageFactory initialized in UserPage constructor
 
-	private static final String JavascriptExecutor = null;
-	static WebDriver driver;
-	static UserPage userPage;
-	static ExtentTest test;
+	userpage userPage = new userpage(BaseSteps.getDriver());
+	Properties prop = PropertyReader.readProperty();
+	WebDriverWait wait = new WebDriverWait(BaseSteps.getDriver(), Duration.ofSeconds(10));
+
+
+	//-----------Scenario 1----------------------- (passed)
+
+	@Given("User is on the Home page")
+	public void user_is_on_the_home_page() {
+		BaseSteps. launchBrowser() ;
+		driver = BaseSteps.getDriver();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+		page = new userpage(driver);
+	}
+
+	@And("User scrolls to the footer section")
+	public void user_scrolls_to_the_footer_section() {
+
+		WebElement footer = page.getFooterSection();
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", footer);
+	}
+
+	@When("The footer should contain a visible link labeled Search for clinics")
+	public void the_footer_should_contain_a_visible_link_labeled_search_for_clinics() {
+		Assert.assertTrue(page.isSearchForClinicsLinkVisible(),
+				"Link labeled 'Search for clinics' is not visible in the footer.");
+	}
+
+	@And("User clicks on the Search for clinics link")
+	public void user_clicks_on_the_link() {
+
+		page.clickSearchForClinicsLink();
+		System.out.println("Clicked on link: " );
+	}
+
+
+	@And("User applies a location filter from sheet {int} at RowIndex {int}")
+	public void user_applies_a_location_filter_from_sheet_at_row_index(Integer sheetIndex, Integer rowIndex) throws Exception {
+		String location = reader.getCellData(sheetIndex, rowIndex, 0);
+		page.applylocationFilter(location);
+		System.out.println("Applied Location filter: " + location);
+	}
+
+	@Then("Filtered clinic results should be displayed")
+	public void filtered_clinic_results_should_be_displayed() {
+		Assert.assertTrue(page.verifyFilteredResults(), "Filtered clinic results are not displayed.");
+		System.out.println("Current URL: " + driver.getCurrentUrl());
+		System.out.println("Page Source snippet: " + driver.getPageSource().substring(0, 500));
+	}
+
+
+	// ---------------- Scenario 2 Steps (@firstclinic) ----------------(passed)
 
 	@Given("user launch practo website")
 	public void user_launch_practo_website() {
-		BaseSteps.initializeDriver();
+		wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		// Write code here that turns the phrase above into concrete actions
+		// throw new io.cucumber.java.PendingException();
+		BaseSteps.launchBrowser();
 		driver = BaseSteps.getDriver();
-		userPage = new UserPage(driver,test);
-		userPage.openHomePage(PropertyReader.getProperty("Appurl"));
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		page = new userpage(driver);
 	}
 
-	@When("user clicks the search for Lab Tests link")
-	public void user_clicks_the_search_for_lab_tests_link() {
-		driver.get(PropertyReader.getProperty("LabTestsUrl")); // Skip city selection
+	@When("user clicks the search for clinics link")
+	public void user_clicks_the_search_for_clinics_link() {
+		// Write code here that turns the phrase above into concrete actions
+		//throw new io.cucumber.java.PendingException();
+		page.clickSearchForClinicsLink();
 	}
 
-
-	@When("user clicks on Know More button and Package details displayed")
-	public void user_clicks_on_know_more_button_and_package_details_displayed() {
-		driver.get(PropertyReader.getProperty("KnowMoreUrl")); // Direct navigation
-		Assert.assertTrue(userPage.isPackageDetailsDisplayed(), "Package details not displayed!");
-	}
-
-	@Then("user clicks on Book Now and then booking site is displayed")
-	public void user_clicks_on_book_now_and_then_booking_site_is_displayed() {
-		// Click the Book Now button first (to simulate user action)
-		userPage.clickBookNowButton();
-
-		driver.get(PropertyReader.getProperty("BookNowUrl"));
-		Assert.assertTrue(userPage.isBookingPageDisplayed(), "Booking page not displayed!");
-
+	@And("user clicks on view profile of first clinic")
+	public void user_clicks_on_view_profile_of_first_clinic() {
+		// Click on 'View Profile' button
+		//		page.selectFirstClinic();
+		//		page.clickViewProfile();
+		WebElement viewProfileBtn = driver.findElement(By.xpath("//button[contains(text(),'View Profile')]"));
+		viewProfileBtn.click();
 	}
 
 
-	//---------------Scenario:2--------------------------------
-
-	@Given("user launches the Practo home")
-	public void user_launches_the_practo_home() {
-		BaseSteps.initializeDriver();
-		driver = BaseSteps.getDriver();
-		userPage = new UserPage(driver,test);
-		driver.get(PropertyReader.getProperty("Appurl")); // e.g., https://www.practo.com/
-	}
-
-	@When("user clicks on See All Articles link")
-	public void user_clicks_on_see_all_articles_link() {
-		userPage.clickSeeAllArticles();
-	}
-
-	@And("user navigates to Health Feed page")
-	public void user_navigates_to_health_feed_page() {
-		Assert.assertTrue(userPage.isHealthFeedPageDisplayed(), "Health Feed page not displayed!");
-	}
-
-	@And("user clicks on Healthy Hair category")
-	public void user_clicks_on_healthy_hair_category() {
-		userPage.clickHealthyHairCategory();
-	}
-
-	@And("user navigates to Healthy Hair page")
-	public void user_navigates_to_healthy_hair_page() {
-		Assert.assertTrue(userPage.isHealthyHairPageDisplayed(), "Healthy Hair page not displayed!");
-	}
-
-	@And("user selects the article {string}")
-	public void user_selects_the_article(String articleTitle) {
-		userPage.selectArticle(articleTitle);
-	}
-
-	@And("user clicks on the selected article")
-	public void user_clicks_on_the_selected_article() {
-		//
-	}
-
-	@Then("user should be navigated to the article page")
-	public void user_should_be_navigated_to_the_article_page() {
-		Assert.assertTrue(userPage.isArticlePageDisplayed(), "Article page not displayed!");
-	}
-
-
-	@And("verify the article content is displayed")
-	public void verify_the_article_content_is_displayed() {
-
-
-		new WebDriverWait(driver, Duration.ofSeconds(20))
-		.until((ExpectedCondition<Boolean>) wd ->
-		((JavascriptExecutor) wd).executeScript("return document.readyState").equals("complete"));
-
-		Assert.assertTrue(userPage.isArticleContentDisplayed(), "Article content not displayed!");
-
-
-		driver.quit();
-
-	}
-
-
-	//------------------Scenario:3-----------------------------
-
-
-
-	@Given("user launches the Practo site")
-	public void user_launches_the_practo_site() {
-		BaseSteps.initializeDriver();
-		driver = BaseSteps.getDriver();
-		String appUrl = PropertyReader.getProperty("Appurl");
-		driver.get(appUrl);
-		userPage = new UserPage(driver,test); 
-	} 
-
-
-	@And("user clicks on lab tests")  
-	public void user_clicks_on_lab_tests() {
-		String labTestsUrl = PropertyReader.getProperty("labTestsLink");
-		System.out.println("Navigating to Lab Tests section: " + labTestsUrl);
-		driver.get(labTestsUrl);
-	}
-
-	@When("user navigates to Health Packages section")
-	public void user_navigates_to_health_packages_section() {
-		String healthPackageUrl = PropertyReader.getProperty("HealthPackageUrl");
-		System.out.println("Navigating to Health Packages section: " + healthPackageUrl);
-		driver.get(healthPackageUrl);
-	}
-
-
-
-	@Then("user clicks on Book Now button")
-	public void user_clicks_on_book_now_button() {
-		String bookNowUrl = PropertyReader.getProperty("BookNowUrl");
-		System.out.println("Navigating to Book Now page: " + bookNowUrl);
-		driver.get(bookNowUrl); 
-		driver.quit(); 
-		System.out.println("Browser closed successfully");
-	}
-
-
-
-
-
-
-	//---------------------------Scenario-outline------------------------------------------------------------
-
-
-	String excel;
-
-
-	@Given("user launches Practo application")
-	public void user_launches_practo_application() {
-		driver = BaseSteps.getDriver();
-		userPage = new UserPage(driver,test);
-		userPage.openHomePage(PropertyReader.getProperty("Appurl"));
-	}
-
-	@When("user clicks on Lab Tests link on homepage")
-	public void user_clicks_on_lab_tests_link_on_homepage() {
-		userPage.clickLabTestsLink();
-		userPage.handleCityOverlay();// ✅ Corrected
-	}
-
-	@When("user selects test name from sheet {int} and row {int}")
-	public void user_selects_test_name_from_sheet_and_row(Integer int1, Integer int2) throws Exception {
-		String excelPath = PropertyReader.getProperty("filepath");
-		if (excelPath == null || excelPath.isEmpty()) {
-			throw new RuntimeException("Excel path is missing in properties file");
-		}
-		excel = ExcelReader.getLocalityByRow(excelPath, int1, int2);
-		if(int2 == 0) {
-			userPage.clickfever();
-		}else if(int2 ==1)
-		{
-			userPage.clickdiab();
-		}
-		else if(int2 ==2)
-		{
-			userPage.clickski();
-		}
-
-		else {
-			throw new IllegalArgumentException();
-		}
-	}
-	@Then("user verifies test details page is displayed")
-	public void user_verifies_test_details_page_is_displayed() {
-
-	}
-
-
-
-
-
-
-	//--------------------------------FifthScenario(outline)---------------------------------------
-
-
-	@Given("user launches Practo web")
-	public void user_launches_practo_Web() {
-		BaseSteps.initializeDriver();
-		driver = BaseSteps.getDriver();
-		PropertyReader.readProperty();
-		userPage = new UserPage(driver,test);
-		userPage.launchApplication();
-		System.out.println("Practo application launched successfully.");
-	}
-
-	@When("user clicks on Lab Tests link on Web")
-	public void user_clicks_on_lab_tests_link_on_Web() {
-		userPage.clickLabTests();
-		System.out.println("Clicked on Lab Tests link.");
-	}
-
-	@When("user handles city overlay")
-	public void user_handles_city_overlay() {
-		userPage.handleCityOverlay();
-		System.out.println("City overlay handled.");
-	}
-
-	@When("user clicks on For Providers")
-	public void user_clicks_on_for_providers() {
-		userPage.clickForProvidersMenu();
-		System.out.println("Clicked on For Providers menu.");
-	}
-
-	@When("user selects Software for Providers from dropdown")
-	public void user_selects_software_for_providers_from_dropdown() {
-		userPage.clickSoftwareForProvidersFromDropdown();
-		System.out.println("Selected Software for Providers from dropdown.");
-	}
-
-	@When("user navigates to provider link from Excel sheet {int} and row {int}")
-	public void user_navigates_to_provider_link_from_excel_sheet_and_row(Integer sheetIndex, Integer rowIndex) throws Exception {
-		try {
-			//Load properties
-			Properties properties = PropertyReader.readProperty();
-
-			//Get Excel path from properties
-			String excelPath = properties.getProperty("excel.path"); // Ensure key matches profile.properties
-
-
-			//Read brand name from Excel
-			String brand = ExcelReader.getLocalityByRow(excelPath, sheetIndex, rowIndex);
-			if (brand == null || brand.isEmpty()) {
-				throw new RuntimeException("Excel value is empty for sheet " + sheetIndex + " row " + rowIndex);
-			}
-			System.out.println("Excel value read: " + brand); 
-
-			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-			WebElement brandElement = wait.until(ExpectedConditions.elementToBeClickable(
-					By.xpath("//a[@data-event='" + brand + "']")));
-			brandElement.click();
-
-			System.out.println("Successfully clicked on brand: " + brand);
-
-		} catch (Exception e) {
-			throw new RuntimeException("Failed to navigate to provider link. Error: " + e.getMessage());
-		}
-	}
-
-	//    @When("user navigates to provider link from Excel sheet {int} and row {int}")
-	//    public void user_navigates_to_provider_link_from_excel_sheet_and_row(Integer sheetIndex, Integer rowIndex) throws Exception {
-	////        userPage.navigateToProviderLink(sheetIndex, rowIndex);
-	////        System.out.println("Navigated to provider link from Excel: Sheet " + sheetIndex + ", Row " + rowIndex);
-	//    	userPage = new UserPage(driver, test);
-	//		userPage.selectabdm(excel);
-	//		userPage.selectArticle(excel);
-	//		userPage.selectforclinics(excel);
-	//		userPage.selectfordoctors(excel);
-	//
-	//		Properties properties = PropertyReader.readProperty();
-	//		
-	//	    // ✅ Now safely get the Excel path
-	//	    String excelPath = properties.getProperty("excelpath");
-	//	    
-	//	    // ✅ Defensive check
-	//	    if (excelPath == null || excelPath.isEmpty()) {
-	//	        throw new RuntimeException("Excel path is missing in properties file");
-	//	    }
-	// 
-	//	    // ✅ Read from Excel
-	//	    excel = ExcelReader.getLocalityByRow(excelPath, 0, rowIndex);
-	//	    
-	////	    tvpage.selectlg(excelPath);
-	////	    tvpage.selectsamsung(excelPath);
-	////	    if(rowIndex == 0) {
-	////	    	userPage.selectabdm(excelPath);
-	////	    }else if(rowIndex ==1)
-	////	    {
-	////	    	userPage.selectfordoctors(excelPath);
-	////	    }
-	////	    else if(rowIndex ==2)
-	////	    {
-	////	    	userPage.selectforclinics(excelPath);
-	////	    }
-	////	    else if(rowIndex ==3)
-	////	    {
-	////	    	userPage.selecthosiptals(excelPath);
-	////	    }
-	////	    else {
-	////	    	throw new IllegalArgumentException();
-	////	    }
-	//    	userPage = new UserPage(driver, test);
-	//		userPage.selectabdm(excel);
-	//		userPage.selectArticle(excel);
-	//		userPage.selectforclinics(excel);
-	//		userPage.selectfordoctors(excel);
-	//
-	//    }
-
-	@Then("verify that the provider page is displayed")
-	public void verify_that_the_provider_page_is_displayed() {
-		if (userPage.isProviderPageDisplayed()) {
-			System.out.println("Provider page displayed successfully.");
+	@And("clinic details shouls be displayed")
+	public void clinic_details_shouls_be_displayed() {
+		//		// Verify clinic details page is displayed
+		WebElement clinicName = driver.findElement(By.xpath("//h1[@data-qa-id='clinic-name']"));
+		if (clinicName.isDisplayed()) {
+			System.out.println("Clinic details page displayed successfully: " + clinicName.getText());
 		} else {
-			throw new AssertionError("Provider page not displayed.");
+			throw new AssertionError("Clinic details page not displayed");
 		}
-		BaseSteps.quitDriver();
+
+		//		 boolean isDisplayed = page.isClinicDetailsDisplayed();
+		//		        if (!isDisplayed) {
+		//		            throw new AssertionError("Clinic details page not displayed!");
+		//		        }
+
+		//		driver.quit();
 	}
+	@Then("user select the doctor in that clinic")
+	public void user_select_the_doctor_in_that_clinic() {
+		WebElement firstDoctorLink = page.getDoctorElement();
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block: 'center'});", firstDoctorLink);
+		firstDoctorLink.click();
+		System.out.println("Doctor selected successfully.");
+	}
+
+
+
+	//	  @Then("doctor details should be displayed")
+	//	    public void doctor_details_should_be_displayed() {
+	//	        String doctorName = page.getDoctorDetails();
+	//	        System.out.println("Doctor details displayed: " + doctorName);
+	//	        BaseSteps.closeBrowser();
+	//	    }
+
+	//	@Then("doctor details should be displayed")
+	//	public void doctor_details_should_be_displayed() {
+	//		//		WebElement doctorDetails = wait.until(ExpectedConditions.visibilityOfElementLocated(
+	//		//				By.xpath("//h1[contains(@class,'u-title-font')]")));
+	//		//		System.out.println("Doctor details displayed: " + doctorDetails.getText());
+	//
+	//		String doctorName = page.doctorName();  // ✅ Use page object method
+	//		System.out.println("Doctor details displayed: " + doctorName);
+	//		BaseSteps.closeBrowser();
+
+
+	//-------------------------scenario 3 (@clinicinGopalapuram)--------------------------(passed)
+
+	@And("User clicks on Clinics in Gopalapuram link")
+	public void user_clicks_on_clinics_in_gopalapuram_link() {
+		page.clickGopalapuramLink();
+		// Assertion: URL should contain 'gopalapuram'
+		Assert.assertTrue(driver.getCurrentUrl().contains("gopalapuram"), "Failed to navigate to Gopalapuram clinics page");
+	}
+	@Then("User click on Call Clinic")
+	public void user_click_on_call_clinic() {
+		page.clickCallClinic();
+		// Assertion: Verify that the call popup or confirmation appears
+		Assert.assertTrue(driver.getPageSource().contains("Call"), "Call Clinic action did not trigger correctly");
+	}
+	//----------------------------scenario 4 (@Anesthesiologists)------------------------
+
+
+	@When("user clicks on Qure Ortho Clinic link")
+	public void user_clicks_on_qure_ortho_clinic_link() {
+	//	String expectedUrl = BaseSteps.prop.getProperty("QureOrthoCliniclink");
+		userPage.QureOrthoCliniclink();
+//		BaseSteps.sleep(2000);
+	//	String actualUrl = BaseSteps.getDriver().getCurrentUrl();
+	//	Assert.assertEquals("Qure Ortho Clinic URL mismatch!", expectedUrl, actualUrl);
+	}
+
+
+
+	@Then("user clicks on Anesthesiologist in Chennai link in footer")
+	public void user_clicks_on_anesthesiologist_in_chennai_link_in_footer() {
+	//	String expectedUrl = BaseSteps.prop.getProperty("Anesthesiologistslink");
+		userPage.Anesthesiologistslink();
+//		BaseSteps.sleep(2000);
+	//	String actualUrl = BaseSteps.getDriver().getCurrentUrl();
+	//	Assert.assertEquals("Anesthesiologist URL mismatch!", expectedUrl, actualUrl);
+//		System.out.println("Links found: " + BaseSteps.getDriver()
+//		.findElements(By.xpath("//a[contains(@href,'qure-ortho-clinic')]")).size());
+
+	}
+
+	//---------------------------scenario 5 (@outline2) ---------------------
+	//
+	//@And("User applies a speciality filter from sheet {int} at RowIndex {int}")
+	//public void user_applies_a_speciality_filter_from_sheet_at_row_index(Integer sheetIndex, Integer rowIndex) throws Exception {
+	//	String speciality = reader.getCellData(sheetIndex, rowIndex, 0);
+	//	
+	//	page.applylocationFilter(speciality);
+	//	System.out.println("Applied speciality filter: " + speciality);
+	//}
+	//@When("User clicks on the Search for clinics link")
+	//public void user_clicks_on_the_search_for_clinics_link() {
+	////	page.applyspecialityFilter(speciality);
+	////	System.out.println("Clicked on link " );
+	//}
+	@And("User applies a speciality filter from sheet {int} at RowIndex {int}")
+	public void user_applies_a_speciality_filter_from_sheet_at_row_index(Integer sheetIndex, Integer rowIndex) throws Exception {
+		//	System.out.println("Reading from sheet: " + sheetIndex + ", row: " + (rowIndex + 1));
+		//	String speciality = reader.getCellData1(sheetIndex, rowIndex, 0);
+		//	System.out.println("Speciality from Excel: '" + speciality + "'");
+		//    String speciality = reader.getCellData1(sheetIndex, rowIndex, 0); // rowIndex is logical (0 = first data row)
+		//    page.applyspecialityFilter(speciality);
+		//    System.out.println("Applied speciality filter: " + speciality);
+		String hospitalName = ExcelReader.getCellDatas(ExcelReader.FILE_PATH2, sheetIndex, rowIndex, ExcelReader.HOSPITAL_COLUMN_INDEX);
+		System.out.println("Hospital from Excel: " + hospitalName);
+		//
+		WebDriver driver = BaseSteps.getDriver();
+		WebElement hospitalInput = driver.findElement(By.xpath("//*[@id=\"c-omni-container\"]/div/div[2]/div[1]/input"));
+
+		hospitalInput.click();
+		hospitalInput.clear();
+		hospitalInput.sendKeys(hospitalName);
+		hospitalInput.sendKeys(Keys.ARROW_DOWN);
+		hospitalInput.sendKeys(Keys.ENTER);
+	}
+
+
 }
+
+

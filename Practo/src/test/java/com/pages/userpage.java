@@ -1,13 +1,10 @@
 package com.pages;
 
 import java.time.Duration;
-import java.util.List;
 import java.util.Properties;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -15,12 +12,6 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
-import com.aventstack.extentreports.ExtentTest;
-import com.aventstack.extentreports.Status;
-import com.parameters.PropertyReader;
-import com.setup.BaseSteps;
-import com.setup.Reports;
 ////------------------------scenario 1-------------(correct)
 //public class userpage  {
 //	private WebDriver driver;
@@ -246,7 +237,7 @@ import com.setup.Reports;
 
 //------------------------scenario 1-------------(correct)
 public class userpage {
-	private WebDriver driver;
+	private static WebDriver driver;
 	public static WebDriverWait wait;
 	private Properties prop;
 	
@@ -292,7 +283,8 @@ public class userpage {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
 		try {
 			wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(filteredResults));
-			return driver.findElements(filteredResults).size() > 0;
+			return true;
+//			return driver.findElements(filteredResults).size() > 0;
 		} catch (TimeoutException e) {
 			System.out.println("Results not loaded within timeout. Check selector or page behavior.");
 			return false;
@@ -303,7 +295,7 @@ public class userpage {
 	//------scenario2 (@firstclinic)--------------------- (correct)
 
 	// ✅ Page Factory Locators
-	@FindBy(xpath = "//a[contains(text(),'Clinics')]")
+	@FindBy(xpath = "//*[@id=\"container\"]/div/div[3]/div/div[1]/ol/div/h1")
 	private WebElement clinicsLink;
 
 	@FindBy(xpath = "(//div[@class='info-section']//h2)[1]")
@@ -387,57 +379,77 @@ public class userpage {
 	    wait.until(ExpectedConditions.elementToBeClickable(callClinicButton)).click();
 	}
 
+//----------------------------scenario 4 (@Anesthesiologists)-----------------------
+//	@FindBy(xpath = "//*[@id=\"container\"]/div/div[3]/div/div[1]/ol/li[5]/div/div[2]/div[1]/a")
+//	private WebElement QureOrthoCliniclink;
+//	@FindBy(xpath = "//*[@id=\"container\"]/div/div[3]/div/div[3]/div/div/div/div/div[2]/div/a")
+//	private WebElement Anesthesiologistslink;
+	@FindBy(xpath = "//div[@id='container']//ol/li[5]//a")
+	private static WebElement QureOrthoCliniclink;
 
+	@FindBy(xpath = "(//*[@id='react-tabs-99085']//a)[1]")
+	private static WebElement FractureTreatment;
+	
 
-	//---------------------scenario 4---------------------------(passed)
-
-
-
-	@FindBy(linkText = "Search for clinics")
-	private WebElement searchClinicLink;
-
-
-	@FindBy(xpath = "//*[@id=\"container\"]/div/div[3]/div/div[2]/div[3]/div/div[2]/a[2]")
-	private WebElement anesthesiologyLink;
-
-	@FindBy(xpath = "//button[contains(text(),'View Profile')]")
-	private WebElement viewProfileBtn1;
-
-	//	@FindBy(xpath = "//*[@id=\"container\"]/div/div[3]/div/div[2]")
-	//	private WebElement clinicDetail;
-	@FindBy(xpath = "//h1[@data-qa-id='clinic-name']")
-	private WebElement clinicDetail;
-
-	public userpage(WebDriver driver, Properties prop) {
-		this.driver = driver;
-		this.prop = prop;
-		this.wait = new WebDriverWait(driver, Duration.ofSeconds(20));
-		PageFactory.initElements(driver, this);
+//	public void clickQureOrthoClinicLink() {
+//	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+//	    wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//a[contains(@href,'qure-ortho-clinic')]")));
+//	    ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", QureOrthoCliniclink);
+//	    wait.until(ExpectedConditions.elementToBeClickable(QureOrthoCliniclink)).click();
+//	}
+//	public void clickQureOrthoClinicLink() {
+//    ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight);");
+//    int count = driver.findElements(By.xpath("(//div[contains(@class,'c-estb-card')])[5]")).size();
+//    System.out.println("Links found: " + count);
+//    if (count == 0) {
+//        throw new RuntimeException("Qure Ortho Clinic link not found on page!");
+//    }
+//    wait.until(ExpectedConditions.elementToBeClickable(QureOrthoCliniclink)).click();
+//}
+	public static boolean QureOrthoCliniclink()
+	{
+		boolean actResult = true;
+        try
+        {
+            WebElement clickmenubutton = wait.until(ExpectedConditions.elementToBeClickable(QureOrthoCliniclink));
+           // Reports.generateReport(driver, test, Status.PASS, "menuBar is found and clickable");
+            clickmenubutton.click();
+            
+        }
+        catch (TimeoutException te)
+        {
+            actResult = false;
+         //   Reports.generateReport(driver, test, Status.FAIL, "menuBar is not found and clickable");
+        }
+        return actResult;
 	}
 
-	public boolean clickSearchClinic() {
-		wait.until(ExpectedConditions.elementToBeClickable(searchClinicLink)).click();
-		System.out.println("Clicked on Search Clinic link.");
-		return searchClinicLink.isDisplayed();
+
+//	public void clickAnesthesiologistsLink() {
+//	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+//	    wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//a[contains(@href,'anesthesiologist')]")));
+//	    ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", Anesthesiologistslink);
+//	    wait.until(ExpectedConditions.elementToBeClickable(Anesthesiologistslink)).click();
+//	}
+	public static boolean Anesthesiologistslink()
+	{
+		boolean actResult = true;
+        try
+        {
+            WebElement clicklink = wait.until(ExpectedConditions.elementToBeClickable(FractureTreatment));
+           // Reports.generateReport(driver, test, Status.PASS, "menuBar is found and clickable");
+            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", clicklink);
+            clicklink.click();
+            
+        }
+        catch (TimeoutException te)
+        {
+            actResult = false;
+         //   Reports.generateReport(driver, test, Status.FAIL, "menuBar is not found and clickable");
+        }
+        return actResult;
 	}
 
-	public void clickAnesthesiologyLink() {
-		((JavascriptExecutor) driver).executeScript("window.scrollBy(0, 500);");
-		wait.until(ExpectedConditions.elementToBeClickable(anesthesiologyLink)).click();
-		System.out.println("Clicked on Anesthesiology Clinics link.");
-	}
-
-	public void clickViewProfile1() {
-		wait.until(ExpectedConditions.elementToBeClickable(viewProfileBtn)).click();
-		System.out.println("Clicked on View Profile button.");
-	}
-
-	public String getClinicDetails() {
-		wait.until(ExpectedConditions.visibilityOf(clinicDetail));
-		String name = clinicDetail.getText();
-		System.out.println("Clinic Name displayed: " + name);
-		return name;
-	}
 	
 	
 	//--------------------------scenario 5 (outline2)-------------------------

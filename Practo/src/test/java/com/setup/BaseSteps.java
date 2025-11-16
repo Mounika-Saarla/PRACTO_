@@ -1,166 +1,73 @@
-
-//---------------------Remove comments to execute scenario:1 and scenario:2
-
-//package com.setup;
-//
-//import org.openqa.selenium.WebDriver;
-//import org.openqa.selenium.chrome.ChromeDriver;
-//
-//import com.parameters.PropertyReader;
-//
-//public class BaseSteps {
-//
-//	private static WebDriver driver;
-//
-//	public static void initializeDriver() {
-//		String browser = PropertyReader.getProperty("browserName");
-//		if (browser.equalsIgnoreCase("chrome")) {
-//			// Correct path
-//			System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/Drivers/chromedriver.exe");
-//			driver = new ChromeDriver();
-//		}
-//		driver.manage().window().maximize();
-//	}
-//
-//
-//	public static WebDriver getDriver() {
-//		return driver;
-//	}
-//
-//	public static void quitDriver() {
-//		if (driver != null) {
-//			driver.quit();
-//		}
-//
-//	}	
-//}
-
-
-//----------------------scenario:3-------------------
-
-
-//package com.setup;
-//
-//import org.openqa.selenium.WebDriver;
-//import org.openqa.selenium.chrome.ChromeDriver;
-//import io.github.bonigarcia.wdm.WebDriverManager;
-//
-//import java.time.Duration;
-//
-//public class BaseSteps {
-//
-//    private static WebDriver driver;
-//
-//   
-//    public static void initializeDriver() {
-//        if (driver == null) {
-//            // Use WebDriverManager to avoid hardcoding chromedriver path
-//            WebDriverManager.chromedriver().setup();
-//            driver = new ChromeDriver();
-//            driver.manage().window().maximize();
-//            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-//            System.out.println("ChromeDriver initialized successfully");
-//        }
-//    }
-//
-//    public static WebDriver getDriver() {
-//        if (driver == null) {
-//            initializeDriver();
-//        }
-//        return driver;
-//    }
-//
-//    
-//    public static void quitDriver() {
-//        if (driver != null) {
-//            driver.quit();
-//            driver = null;
-//            System.out.println("Browser closed successfully");
-//        }
-//    }
-//}
-
-
-//----------------------------------Scenario-outline----------------------------
-
-
-//package com.setup;
-//
-//import java.time.Duration;
-//
-//import org.openqa.selenium.WebDriver;
-//import org.openqa.selenium.chrome.ChromeDriver;
-//
-//import io.github.bonigarcia.wdm.WebDriverManager;
-//
-//public class BaseSteps {
-//    protected static WebDriver driver;
-//
-//    public static WebDriver getDriver() {
-//        if (driver == null) {
-//            System.setProperty("webdriver.chrome.driver", "path/to/chromedriver");
-//            driver = new ChromeDriver();
-//            driver.manage().window().maximize();
-//        }
-//        return driver;
-//    }
-//
-//    public static void quitDriver() {
-//        if (driver != null) {
-//            driver.quit();
-//            driver = null;
-//        }
-//    }
-//
-//	public static void initializeDriver() {
-//		if (driver == null) {
-//            // Use WebDriverManager to avoid hardcoding chromedriver path
-//            WebDriverManager.chromedriver().setup();
-//            driver = new ChromeDriver();
-//            driver.manage().window().maximize();
-//            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-//            System.out.println("ChromeDriver initialized successfully");
-//        }
-//		
-//	}
-//}
-
 package com.setup;
 
 import java.time.Duration;
+import java.util.Properties;
+
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import com.parameters.PropertyReader;
+
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class BaseSteps {
+    public static WebDriver driver;
+    public static Properties prop;
 
-   public static WebDriver driver;
-
-    // Initialize driver only if not already initialized
-    public static void initializeDriver() {
-        if (driver == null) {
+    public static void launchBrowser() {
+    	WebDriverManager.chromedriver().setup();
+        prop = PropertyReader.readProperty();
+        String browser = prop.getProperty("browser");
+        String appUrl = prop.getProperty("appUrl");
+        if (browser.equalsIgnoreCase("chrome")) {
             WebDriverManager.chromedriver().setup();
             driver = new ChromeDriver();
-            driver.manage().window().maximize();
-            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-            System.out.println("ChromeDriver initialized successfully");
+        } else {
+            throw new RuntimeException("Invalid browser specified: " + browser);
         }
-    }
 
-    // Get driver instance
+        driver.manage().window().maximize();
+        driver.get(appUrl); // Navigate here
+        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(30));
+
+        // ✅ Wait for page load
+              new WebDriverWait(driver, Duration.ofSeconds(20))
+                  .until(webDriver -> ((JavascriptExecutor) webDriver)
+                  .executeScript("return document.readyState").equals("complete"));
+          }
+//    public static void navigateToSearchClinicUrl() {
+//        String searchClinicUrl = prop.getProperty("SearchClinicUrl");
+//        if (searchClinicUrl == null) {
+//            throw new RuntimeException("SearchClinicUrl is missing in profile.properties");
+//        }
+//        driver.get(searchClinicUrl);
+//    }
+
     public static WebDriver getDriver() {
-        if (driver == null) {
-            initializeDriver();
-        }
         return driver;
     }
 
-    // Quit driver and reset
-    public static void quitDriver() {
+    public static void closeBrowser() {
         if (driver != null) {
             driver.quit();
             driver = null;
-            System.out.println("Browser closed successfully");
         }
     }
+
+	public static void sleep(int msec) {
+		// TODO Auto-generated method stub
+		try {
+			Thread.sleep(msec);
+		}catch(InterruptedException e) {
+			e.printStackTrace();
+		}
+		
+	}
+
 }
+    
+
+
+   
