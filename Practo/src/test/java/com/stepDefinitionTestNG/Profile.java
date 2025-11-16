@@ -1,25 +1,21 @@
 //-----------------Scenario:1------------------------------------
 
 
-/*package com.stepDefinitionTestNG;
+package com.stepDefinitionTestNG;
 
-import java.io.FileInputStream;
-import java.io.IOException;
 import java.time.Duration;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.Properties;
 
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
+import com.aventstack.extentreports.ExtentTest;
 import com.pages.UserPage;
 import com.parameters.ExcelReader;
 import com.parameters.PropertyReader;
@@ -35,12 +31,13 @@ public class Profile {
 	private static final String JavascriptExecutor = null;
 	static WebDriver driver;
 	static UserPage userPage;
+	static ExtentTest test;
 
 	@Given("user launch practo website")
 	public void user_launch_practo_website() {
 		BaseSteps.initializeDriver();
 		driver = BaseSteps.getDriver();
-		userPage = new UserPage(driver);
+		userPage = new UserPage(driver,test);
 		userPage.openHomePage(PropertyReader.getProperty("Appurl"));
 	}
 
@@ -64,18 +61,16 @@ public class Profile {
 		driver.get(PropertyReader.getProperty("BookNowUrl"));
 		Assert.assertTrue(userPage.isBookingPageDisplayed(), "Booking page not displayed!");
 
-	}*/
+	}
 
 
+	//---------------Scenario:2--------------------------------
 
-
-//---------------Scenario:2--------------------------------
-
-/*	@Given("user launches the Practo website")
-	public void user_launches_the_practo_website1() {
+	@Given("user launches the Practo home")
+	public void user_launches_the_practo_home() {
 		BaseSteps.initializeDriver();
 		driver = BaseSteps.getDriver();
-		userPage = new UserPage(driver);
+		userPage = new UserPage(driver,test);
 		driver.get(PropertyReader.getProperty("Appurl")); // e.g., https://www.practo.com/
 	}
 
@@ -128,95 +123,64 @@ public class Profile {
 
 		driver.quit();
 
-	}*/
+	}
 
 
-//------------------Scenario:3-----------------------------
-
-
-
-/*package com.stepDefinitionTestNG;
-
-import org.openqa.selenium.WebDriver;
-import com.pages.UserPage;
-import com.parameters.PropertyReader;
-import com.setup.BaseSteps;
-import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
-
-public class Profile {
-    static WebDriver driver;
-    UserPage userPage;
-
-    @Given("user launches the Practo website")
-    public void user_launches_the_practo_website() {
-        BaseSteps.initializeDriver();
-        driver = BaseSteps.getDriver();
-        String appUrl = PropertyReader.getProperty("Appurl");
-        driver.get(appUrl);
-        userPage = new UserPage(driver); 
-    } 
-
-
-    @Given("user clicks on lab tests")
-    public void user_clicks_on_lab_tests() {
-        String labTestsUrl = PropertyReader.getProperty("labTestsLink");
-        System.out.println("Navigating to Lab Tests section: " + labTestsUrl);
-        driver.get(labTestsUrl);
-    }
-
-    @When("user navigates to Health Packages section")
-    public void user_navigates_to_health_packages_section() {
-        String healthPackageUrl = PropertyReader.getProperty("HealthPackageUrl");
-        System.out.println("Navigating to Health Packages section: " + healthPackageUrl);
-        driver.get(healthPackageUrl);
-    }
+	//------------------Scenario:3-----------------------------
 
 
 
-    @Then("user clicks on Book Now button")
-    public void user_clicks_on_book_now_button() {
-        String bookNowUrl = PropertyReader.getProperty("BookNowUrl");
-        System.out.println("Navigating to Book Now page: " + bookNowUrl);
-        driver.get(bookNowUrl); 
-        driver.quit(); 
-        System.out.println("Browser closed successfully");
-    }
-}*/
+	@Given("user launches the Practo site")
+	public void user_launches_the_practo_site() {
+		BaseSteps.initializeDriver();
+		driver = BaseSteps.getDriver();
+		String appUrl = PropertyReader.getProperty("Appurl");
+		driver.get(appUrl);
+		userPage = new UserPage(driver,test); 
+	} 
 
-//---------------------------Scenario-outline------------------------------------------------------------
 
-/*package com.stepDefinitionTestNG;
+	@And("user clicks on lab tests")  
+	public void user_clicks_on_lab_tests() {
+		String labTestsUrl = PropertyReader.getProperty("labTestsLink");
+		System.out.println("Navigating to Lab Tests section: " + labTestsUrl);
+		driver.get(labTestsUrl);
+	}
 
-import java.util.Properties;
-
-import org.openqa.selenium.WebDriver;
-
-import com.pages.UserPage;
-import com.parameters.ExcelReader;
-import com.parameters.PropertyReader;
-import com.setup.BaseSteps;
-
-import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
-
-public class Profile {
+	@When("user navigates to Health Packages section")
+	public void user_navigates_to_health_packages_section() {
+		String healthPackageUrl = PropertyReader.getProperty("HealthPackageUrl");
+		System.out.println("Navigating to Health Packages section: " + healthPackageUrl);
+		driver.get(healthPackageUrl);
+	}
 
 
 
-	private WebDriver driver;
-	private UserPage userPage;
+	@Then("user clicks on Book Now button")
+	public void user_clicks_on_book_now_button() {
+		String bookNowUrl = PropertyReader.getProperty("BookNowUrl");
+		System.out.println("Navigating to Book Now page: " + bookNowUrl);
+		driver.get(bookNowUrl); 
+		driver.quit(); 
+		System.out.println("Browser closed successfully");
+	}
+
+
+
+
+
+
+	//---------------------------Scenario-outline------------------------------------------------------------
+
 
 	String excel;
 
 
 	@Given("user launches Practo application")
 	public void user_launches_practo_application() {
-	    driver = BaseSteps.getDriver();
-	    userPage = new UserPage(driver);
-	    userPage.openHomePage(PropertyReader.getProperty("Appurl"));
+		driver = BaseSteps.getDriver();
+		userPage = new UserPage(driver,test);
+		userPage.openHomePage(PropertyReader.getProperty("Appurl"));
 	}
 
 	@When("user clicks on Lab Tests link on homepage")
@@ -227,25 +191,25 @@ public class Profile {
 
 	@When("user selects test name from sheet {int} and row {int}")
 	public void user_selects_test_name_from_sheet_and_row(Integer int1, Integer int2) throws Exception {
-	    String excelPath = PropertyReader.getProperty("filepath");
-	    if (excelPath == null || excelPath.isEmpty()) {
-	        throw new RuntimeException("Excel path is missing in properties file");
-	    }
-	    excel = ExcelReader.getLocalityByRow(excelPath, int1, int2);
-	    if(int2 == 0) {
-	    	userPage.clickfever();
-	    }else if(int2 ==1)
-	    {
-	    	userPage.clickdiab();
-	    }
-	    else if(int2 ==2)
-	    {
-	    	userPage.clickski();
-	    }
+		String excelPath = PropertyReader.getProperty("filepath");
+		if (excelPath == null || excelPath.isEmpty()) {
+			throw new RuntimeException("Excel path is missing in properties file");
+		}
+		excel = ExcelReader.getLocalityByRow(excelPath, int1, int2);
+		if(int2 == 0) {
+			userPage.clickfever();
+		}else if(int2 ==1)
+		{
+			userPage.clickdiab();
+		}
+		else if(int2 ==2)
+		{
+			userPage.clickski();
+		}
 
-	    else {
-	    	throw new IllegalArgumentException();
-	    }
+		else {
+			throw new IllegalArgumentException();
+		}
 	}
 	@Then("user verifies test details page is displayed")
 	public void user_verifies_test_details_page_is_displayed() {
@@ -254,73 +218,132 @@ public class Profile {
 
 
 
-}*/
-
-//------------------Scenario-Outline:2-------------------------------------------------
 
 
 
+	//--------------------------------FifthScenario(outline)---------------------------------------
 
 
-package com.stepDefinitionTestNG;
-import com.pages.UserPage;
-import com.parameters.PropertyReader;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.Select;
-
-import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
-
-
-
-public class Profile{
-
-	private WebDriver driver;
-	private UserPage userPage;
-
-	String excel;
-
-
-
-	@Given("user launches Practo application")
-	public void user_launches_practo_application() {
-	    driver = new ChromeDriver();
-	    driver.manage().window().maximize();
-	    userPage = new UserPage(driver);
-	    userPage.launchApplication();
+	@Given("user launches Practo web")
+	public void user_launches_practo_Web() {
+		BaseSteps.initializeDriver();
+		driver = BaseSteps.getDriver();
+		PropertyReader.readProperty();
+		userPage = new UserPage(driver,test);
+		userPage.launchApplication();
+		System.out.println("Practo application launched successfully.");
 	}
 
-	@When("user clicks on Lab Tests link on homepage")
-	public void user_clicks_on_lab_tests_link_on_homepage() {
-	    userPage.clickLabTests();
+	@When("user clicks on Lab Tests link on Web")
+	public void user_clicks_on_lab_tests_link_on_Web() {
+		userPage.clickLabTests();
+		System.out.println("Clicked on Lab Tests link.");
+	}
+
+	@When("user handles city overlay")
+	public void user_handles_city_overlay() {
+		userPage.handleCityOverlay();
+		System.out.println("City overlay handled.");
 	}
 
 	@When("user clicks on For Providers")
 	public void user_clicks_on_for_providers() {
-	    userPage.clickForProviders();
+		userPage.clickForProvidersMenu();
+		System.out.println("Clicked on For Providers menu.");
 	}
 
 	@When("user selects Software for Providers from dropdown")
 	public void user_selects_software_for_providers_from_dropdown() {
-	    userPage.selectSoftwareForProviders();
+		userPage.clickSoftwareForProvidersFromDropdown();
+		System.out.println("Selected Software for Providers from dropdown.");
 	}
 
 	@When("user navigates to provider link from Excel sheet {int} and row {int}")
-	public void user_navigates_to_provider_link_from_excel_sheet_and_row(Integer sheetIndex, Integer rowIndex) {
-	    userPage.navigateToProviderLink(sheetIndex, rowIndex);
+	public void user_navigates_to_provider_link_from_excel_sheet_and_row(Integer sheetIndex, Integer rowIndex) throws Exception {
+		try {
+			//Load properties
+			Properties properties = PropertyReader.readProperty();
+
+			//Get Excel path from properties
+			String excelPath = properties.getProperty("excel.path"); // Ensure key matches profile.properties
+
+
+			//Read brand name from Excel
+			String brand = ExcelReader.getLocalityByRow(excelPath, sheetIndex, rowIndex);
+			if (brand == null || brand.isEmpty()) {
+				throw new RuntimeException("Excel value is empty for sheet " + sheetIndex + " row " + rowIndex);
+			}
+			System.out.println("Excel value read: " + brand); 
+
+			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+			WebElement brandElement = wait.until(ExpectedConditions.elementToBeClickable(
+					By.xpath("//a[@data-event='" + brand + "']")));
+			brandElement.click();
+
+			System.out.println("Successfully clicked on brand: " + brand);
+
+		} catch (Exception e) {
+			throw new RuntimeException("Failed to navigate to provider link. Error: " + e.getMessage());
+		}
 	}
 
+	//    @When("user navigates to provider link from Excel sheet {int} and row {int}")
+	//    public void user_navigates_to_provider_link_from_excel_sheet_and_row(Integer sheetIndex, Integer rowIndex) throws Exception {
+	////        userPage.navigateToProviderLink(sheetIndex, rowIndex);
+	////        System.out.println("Navigated to provider link from Excel: Sheet " + sheetIndex + ", Row " + rowIndex);
+	//    	userPage = new UserPage(driver, test);
+	//		userPage.selectabdm(excel);
+	//		userPage.selectArticle(excel);
+	//		userPage.selectforclinics(excel);
+	//		userPage.selectfordoctors(excel);
+	//
+	//		Properties properties = PropertyReader.readProperty();
+	//		
+	//	    // ✅ Now safely get the Excel path
+	//	    String excelPath = properties.getProperty("excelpath");
+	//	    
+	//	    // ✅ Defensive check
+	//	    if (excelPath == null || excelPath.isEmpty()) {
+	//	        throw new RuntimeException("Excel path is missing in properties file");
+	//	    }
+	// 
+	//	    // ✅ Read from Excel
+	//	    excel = ExcelReader.getLocalityByRow(excelPath, 0, rowIndex);
+	//	    
+	////	    tvpage.selectlg(excelPath);
+	////	    tvpage.selectsamsung(excelPath);
+	////	    if(rowIndex == 0) {
+	////	    	userPage.selectabdm(excelPath);
+	////	    }else if(rowIndex ==1)
+	////	    {
+	////	    	userPage.selectfordoctors(excelPath);
+	////	    }
+	////	    else if(rowIndex ==2)
+	////	    {
+	////	    	userPage.selectforclinics(excelPath);
+	////	    }
+	////	    else if(rowIndex ==3)
+	////	    {
+	////	    	userPage.selecthosiptals(excelPath);
+	////	    }
+	////	    else {
+	////	    	throw new IllegalArgumentException();
+	////	    }
+	//    	userPage = new UserPage(driver, test);
+	//		userPage.selectabdm(excel);
+	//		userPage.selectArticle(excel);
+	//		userPage.selectforclinics(excel);
+	//		userPage.selectfordoctors(excel);
+	//
+	//    }
+
 	@Then("verify that the provider page is displayed")
-	public void verify_that_the_provider_page_is_displayed() throws AssertionError {
-	    if (UserPage.isProviderPageDisplayed(driver)) {
-	        System.out.println("Provider page displayed successfully.");
-	    } else {
-	        throw new AssertionError("Provider page not displayed.");
-	    }
-	    driver.quit();
+	public void verify_that_the_provider_page_is_displayed() {
+		if (userPage.isProviderPageDisplayed()) {
+			System.out.println("Provider page displayed successfully.");
+		} else {
+			throw new AssertionError("Provider page not displayed.");
+		}
+		BaseSteps.quitDriver();
 	}
 }
