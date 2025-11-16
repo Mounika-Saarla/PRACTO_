@@ -14,8 +14,8 @@ public class BaseSteps {
    public static void launchBrowser() {
        Properties prop = PropertyReader.readProperty();
        String browser = prop.getProperty("browserName");//chrome will come
-
-       if (browser.equalsIgnoreCase("chrome")) 
+       if (browser.equalsIgnoreCase(browser))
+       //if (browser.equalsIgnoreCase("chrome")) 
        {
        	System.setProperty("webdriver.chrome.driver", "C:\\training\\java\\seleniumGrid\\chromedriver.exe");
        	driver = new ChromeDriver();//chrome will launch
@@ -38,6 +38,7 @@ public class BaseSteps {
        String url=prop.getProperty("source.url");
        driver.get(url);
        driver.manage().window().maximize();
+       
    }
    public static void sleep(int msec) {//handling waits 
        try 
