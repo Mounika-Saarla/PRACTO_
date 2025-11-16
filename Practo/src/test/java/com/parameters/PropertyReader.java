@@ -40,6 +40,7 @@ public class PropertyReader {
 //import java.util.Properties;
 //
 //public class PropertyReader {
+//
 //    private static Properties properties = new Properties();
 //
 //    static {
@@ -47,10 +48,9 @@ public class PropertyReader {
 //            String path = System.getProperty("user.dir") + "/src/test/resources/Properties/profile.properties";
 //            FileInputStream fis = new FileInputStream(path);
 //            properties.load(fis);
+//            System.out.println("Properties loaded successfully from: " + path);
 //        } catch (IOException e) {
-//            e.printStackTrace();
-//            throw new RuntimeException("Failed to load properties file at path: " +
-//                    System.getProperty("user.dir") + "/src/test/resources/Properties/profile.properties");
+//            throw new RuntimeException("Failed to load properties file", e);
 //        }
 //    }
 //
@@ -65,9 +65,6 @@ public class PropertyReader {
 
 
 
-//--------------Sceraio-outline:2------------------------------------
-
-
 package com.parameters;
 
 import java.io.FileInputStream;
@@ -75,30 +72,29 @@ import java.io.IOException;
 import java.util.Properties;
 
 public class PropertyReader {
-
     private static Properties properties = new Properties();
 
     static {
         try {
-            // Load properties file from resources
-            FileInputStream fis = new FileInputStream("src/test/resources/profile.properties");
+            String path = System.getProperty("user.dir") + "/src/test/resources/Properties/profile.properties";
+            FileInputStream fis = new FileInputStream(path);
             properties.load(fis);
+            System.out.println("Properties loaded successfully from: " + path);
         } catch (IOException e) {
-            e.printStackTrace();
-            throw new RuntimeException("Failed to load profile.properties file.");
+            throw new RuntimeException("Failed to load properties file", e);
         }
     }
 
-    /**
-     * Get property value by key
-     * @param key property key
-     * @return property value
-     */
     public static String getProperty(String key) {
         String value = properties.getProperty(key);
-        if (value == null) {
-            throw new RuntimeException("Property key not found: " + key);
+        if (value == null || value.isEmpty()) {
+            throw new RuntimeException("Property '" + key + "' not found in profile.properties");
         }
         return value;
     }
+
+	public static Properties readProperty() {
+		
+		return properties;
+	}
 }
