@@ -5,11 +5,13 @@ import java.io.IOException;
 import java.util.Properties;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
+import com.aventstack.extentreports.ExtentTest;
 import com.pages.HomePage;
 import com.parameters.ExcelReader;
 import com.parameters.PropertyReader;
@@ -21,16 +23,21 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.cucumber.messages.types.Duration;
 
-public class LabTest {
-	HomePage homepage=new HomePage(BaseSteps.driver);;
-	Properties prop = PropertyReader.readProperty();
+public class LabTest extends BaseSteps {
+	//HomePage homepage=new HomePage(BaseSteps.driver);
+	WebDriver driver = BaseSteps.driver;
+	ExtentTest test = Hooks.test;
+	
+	//Properties prop = PropertyReader.readProperty();
 
-
+	HomePage homepage;
+	
 	@Given("user is on Practo Homepage")
 	public void user_is_on_practo_homepage() {
-
-		BaseSteps.launchBrowser();
-		homepage = new HomePage(BaseSteps.driver);
+		homepage = new HomePage(driver,test);
+		homepage.homePage1();
+		//BaseSteps.launchBrowser();
+		
 	}
 
 	@When("user clicks on Lab Tests link")
@@ -68,7 +75,7 @@ public class LabTest {
 
 
 	@Then("verify item is added to cart")
-	public void verify_item_is_added_to_cart() {
+	public void verify_item_is_added_to_cart() throws InterruptedException {
 		Assert.assertTrue(homepage.isItemAddedToCart(), "Item was not added to cart!");
 	}
 
@@ -89,7 +96,7 @@ public class LabTest {
 	}
 
 	@Then("verify Test results for SearchBox")
-	public void verify_test_results_for_search_box() {
+	public void verify_test_results_for_search_box() throws InterruptedException {
 		homepage.verifyTest();
 	}
 
@@ -115,7 +122,7 @@ public class LabTest {
 	}
 
 	@Then("verify City results for SearchBox")
-	public void verify_city_results_for_search_box() {
+	public void verify_city_results_for_search_box() throws InterruptedException {
      homepage.verifyCity();
 	}
 
@@ -127,7 +134,7 @@ public class LabTest {
 	}
 
 	@Then("verify  Add Patient Details")
-	public void verify_add_patient_details() {
+	public void verify_add_patient_details() throws InterruptedException {
 		homepage.addPatientDetails();
 	}
 
