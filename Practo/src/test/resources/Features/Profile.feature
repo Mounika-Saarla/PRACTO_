@@ -1,70 +1,62 @@
-Feature: Lab Tests Navigation
-
-@FirstScenario
-Scenario: Navigate to Labtest and book a package
-Given user launch practo website
-When user clicks the search for Lab Tests link
-And user clicks on Know More button and Package details displayed
-Then user clicks on Book Now and then booking site is displayed
-
-
-
-
- @SecondScenario
- Scenario: Navigate to Healthy Hair article and verify content
-    Given user launches the Practo home
-    When user clicks on See All Articles link
-    And user navigates to Health Feed page
-    And user clicks on Healthy Hair category
-    And user navigates to Healthy Hair page
-    And user selects the article "7 Health Benefits of Dates"
-    And user clicks on the selected article
-    Then user should be navigated to the article page
-    And verify the article content is displayed
-   
-   
-
-@ThirdScenario
-Scenario: Validate Health Checkup Packages and booking
-    Given user launches the Practo site
-    And user clicks on lab tests
-    When user navigates to Health Packages section   
-    Then user clicks on Book Now button 
-    
-
-  
-
-@FourthScenario
-Scenario Outline: User books a lab test using Excel inputs
-   Given user launches Practo application
-   When user clicks on Lab Tests link on homepage
-    And user selects test name from sheet <sheet> and row <row>
-    Then user verifies test details page is displayed
+Feature: Home Page Footer Navigation
+This feature deals with the Search for clinics
+#passed
+@outline1
+Scenario Outline: Validate Footer Contains Search for clinics click
+    Given User is on the Home page
+    And User scrolls to the footer section
+    When The footer should contain a visible link labeled Search for clinics
+    And User clicks on the Search for clinics link
+    And User applies a location filter from sheet <sheet> at RowIndex <RowIndex>
+    Then Filtered clinic results should be displayed
 
     Examples:
-      | sheet | row |
-      |   0   |  0  |
-      |   0   |  1  |
-      |   0   |  2  |
-
-   
-   
-   
-
-
-@FifthScenario
-  Scenario Outline: Navigate to provider pages using Excel data
-    Given user launches Practo web
-    When user clicks on Lab Tests link on Web
-    And user handles city overlay
-    And user clicks on For Providers
-    And user selects Software for Providers from dropdown
-    And user navigates to provider link from Excel sheet <sheet> and row <row>
-    Then verify that the provider page is displayed
-
-    Examples:
-      | sheet | row |
-      |   0   |  1  |
-      |   0   |  2  |
-      |   0   |  3  |
+      | sheet | RowIndex |
+      | 0     | 1        |
+      | 0     | 2        |
      
+     
+ #passed 
+@firstclinic
+Scenario:navigate to required clinic details
+Given  user launch practo website
+When user clicks the search for clinics link
+And user clicks on view profile of first clinic
+And clinic details shouls be displayed
+Then user select the doctor in that clinic
+
+
+#passed
+@clinicinGopalapuram
+  Scenario: Navigate to doctor details in Gopalapuram
+   Given User is on the Home page
+    And User scrolls to the footer section
+    When The footer should contain a visible link labeled Search for clinics
+    And User clicks on the Search for clinics link
+    And User clicks on Clinics in Gopalapuram link
+    Then User click on Call Clinic
+    
+    
+@Anesthesiologists
+Scenario:Navigate to Anesthesiologists available in chennai
+Given  user launch practo website
+When user clicks the search for clinics link
+And user clicks on Qure Ortho Clinic link
+Then user clicks on Anesthesiologist in Chennai link in footer
+
+
+@outline2
+Scenario Outline: Validate Footer Contains Search for clinics click
+    Given User is on the Home page
+    And User scrolls to the footer section
+    When The footer should contain a visible link labeled Search for clinics
+    And User clicks on the Search for clinics link
+    And User applies a speciality filter from sheet <sheet> at RowIndex <RowIndex>
+    Then Filtered clinic results should be displayed
+
+    Examples:
+      | sheet | RowIndex |
+      | 0     | 1        |
+      | 0     | 2        |
+
+
