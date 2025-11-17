@@ -1,54 +1,166 @@
-package com.setup;
-import java.util.Properties;
 
+//---------------------Remove comments to execute scenario:1 and scenario:2
+
+//package com.setup;
+//
+//import org.openqa.selenium.WebDriver;
+//import org.openqa.selenium.chrome.ChromeDriver;
+//
+//import com.parameters.PropertyReader;
+//
+//public class BaseSteps {
+//
+//	private static WebDriver driver;
+//
+//	public static void initializeDriver() {
+//		String browser = PropertyReader.getProperty("browserName");
+//		if (browser.equalsIgnoreCase("chrome")) {
+//			// Correct path
+//			System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/Drivers/chromedriver.exe");
+//			driver = new ChromeDriver();
+//		}
+//		driver.manage().window().maximize();
+//	}
+//
+//
+//	public static WebDriver getDriver() {
+//		return driver;
+//	}
+//
+//	public static void quitDriver() {
+//		if (driver != null) {
+//			driver.quit();
+//		}
+//
+//	}	
+//}
+
+
+//----------------------scenario:3-------------------
+
+
+//package com.setup;
+//
+//import org.openqa.selenium.WebDriver;
+//import org.openqa.selenium.chrome.ChromeDriver;
+//import io.github.bonigarcia.wdm.WebDriverManager;
+//
+//import java.time.Duration;
+//
+//public class BaseSteps {
+//
+//    private static WebDriver driver;
+//
+//   
+//    public static void initializeDriver() {
+//        if (driver == null) {
+//            // Use WebDriverManager to avoid hardcoding chromedriver path
+//            WebDriverManager.chromedriver().setup();
+//            driver = new ChromeDriver();
+//            driver.manage().window().maximize();
+//            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+//            System.out.println("ChromeDriver initialized successfully");
+//        }
+//    }
+//
+//    public static WebDriver getDriver() {
+//        if (driver == null) {
+//            initializeDriver();
+//        }
+//        return driver;
+//    }
+//
+//    
+//    public static void quitDriver() {
+//        if (driver != null) {
+//            driver.quit();
+//            driver = null;
+//            System.out.println("Browser closed successfully");
+//        }
+//    }
+//}
+
+
+//----------------------------------Scenario-outline----------------------------
+
+
+//package com.setup;
+//
+//import java.time.Duration;
+//
+//import org.openqa.selenium.WebDriver;
+//import org.openqa.selenium.chrome.ChromeDriver;
+//
+//import io.github.bonigarcia.wdm.WebDriverManager;
+//
+//public class BaseSteps {
+//    protected static WebDriver driver;
+//
+//    public static WebDriver getDriver() {
+//        if (driver == null) {
+//            System.setProperty("webdriver.chrome.driver", "path/to/chromedriver");
+//            driver = new ChromeDriver();
+//            driver.manage().window().maximize();
+//        }
+//        return driver;
+//    }
+//
+//    public static void quitDriver() {
+//        if (driver != null) {
+//            driver.quit();
+//            driver = null;
+//        }
+//    }
+//
+//	public static void initializeDriver() {
+//		if (driver == null) {
+//            // Use WebDriverManager to avoid hardcoding chromedriver path
+//            WebDriverManager.chromedriver().setup();
+//            driver = new ChromeDriver();
+//            driver.manage().window().maximize();
+//            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+//            System.out.println("ChromeDriver initialized successfully");
+//        }
+//		
+//	}
+//}
+
+package com.setup;
+
+import java.time.Duration;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.edge.EdgeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-
-import com.parameters.PropertyReader;
+import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class BaseSteps {
-	public static WebDriver driver;
-	 public static Properties prop;
-   public static void launchBrowser() {
-       Properties prop = PropertyReader.readProperty();
-       String browser = prop.getProperty("browserName");//chrome will come
-       if (browser.equalsIgnoreCase(browser))
-       //if (browser.equalsIgnoreCase("chrome")) 
-       {
-       	System.setProperty("webdriver.chrome.driver", "C:\\training\\java\\seleniumGrid\\chromedriver.exe");
-       	driver = new ChromeDriver();//chrome will launch
 
-       } 
-       else if (browser.equalsIgnoreCase("firefox")) 
-       {
-           driver = new FirefoxDriver();//firebox will launch
-       } 
-       else if (browser.equalsIgnoreCase("edge")) 
-       {
-       	System.setProperty("webdriver.edge.driver", "C:\\Users\\vangas\\OneDrive - Capgemini\\Desktop\\Selenium Grid\\msedgedriver.exe");
-           driver = new EdgeDriver();//edge will launch
-       } 
-       else 
-       {
-           System.out.println("Invalid browser specified in config.properties");
-           return;
-       }
-       String url=prop.getProperty("source.url");
-       driver.get(url);
-       driver.manage().window().maximize();
-       
-   }
-   public static void sleep(int msec) {//handling waits 
-       try 
-       {
-           Thread.sleep(msec);
-       } 
-       catch (InterruptedException e) 
-       {
-           e.printStackTrace();//what is happening in execution it pulls all data
-       }
-   }
+   public static WebDriver driver;
+
+    // Initialize driver only if not already initialized
+    public static void initializeDriver() {
+        if (driver == null) {
+            WebDriverManager.chromedriver().setup();
+            driver = new ChromeDriver();
+            driver.manage().window().maximize();
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+            System.out.println("ChromeDriver initialized successfully");
+        }
+    }
+
+    // Get driver instance
+    public static WebDriver getDriver() {
+        if (driver == null) {
+            initializeDriver();
+        }
+        return driver;
+    }
+
+    // Quit driver and reset
+    public static void quitDriver() {
+        if (driver != null) {
+            driver.quit();
+            driver = null;
+            System.out.println("Browser closed successfully");
+        }
+    }
 }
-

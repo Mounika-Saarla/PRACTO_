@@ -1,0 +1,14 @@
+
+@NegativeScenario
+[1mScenario:[22m Search for an invalid doctor and validate No results found message [90m# src/test/resources/Features/Profile.feature:75[39m
+  [32m✔[39m [32m[1mGiven [22mwhen the user launches Practo home page[39m                            [90m# com.stepDefinitionTestNG.Profile.when_the_user_launches_practo_home_page()[39m
+  [32m✔[39m [32m[1mWhen [22muser clicks on the search bar[39m                                       [90m# com.stepDefinitionTestNG.Profile.user_clicks_on_the_search_bar()[39m
+  [32m✔[39m [32m[1mAnd [22muser enters an invalid doctor name[39m                                   [90m# com.stepDefinitionTestNG.Profile.user_enters_an_invalid_doctor_name()[39m
+  [32m✔[39m [32m[1mAnd [22muser selects a suggestion from dropdown[39m                              [90m# com.stepDefinitionTestNG.Profile.user_selects_a_suggestion_from_dropdown()[39m
+  [31m✘[39m [31m[1mThen [22muser should see a message No results found on the page[39m              [90m# com.stepDefinitionTestNG.Profile.user_should_see_a_message_no_results_found_on_the_page()[39m
+        [31mjava.lang.AssertionError: Validation failed for No results message expected [true] but found [false][39m
+        [31m	at org.testng.Assert.fail(Assert.java:111)[39m
+        [31m	at org.testng.Assert.failNotEquals(Assert.java:1590)[39m
+        [31m	at org.testng.Assert.assertTrue(Assert.java:57)[39m
+        [31m	at com.stepDefinitionTestNG.Profile.user_should_see_a_message_no_results_found_on_the_page(Profile.java:407)[39m
+        [31m	at ✽.user should see a message No results found on the page(file:///C:/Users/dyamaa/SpritPracto/Practo/src/test/resources/Features/Profile.feature:80)[39m
