@@ -88,6 +88,15 @@ public class Hooks extends BaseSteps {
 
     @After
     public void afterScenario() throws InterruptedException  {
+    	
+    	
+//	    try {
+//	        Thread.sleep(5000);
+//	    } catch (InterruptedException e) {
+//	        e.printStackTrace();
+//	    }
+//	    BaseSteps.quitDriver();
+	}
 //    	try {
 //			BaseSteps.tearDown();
 //		} catch (Exception e) {
@@ -104,7 +113,7 @@ public class Hooks extends BaseSteps {
 //			driver.quit(); // ✅ Close browser once after all scenarios
 //		}
     	
-    }
+//    }
     
     
 }

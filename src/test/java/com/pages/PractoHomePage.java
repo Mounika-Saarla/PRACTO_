@@ -18,7 +18,7 @@ public PractoHomePage(WebDriver driver) {
 //        this.driver = driver;
 //    }
 
-    private By practoLogo = By.xpath("//img[@alt='Practo']"); // Adjust locator if needed
+    private By practoLogo = By.xpath("//img[@alt='Practo']"); 
 
     public boolean isHomePageDisplayed() {
         return driver.findElement(practoLogo).isDisplayed();

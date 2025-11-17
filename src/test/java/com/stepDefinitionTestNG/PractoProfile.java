@@ -27,6 +27,7 @@ import com.pages.SearchPage;
 import com.parameters.ExcelReader;
 import com.parameters.PropertyReader;
 import com.setup.BaseSteps;
+import com.setup.Reports;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -55,7 +56,7 @@ public class PractoProfile {
 
     }
 
-    @Then("user verifies hospital list page is displayed")
+    @And("user verifies hospital list page is displayed")
     public void verifyHospitalList() throws Exception {
         new HospitalListPage(BaseSteps.driver).verifyHospitalListDisplayed();
     }
@@ -68,10 +69,14 @@ public class PractoProfile {
     @Then("user clicks on Book Hospital Visit")
     public void clickBookHospital() throws Exception {
         new BookingPage(BaseSteps.driver).clickBookHospital();
+        
+        Reports.captureScreenshot(BaseSteps.driver, "City");
     }
     @Then("user see suggestion Visit")
     public void clickBookClinic() throws Exception {
         new BookingPage(BaseSteps.driver).clickBookClinic();
+        
+        Reports.captureScreenshot(BaseSteps.driver, "suggesionList");
     }
     @When("user click on clinic button")
     public void clickClinic() throws Exception {
@@ -89,6 +94,8 @@ public class PractoProfile {
     @Then("user looks contact details")
     public void verifyCallList() throws Exception {
     	new HospitalListPage(BaseSteps.driver).verifyCallDisplayed();
+    	
+    	Reports.captureScreenshot(BaseSteps.driver, "hospitalName");
     }
     
 
@@ -96,9 +103,21 @@ public class PractoProfile {
 public void clickHospitalCard() throws Exception {
     // Write code here that turns the phrase above into concrete actions
 //    throw new io.cucumber.java.PendingException();
+    	Reports.captureScreenshot(BaseSteps.driver, "hospitalOverview");
 	 new HospitalListPage(BaseSteps.driver).clickHospitalCard();
+	 
 	
 }
+
+//    @Then("user see overview")
+//public void clickHospitalCardoverview() throws Exception {
+//    // Write code here that turns the phrase above into concrete actions
+////    throw new io.cucumber.java.PendingException();
+//	 new HospitalListPage(BaseSteps.driver).verifyDetailOverviewDisplayed();;
+//	 
+//	 Reports.captureScreenshot(BaseSteps.driver, "hospitalOverview");
+//	
+//}
 
 //    /////////////////////////////////////////////////////////////////
    
@@ -307,45 +326,6 @@ public void clickHospitalCard() throws Exception {
 //        }
     }*/
    
-//    @When("user enters hospital name from sheet {int} and row {int} and selects suggestions")
-//    public void enterHospitalName(int sheetIndex, int rowIndex) throws Exception {
-//        String hospitalName = ExcelReader.getCellDatas(ExcelReader.FILE_PATH2, sheetIndex, rowIndex, ExcelReader.HOSPITAL_COLUMN_INDEX);
-//        System.out.println("Hospital from Excel: " + hospitalName);
-//
-//        WebDriver driver = BaseSteps.getDriver();
-//        WebElement hospitalInput = driver.findElement(By.xpath("//*[@id=\"c-omni-container\"]/div/div[2]/div[1]/input"));
-//        hospitalInput.click();
-//        hospitalInput.clear();
-//        hospitalInput.sendKeys(hospitalName);
-//
-//        // Wait for suggestions
-//        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-//        List<WebElement> suggestions = wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(
-//            By.xpath("//*[@id=\"c-omni-container\"]/div/div[2]/div[2]/div[1]")
-//        ));
-//
-//        // Log suggestions for debugging
-//        System.out.println("Suggestions:");
-//        for (WebElement suggestion : suggestions) {
-//            System.out.println(suggestion.getText());
-//        }
-//
-//        // Click suggestion that contains hospitalName
-//        boolean found = false;
-//        for (WebElement suggestion : suggestions) {
-//            String suggestionText = suggestion.getText().trim();
-//            if (suggestionText.toLowerCase().contains(hospitalName.toLowerCase())) {
-//                suggestion.click();
-//                found = true;
-//                break;
-//            }
-//        }
-//
-//        if (!found) {
-//            throw new Exception("Hospital name '" + hospitalName + "' not found in suggestions.");
-//        }
-//    }
-   
    
 //   /////////////////////////////
    
@@ -360,8 +340,26 @@ public void clickHospitalCard() throws Exception {
    public void user_should_see_the_list_of_doctors_for_skin_whitening_in_bangalor() throws Exception {
 
 	   new HospitalListPage(BaseSteps.driver).verifyHospitalServiceDisplayed();
+	   Reports.captureScreenshot(BaseSteps.driver, "listofDoctors");
    }
 
+   
+ 
+   @And("user enter value and see error")
+   public void enterHospital() throws Exception {
+
+//       WebDriver driver = BaseSteps.getDriver();
+//       WebElement hospitalInput = driver.findElement(By.xpath("//*[@id=\"c-omni-container\"]/div/div[2]/div[1]/input"));
+//       hospitalInput.sendKeys(hospitalName);
+//       hospitalInput.sendKeys(Keys.ARROW_DOWN);
+//       hospitalInput.sendKeys(Keys.ENTER);
+       Reports.captureScreenshot(BaseSteps.driver, "Negative");
+       
+   }
+
+
+   
+  
 }
 
 

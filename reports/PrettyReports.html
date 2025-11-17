@@ -1,0 +1,18 @@
+
+@city
+Scenario Outline: Navigate from homepage and search City from name           # src/test/resources/com/features/PractoProfile.feature:88
+  ✔ Given user launches Practo application                                   # com.stepDefinitionTestNG.PractoProfile.launchApp()
+  ✔ When user clicks on Search for hospitals link on homepage                # com.stepDefinitionTestNG.PractoProfile.clickSearchForHospitals()
+  ✔ And user enters city name from sheet 0 and row 1 and selects suggestions # com.stepDefinitionTestNG.PractoProfile.enterCityNameFromExcel(int,int)
+  ✔ Then user verifies hospital list page is displayed                       # com.stepDefinitionTestNG.PractoProfile.verifyHospitalList()
+  ✔ When user selects a hospital from the list                               # com.stepDefinitionTestNG.PractoProfile.selectHospital()
+  ✔ Then user clicks on Book Hospital Visit                                  # com.stepDefinitionTestNG.PractoProfile.clickBookHospital()
+
+@city
+Scenario Outline: Navigate from homepage and search City from name           # src/test/resources/com/features/PractoProfile.feature:89
+  ✔ Given user launches Practo application                                   # com.stepDefinitionTestNG.PractoProfile.launchApp()
+  ✔ When user clicks on Search for hospitals link on homepage                # com.stepDefinitionTestNG.PractoProfile.clickSearchForHospitals()
+  ✔ And user enters city name from sheet 0 and row 2 and selects suggestions # com.stepDefinitionTestNG.PractoProfile.enterCityNameFromExcel(int,int)
+  ✔ Then user verifies hospital list page is displayed                       # com.stepDefinitionTestNG.PractoProfile.verifyHospitalList()
+  ✔ When user selects a hospital from the list                               # com.stepDefinitionTestNG.PractoProfile.selectHospital()
+  ✔ Then user clicks on Book Hospital Visit                                  # com.stepDefinitionTestNG.PractoProfile.clickBookHospital()

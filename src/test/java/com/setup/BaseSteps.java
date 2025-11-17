@@ -68,13 +68,20 @@ public class BaseSteps {
 	}
 
 //    @After
-    public static void tearDown() {
+//    public static void tearDown() {
 //    	Thread.sleep(1000);
 //    	if (driver != null) {
 //			driver.quit(); // ✅ Close browser once after all scenarios
 //		}
     
 //        driver.quit();
+//    }
+    public static void quitDriver() {
+        if (driver != null) {
+            driver.quit();
+            driver = null;
+            System.out.println("Browser closed successfully");
+        }
     }
 
 }

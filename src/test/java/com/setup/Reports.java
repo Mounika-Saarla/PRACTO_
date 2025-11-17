@@ -51,7 +51,8 @@ public class Reports {
 		}
 
 
-		return "./screenshots/" + safeFileName;
+//		return "./screenshots/" + safeFileName;
+		 return destFile.getAbsolutePath();
 	}
 
 

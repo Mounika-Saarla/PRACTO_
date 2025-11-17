@@ -10,11 +10,15 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.TimeoutException;
+
+import com.aventstack.extentreports.Status;
 import com.parameters.PropertyReader;
 import com.setup.BaseSteps;
+import com.setup.Reports;
 
 public class HomePage extends BaseSteps {
-	
+
 public HomePage(WebDriver driver) {
 		super(driver);
 		// TODO Auto-generated constructor stub

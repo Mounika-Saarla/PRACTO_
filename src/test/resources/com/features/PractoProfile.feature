@@ -52,8 +52,9 @@ Scenario: Navigate from homepage to hospital overview page
    Given user launches Practo application
     When user clicks on Search for hospitals link on homepage
     And user enters city name from Excel and selects suggestions 
-    Then user verifies hospital list page is displayed 
+    And user verifies hospital list page is displayed 
     Then user clicks hospital card so user see details
+
     
 
 #@ExcelData
@@ -125,9 +126,22 @@ Examples:
    And user clicks on Doctor for Skin Whitening in Bangalore
     Then user should see the list of doctors for skin whitening in Bangalore
 
+@negative
+Scenario Outline: Navigate from homepage and search hospital by name
+  Given user launches Practo application
+  When user clicks on Search for hospitals link on homepage
+  And user enters hospital name from sheet <sheet> and row <row> and selects suggestions
+  Then user verifies hospital list page is displayed
+  When user selects a hospital from the list
+  Then user enter value and see error
+  #Then user see suggestion Visit
+
+Examples:
+    | sheet | row |
+    |   1  |  0  |
 
 
-    
+  
 
 
 

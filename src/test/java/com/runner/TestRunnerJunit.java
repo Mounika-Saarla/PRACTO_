@@ -7,9 +7,10 @@ import io.cucumber.junit.CucumberOptions;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-	    features = "src/test/resources/com/features/Login.feature",
+	    features = "src/test/resources/com/features/PractoProfile.feature",
 	    glue = {"com.stepDefinitionTestNG"},
-        plugin = {"pretty:reports/PreetyReports.html", 
+	    		 tags="@valid",
+        plugin = {"pretty:reports/PrettyReports.html", 
         		"html:target/cucumber-report.html",
         		"html:reports/HTMLReports.html",
     			"json:reports/json-report.json",
@@ -17,7 +18,8 @@ import io.cucumber.junit.CucumberOptions;
 
 	)
  
-public class TestRunnerJunit {
+
+public class TestRunnerJunit{
 	
  
 	
