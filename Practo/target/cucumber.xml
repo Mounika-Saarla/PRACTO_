@@ -1,0 +1,528 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Cucumber" time="42.881" tests="10" skipped="0" failures="10" errors="0" timestamp="2025-11-17T13:38:10.680187700Z">
+<testcase classname="Lab Tests Navigation" name="Navigate to LabTest page and Book Now Cart" time="36.649">
+<failure type="org.openqa.selenium.StaleElementReferenceException" message="stale element reference: stale element not found
+  (Session info: chrome=142.0.7444.163)
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#stale-element-reference-exception
+Build info: version: '4.34.0', revision: '707dcb4246*'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '23.0.2'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [dc12755daacad52faa35e0edcf6c26a7, clickElement {id=f.B1108014E4D658298954855C6D17DE9B.d.59406F6A327113C67175AF7622D0CE6E.e.20}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 142.0.7444.163, chrome: {chromedriverVersion: 141.0.7390.78 (2b53b0e231fc..., userDataDir: C:\Users\bolled\AppData\Loc...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:61134}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:61134/devtoo..., se:cdpVersion: 142.0.7444.163, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Element: [[ChromeDriver: chrome on windows (dc12755daacad52faa35e0edcf6c26a7)] -&gt; link text: Lab Tests]
+Session ID: dc12755daacad52faa35e0edcf6c26a7">
+<![CDATA[org.openqa.selenium.StaleElementReferenceException: stale element reference: stale element not found
+  (Session info: chrome=142.0.7444.163)
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#stale-element-reference-exception
+Build info: version: '4.34.0', revision: '707dcb4246*'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '23.0.2'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [dc12755daacad52faa35e0edcf6c26a7, clickElement {id=f.B1108014E4D658298954855C6D17DE9B.d.59406F6A327113C67175AF7622D0CE6E.e.20}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 142.0.7444.163, chrome: {chromedriverVersion: 141.0.7390.78 (2b53b0e231fc..., userDataDir: C:\Users\bolled\AppData\Loc...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:61134}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:61134/devtoo..., se:cdpVersion: 142.0.7444.163, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Element: [[ChromeDriver: chrome on windows (dc12755daacad52faa35e0edcf6c26a7)] -> link text: Lab Tests]
+Session ID: dc12755daacad52faa35e0edcf6c26a7
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:501)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:485)
+	at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:138)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:215)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:544)
+	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:223)
+	at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:76)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:51)
+	at jdk.proxy2/jdk.proxy2.$Proxy29.click(Unknown Source)
+	at com.pages.HomePage.clickLabTests(HomePage.java:126)
+	at com.stepDefinitionTestNG.LabTest.user_clicks_on_lab_tests_link(LabTest.java:41)
+	at ✽.user clicks on Lab Tests link(file:///C:/training/java/SprintPracto/Practo/src/test/resources/com/feature/Profile.feature:67)
+]]>
+</failure>
+<system-out><![CDATA[
+Given user is on Practo Homepage............................................passed
+When user clicks on Lab Tests link..........................................failed
+Then Lab Tests page should be displayed.....................................skipped
+And select Bangalore city...................................................skipped
+When user clicks on Lipid Profile link......................................skipped
+Then verify Lipid Profile page URL..........................................skipped
+And click on Book Now.......................................................skipped
+Then verify  Add Patient Details............................................skipped
+]]></system-out>
+</testcase>
+<testcase classname="Lab Tests Navigation" name="Search for items in Lipid Profile page - #1.2" time="40.227">
+<failure type="org.openqa.selenium.ElementClickInterceptedException" message="element click intercepted: Element &lt;a class=&quot;nav-interact&quot; event=&quot;Nav:Interacted:Book diagnostic tests&quot; href=&quot;https://www.practo.com/tests&quot; title=&quot;tests&quot;&gt;...&lt;/a&gt; is not clickable at point (555, 34). Other element would receive the click: &lt;div class=&quot;ReactModal__Overlay ReactModal__Overlay--after-open&quot; style=&quot;position: fixed; inset: 0px; background-color: rgba(19, 19, 25, 0.7); z-index: 1002;&quot;&gt;...&lt;/div&gt;
+  (Session info: chrome=142.0.7444.163)
+Build info: version: '4.34.0', revision: '707dcb4246*'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '23.0.2'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [dc12755daacad52faa35e0edcf6c26a7, clickElement {id=f.B1108014E4D658298954855C6D17DE9B.d.B946248DF47822213E68841320D3BE0A.e.88}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 142.0.7444.163, chrome: {chromedriverVersion: 141.0.7390.78 (2b53b0e231fc..., userDataDir: C:\Users\bolled\AppData\Loc...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:61134}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:61134/devtoo..., se:cdpVersion: 142.0.7444.163, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Element: [[ChromeDriver: chrome on windows (dc12755daacad52faa35e0edcf6c26a7)] -&gt; link text: Lab Tests]
+Session ID: dc12755daacad52faa35e0edcf6c26a7">
+<![CDATA[org.openqa.selenium.ElementClickInterceptedException: element click intercepted: Element <a class="nav-interact" event="Nav:Interacted:Book diagnostic tests" href="https://www.practo.com/tests" title="tests">...</a> is not clickable at point (555, 34). Other element would receive the click: <div class="ReactModal__Overlay ReactModal__Overlay--after-open" style="position: fixed; inset: 0px; background-color: rgba(19, 19, 25, 0.7); z-index: 1002;">...</div>
+  (Session info: chrome=142.0.7444.163)
+Build info: version: '4.34.0', revision: '707dcb4246*'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '23.0.2'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [dc12755daacad52faa35e0edcf6c26a7, clickElement {id=f.B1108014E4D658298954855C6D17DE9B.d.B946248DF47822213E68841320D3BE0A.e.88}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 142.0.7444.163, chrome: {chromedriverVersion: 141.0.7390.78 (2b53b0e231fc..., userDataDir: C:\Users\bolled\AppData\Loc...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:61134}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:61134/devtoo..., se:cdpVersion: 142.0.7444.163, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Element: [[ChromeDriver: chrome on windows (dc12755daacad52faa35e0edcf6c26a7)] -> link text: Lab Tests]
+Session ID: dc12755daacad52faa35e0edcf6c26a7
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:501)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:485)
+	at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:138)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:215)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:544)
+	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:223)
+	at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:76)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:51)
+	at jdk.proxy2/jdk.proxy2.$Proxy29.click(Unknown Source)
+	at com.pages.HomePage.clickLabTests(HomePage.java:126)
+	at com.stepDefinitionTestNG.LabTest.user_clicks_on_lab_tests_link(LabTest.java:41)
+	at ✽.user clicks on Lab Tests link(file:///C:/training/java/SprintPracto/Practo/src/test/resources/com/feature/Profile.feature:27)
+]]>
+</failure>
+<system-out><![CDATA[
+Given user is on Practo Homepage............................................passed
+When user clicks on Lab Tests link..........................................failed
+Then Lab Tests page should be displayed.....................................skipped
+And select Bangalore city...................................................skipped
+When user clicks on Lipid Profile link......................................skipped
+Then verify Lipid Profile page URL..........................................skipped
+And click on search.........................................................skipped
+And Enter the Test from 0 and 2 in Lipid Profile page for search............skipped
+And click Entered Test in search............................................skipped
+Then verify Test results for SearchBox......................................skipped
+]]></system-out>
+</testcase>
+<testcase classname="Lab Tests Navigation" name="Search for items in Lipid Profile page - #1.3" time="36.863">
+<failure type="org.openqa.selenium.NoSuchElementException" message="no such element: Unable to locate element: {&quot;method&quot;:&quot;link text&quot;,&quot;selector&quot;:&quot;Lab Tests&quot;}
+  (Session info: chrome=142.0.7444.163)
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Build info: version: '4.34.0', revision: '707dcb4246*'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '23.0.2'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [dc12755daacad52faa35e0edcf6c26a7, findElement {using=link text, value=Lab Tests}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 142.0.7444.163, chrome: {chromedriverVersion: 141.0.7390.78 (2b53b0e231fc..., userDataDir: C:\Users\bolled\AppData\Loc...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:61134}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:61134/devtoo..., se:cdpVersion: 142.0.7444.163, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: dc12755daacad52faa35e0edcf6c26a7">
+<![CDATA[org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"link text","selector":"Lab Tests"}
+  (Session info: chrome=142.0.7444.163)
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Build info: version: '4.34.0', revision: '707dcb4246*'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '23.0.2'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [dc12755daacad52faa35e0edcf6c26a7, findElement {using=link text, value=Lab Tests}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 142.0.7444.163, chrome: {chromedriverVersion: 141.0.7390.78 (2b53b0e231fc..., userDataDir: C:\Users\bolled\AppData\Loc...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:61134}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:61134/devtoo..., se:cdpVersion: 142.0.7444.163, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: dc12755daacad52faa35e0edcf6c26a7
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:501)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:485)
+	at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:138)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:215)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:544)
+	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:165)
+	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:367)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:361)
+	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:68)
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
+	at jdk.proxy2/jdk.proxy2.$Proxy29.click(Unknown Source)
+	at com.pages.HomePage.clickLabTests(HomePage.java:126)
+	at com.stepDefinitionTestNG.LabTest.user_clicks_on_lab_tests_link(LabTest.java:41)
+	at ✽.user clicks on Lab Tests link(file:///C:/training/java/SprintPracto/Practo/src/test/resources/com/feature/Profile.feature:46)
+]]>
+</failure>
+<system-out><![CDATA[
+Given user is on Practo Homepage............................................passed
+When user clicks on Lab Tests link..........................................failed
+Then Lab Tests page should be displayed.....................................skipped
+And select Bangalore city...................................................skipped
+When user clicks on Lipid Profile link......................................skipped
+Then verify Lipid Profile page URL..........................................skipped
+And click on search City....................................................skipped
+Then click on select a City for search......................................skipped
+And Enter the City from 1 and 3 in Lipid Profile page for search............skipped
+And click Entered City in search............................................skipped
+Then verify City results for SearchBox......................................skipped
+]]></system-out>
+</testcase>
+<testcase classname="Lab Tests Navigation" name="Search for items in Lipid Profile page - #1.1" time="38.055">
+<failure type="org.openqa.selenium.ElementClickInterceptedException" message="element click intercepted: Element &lt;a class=&quot;nav-interact&quot; event=&quot;Nav:Interacted:Book diagnostic tests&quot; href=&quot;https://www.practo.com/tests&quot; title=&quot;tests&quot;&gt;...&lt;/a&gt; is not clickable at point (555, 34). Other element would receive the click: &lt;div class=&quot;ReactModal__Overlay ReactModal__Overlay--after-open&quot; style=&quot;position: fixed; inset: 0px; background-color: rgba(19, 19, 25, 0.7); z-index: 1002;&quot;&gt;...&lt;/div&gt;
+  (Session info: chrome=142.0.7444.163)
+Build info: version: '4.34.0', revision: '707dcb4246*'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '23.0.2'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [dc12755daacad52faa35e0edcf6c26a7, clickElement {id=f.B1108014E4D658298954855C6D17DE9B.d.B946248DF47822213E68841320D3BE0A.e.88}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 142.0.7444.163, chrome: {chromedriverVersion: 141.0.7390.78 (2b53b0e231fc..., userDataDir: C:\Users\bolled\AppData\Loc...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:61134}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:61134/devtoo..., se:cdpVersion: 142.0.7444.163, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Element: [[ChromeDriver: chrome on windows (dc12755daacad52faa35e0edcf6c26a7)] -&gt; link text: Lab Tests]
+Session ID: dc12755daacad52faa35e0edcf6c26a7">
+<![CDATA[org.openqa.selenium.ElementClickInterceptedException: element click intercepted: Element <a class="nav-interact" event="Nav:Interacted:Book diagnostic tests" href="https://www.practo.com/tests" title="tests">...</a> is not clickable at point (555, 34). Other element would receive the click: <div class="ReactModal__Overlay ReactModal__Overlay--after-open" style="position: fixed; inset: 0px; background-color: rgba(19, 19, 25, 0.7); z-index: 1002;">...</div>
+  (Session info: chrome=142.0.7444.163)
+Build info: version: '4.34.0', revision: '707dcb4246*'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '23.0.2'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [dc12755daacad52faa35e0edcf6c26a7, clickElement {id=f.B1108014E4D658298954855C6D17DE9B.d.B946248DF47822213E68841320D3BE0A.e.88}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 142.0.7444.163, chrome: {chromedriverVersion: 141.0.7390.78 (2b53b0e231fc..., userDataDir: C:\Users\bolled\AppData\Loc...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:61134}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:61134/devtoo..., se:cdpVersion: 142.0.7444.163, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Element: [[ChromeDriver: chrome on windows (dc12755daacad52faa35e0edcf6c26a7)] -> link text: Lab Tests]
+Session ID: dc12755daacad52faa35e0edcf6c26a7
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:501)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:485)
+	at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:138)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:215)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:544)
+	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:223)
+	at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:76)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:51)
+	at jdk.proxy2/jdk.proxy2.$Proxy29.click(Unknown Source)
+	at com.pages.HomePage.clickLabTests(HomePage.java:126)
+	at com.stepDefinitionTestNG.LabTest.user_clicks_on_lab_tests_link(LabTest.java:41)
+	at ✽.user clicks on Lab Tests link(file:///C:/training/java/SprintPracto/Practo/src/test/resources/com/feature/Profile.feature:46)
+]]>
+</failure>
+<system-out><![CDATA[
+Given user is on Practo Homepage............................................passed
+When user clicks on Lab Tests link..........................................failed
+Then Lab Tests page should be displayed.....................................skipped
+And select Bangalore city...................................................skipped
+When user clicks on Lipid Profile link......................................skipped
+Then verify Lipid Profile page URL..........................................skipped
+And click on search City....................................................skipped
+Then click on select a City for search......................................skipped
+And Enter the City from 1 and 1 in Lipid Profile page for search............skipped
+And click Entered City in search............................................skipped
+Then verify City results for SearchBox......................................skipped
+]]></system-out>
+</testcase>
+<testcase classname="Lab Tests Navigation" name="Navigate to Lab Tests page" time="37.34">
+<failure type="org.openqa.selenium.StaleElementReferenceException" message="stale element reference: stale element not found
+  (Session info: chrome=142.0.7444.163)
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#stale-element-reference-exception
+Build info: version: '4.34.0', revision: '707dcb4246*'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '23.0.2'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [dc12755daacad52faa35e0edcf6c26a7, clickElement {id=f.B1108014E4D658298954855C6D17DE9B.d.59406F6A327113C67175AF7622D0CE6E.e.20}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 142.0.7444.163, chrome: {chromedriverVersion: 141.0.7390.78 (2b53b0e231fc..., userDataDir: C:\Users\bolled\AppData\Loc...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:61134}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:61134/devtoo..., se:cdpVersion: 142.0.7444.163, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Element: [[ChromeDriver: chrome on windows (dc12755daacad52faa35e0edcf6c26a7)] -&gt; link text: Lab Tests]
+Session ID: dc12755daacad52faa35e0edcf6c26a7">
+<![CDATA[org.openqa.selenium.StaleElementReferenceException: stale element reference: stale element not found
+  (Session info: chrome=142.0.7444.163)
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#stale-element-reference-exception
+Build info: version: '4.34.0', revision: '707dcb4246*'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '23.0.2'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [dc12755daacad52faa35e0edcf6c26a7, clickElement {id=f.B1108014E4D658298954855C6D17DE9B.d.59406F6A327113C67175AF7622D0CE6E.e.20}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 142.0.7444.163, chrome: {chromedriverVersion: 141.0.7390.78 (2b53b0e231fc..., userDataDir: C:\Users\bolled\AppData\Loc...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:61134}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:61134/devtoo..., se:cdpVersion: 142.0.7444.163, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Element: [[ChromeDriver: chrome on windows (dc12755daacad52faa35e0edcf6c26a7)] -> link text: Lab Tests]
+Session ID: dc12755daacad52faa35e0edcf6c26a7
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:501)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:485)
+	at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:138)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:215)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:544)
+	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:223)
+	at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:76)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:51)
+	at jdk.proxy2/jdk.proxy2.$Proxy29.click(Unknown Source)
+	at com.pages.HomePage.clickLabTests(HomePage.java:126)
+	at com.stepDefinitionTestNG.LabTest.user_clicks_on_lab_tests_link(LabTest.java:41)
+	at ✽.user clicks on Lab Tests link(file:///C:/training/java/SprintPracto/Practo/src/test/resources/com/feature/Profile.feature:7)
+]]>
+</failure>
+<system-out><![CDATA[
+Given user is on Practo Homepage............................................passed
+When user clicks on Lab Tests link..........................................failed
+Then Lab Tests page should be displayed.....................................skipped
+And select Bangalore city...................................................skipped
+When user clicks on Lipid Profile link......................................skipped
+Then verify Lipid Profile page URL..........................................skipped
+]]></system-out>
+</testcase>
+<testcase classname="Lab Tests Navigation" name="Search for items in Lipid Profile page - #1.2" time="36.924">
+<failure type="org.openqa.selenium.StaleElementReferenceException" message="stale element reference: stale element not found
+  (Session info: chrome=142.0.7444.163)
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#stale-element-reference-exception
+Build info: version: '4.34.0', revision: '707dcb4246*'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '23.0.2'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [dc12755daacad52faa35e0edcf6c26a7, clickElement {id=f.B1108014E4D658298954855C6D17DE9B.d.59406F6A327113C67175AF7622D0CE6E.e.20}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 142.0.7444.163, chrome: {chromedriverVersion: 141.0.7390.78 (2b53b0e231fc..., userDataDir: C:\Users\bolled\AppData\Loc...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:61134}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:61134/devtoo..., se:cdpVersion: 142.0.7444.163, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Element: [[ChromeDriver: chrome on windows (dc12755daacad52faa35e0edcf6c26a7)] -&gt; link text: Lab Tests]
+Session ID: dc12755daacad52faa35e0edcf6c26a7">
+<![CDATA[org.openqa.selenium.StaleElementReferenceException: stale element reference: stale element not found
+  (Session info: chrome=142.0.7444.163)
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#stale-element-reference-exception
+Build info: version: '4.34.0', revision: '707dcb4246*'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '23.0.2'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [dc12755daacad52faa35e0edcf6c26a7, clickElement {id=f.B1108014E4D658298954855C6D17DE9B.d.59406F6A327113C67175AF7622D0CE6E.e.20}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 142.0.7444.163, chrome: {chromedriverVersion: 141.0.7390.78 (2b53b0e231fc..., userDataDir: C:\Users\bolled\AppData\Loc...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:61134}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:61134/devtoo..., se:cdpVersion: 142.0.7444.163, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Element: [[ChromeDriver: chrome on windows (dc12755daacad52faa35e0edcf6c26a7)] -> link text: Lab Tests]
+Session ID: dc12755daacad52faa35e0edcf6c26a7
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:501)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:485)
+	at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:138)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:215)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:544)
+	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:223)
+	at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:76)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:51)
+	at jdk.proxy2/jdk.proxy2.$Proxy29.click(Unknown Source)
+	at com.pages.HomePage.clickLabTests(HomePage.java:126)
+	at com.stepDefinitionTestNG.LabTest.user_clicks_on_lab_tests_link(LabTest.java:41)
+	at ✽.user clicks on Lab Tests link(file:///C:/training/java/SprintPracto/Practo/src/test/resources/com/feature/Profile.feature:46)
+]]>
+</failure>
+<system-out><![CDATA[
+Given user is on Practo Homepage............................................passed
+When user clicks on Lab Tests link..........................................failed
+Then Lab Tests page should be displayed.....................................skipped
+And select Bangalore city...................................................skipped
+When user clicks on Lipid Profile link......................................skipped
+Then verify Lipid Profile page URL..........................................skipped
+And click on search City....................................................skipped
+Then click on select a City for search......................................skipped
+And Enter the City from 1 and 2 in Lipid Profile page for search............skipped
+And click Entered City in search............................................skipped
+Then verify City results for SearchBox......................................skipped
+]]></system-out>
+</testcase>
+<testcase classname="Lab Tests Navigation" name="Navigate to Lab Tests page and add Lipid Profile to cart" time="36.924">
+<failure type="org.openqa.selenium.StaleElementReferenceException" message="stale element reference: stale element not found
+  (Session info: chrome=142.0.7444.163)
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#stale-element-reference-exception
+Build info: version: '4.34.0', revision: '707dcb4246*'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '23.0.2'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [dc12755daacad52faa35e0edcf6c26a7, clickElement {id=f.B1108014E4D658298954855C6D17DE9B.d.59406F6A327113C67175AF7622D0CE6E.e.20}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 142.0.7444.163, chrome: {chromedriverVersion: 141.0.7390.78 (2b53b0e231fc..., userDataDir: C:\Users\bolled\AppData\Loc...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:61134}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:61134/devtoo..., se:cdpVersion: 142.0.7444.163, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Element: [[ChromeDriver: chrome on windows (dc12755daacad52faa35e0edcf6c26a7)] -&gt; link text: Lab Tests]
+Session ID: dc12755daacad52faa35e0edcf6c26a7">
+<![CDATA[org.openqa.selenium.StaleElementReferenceException: stale element reference: stale element not found
+  (Session info: chrome=142.0.7444.163)
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#stale-element-reference-exception
+Build info: version: '4.34.0', revision: '707dcb4246*'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '23.0.2'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [dc12755daacad52faa35e0edcf6c26a7, clickElement {id=f.B1108014E4D658298954855C6D17DE9B.d.59406F6A327113C67175AF7622D0CE6E.e.20}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 142.0.7444.163, chrome: {chromedriverVersion: 141.0.7390.78 (2b53b0e231fc..., userDataDir: C:\Users\bolled\AppData\Loc...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:61134}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:61134/devtoo..., se:cdpVersion: 142.0.7444.163, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Element: [[ChromeDriver: chrome on windows (dc12755daacad52faa35e0edcf6c26a7)] -> link text: Lab Tests]
+Session ID: dc12755daacad52faa35e0edcf6c26a7
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:501)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:485)
+	at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:138)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:215)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:544)
+	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:223)
+	at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:76)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:51)
+	at jdk.proxy2/jdk.proxy2.$Proxy29.click(Unknown Source)
+	at com.pages.HomePage.clickLabTests(HomePage.java:126)
+	at com.stepDefinitionTestNG.LabTest.user_clicks_on_lab_tests_link(LabTest.java:41)
+	at ✽.user clicks on Lab Tests link(file:///C:/training/java/SprintPracto/Practo/src/test/resources/com/feature/Profile.feature:16)
+]]>
+</failure>
+<system-out><![CDATA[
+Given user is on Practo Homepage............................................passed
+When user clicks on Lab Tests link..........................................failed
+Then Lab Tests page should be displayed.....................................skipped
+And select Bangalore city...................................................skipped
+When user clicks on Lipid Profile link......................................skipped
+Then verify Lipid Profile page URL..........................................skipped
+And click on Add to Cart button.............................................skipped
+Then verify item is added to cart...........................................skipped
+]]></system-out>
+</testcase>
+<testcase classname="Lab Tests Navigation" name="Navigate to Lab Tests page and verify Coupon" time="41.956">
+<failure type="org.openqa.selenium.NoSuchSessionException" message="Session ID is null. Using WebDriver after calling quit()?
+Build info: version: '4.34.0', revision: '707dcb4246*'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '23.0.2'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [null, findElement {using=xpath, value=(//div[text()='Bangalore'])[1]}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 142.0.7444.163, chrome: {chromedriverVersion: 141.0.7390.78 (2b53b0e231fc..., userDataDir: C:\Users\bolled\AppData\Loc...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:61134}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:61134/devtoo..., se:cdpVersion: 142.0.7444.163, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}">
+<![CDATA[org.openqa.selenium.NoSuchSessionException: Session ID is null. Using WebDriver after calling quit()?
+Build info: version: '4.34.0', revision: '707dcb4246*'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '23.0.2'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [null, findElement {using=xpath, value=(//div[text()='Bangalore'])[1]}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 142.0.7444.163, chrome: {chromedriverVersion: 141.0.7390.78 (2b53b0e231fc..., userDataDir: C:\Users\bolled\AppData\Loc...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:61134}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:61134/devtoo..., se:cdpVersion: 142.0.7444.163, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:176)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:544)
+	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:165)
+	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:367)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:361)
+	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:68)
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
+	at jdk.proxy2/jdk.proxy2.$Proxy29.click(Unknown Source)
+	at com.pages.HomePage.selectCity(HomePage.java:133)
+	at com.stepDefinitionTestNG.LabTest.select_bangalore_city(LabTest.java:51)
+	at ✽.select Bangalore city(file:///C:/training/java/SprintPracto/Practo/src/test/resources/com/feature/Profile.feature:80)
+]]>
+</failure>
+<system-out><![CDATA[
+Given user is on Practo Homepage............................................passed
+When user clicks on Lab Tests link..........................................passed
+Then Lab Tests page should be displayed.....................................passed
+And select Bangalore city...................................................failed
+When user clicks on Lipid Profile link......................................skipped
+Then verify Lipid Profile page URL..........................................skipped
+And click on Book Now.......................................................skipped
+And click on Enter Patient Name.............................................skipped
+And Enter Patient Name......................................................skipped
+Then verify the Patient Name................................................skipped
+]]></system-out>
+</testcase>
+<testcase classname="Lab Tests Navigation" name="Search for items in Lipid Profile page - #1.3" time="39.142">
+<failure type="org.openqa.selenium.ElementClickInterceptedException" message="element click intercepted: Element &lt;a class=&quot;nav-interact&quot; event=&quot;Nav:Interacted:Book diagnostic tests&quot; href=&quot;https://www.practo.com/tests&quot; title=&quot;tests&quot;&gt;...&lt;/a&gt; is not clickable at point (555, 34). Other element would receive the click: &lt;div class=&quot;ReactModal__Overlay ReactModal__Overlay--after-open&quot; style=&quot;position: fixed; inset: 0px; background-color: rgba(19, 19, 25, 0.7); z-index: 1002;&quot;&gt;...&lt;/div&gt;
+  (Session info: chrome=142.0.7444.163)
+Build info: version: '4.34.0', revision: '707dcb4246*'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '23.0.2'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [dc12755daacad52faa35e0edcf6c26a7, clickElement {id=f.B1108014E4D658298954855C6D17DE9B.d.B946248DF47822213E68841320D3BE0A.e.88}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 142.0.7444.163, chrome: {chromedriverVersion: 141.0.7390.78 (2b53b0e231fc..., userDataDir: C:\Users\bolled\AppData\Loc...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:61134}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:61134/devtoo..., se:cdpVersion: 142.0.7444.163, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Element: [[ChromeDriver: chrome on windows (dc12755daacad52faa35e0edcf6c26a7)] -&gt; link text: Lab Tests]
+Session ID: dc12755daacad52faa35e0edcf6c26a7">
+<![CDATA[org.openqa.selenium.ElementClickInterceptedException: element click intercepted: Element <a class="nav-interact" event="Nav:Interacted:Book diagnostic tests" href="https://www.practo.com/tests" title="tests">...</a> is not clickable at point (555, 34). Other element would receive the click: <div class="ReactModal__Overlay ReactModal__Overlay--after-open" style="position: fixed; inset: 0px; background-color: rgba(19, 19, 25, 0.7); z-index: 1002;">...</div>
+  (Session info: chrome=142.0.7444.163)
+Build info: version: '4.34.0', revision: '707dcb4246*'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '23.0.2'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [dc12755daacad52faa35e0edcf6c26a7, clickElement {id=f.B1108014E4D658298954855C6D17DE9B.d.B946248DF47822213E68841320D3BE0A.e.88}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 142.0.7444.163, chrome: {chromedriverVersion: 141.0.7390.78 (2b53b0e231fc..., userDataDir: C:\Users\bolled\AppData\Loc...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:61134}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:61134/devtoo..., se:cdpVersion: 142.0.7444.163, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Element: [[ChromeDriver: chrome on windows (dc12755daacad52faa35e0edcf6c26a7)] -> link text: Lab Tests]
+Session ID: dc12755daacad52faa35e0edcf6c26a7
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:501)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:485)
+	at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:138)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:215)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:544)
+	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:223)
+	at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:76)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:51)
+	at jdk.proxy2/jdk.proxy2.$Proxy29.click(Unknown Source)
+	at com.pages.HomePage.clickLabTests(HomePage.java:126)
+	at com.stepDefinitionTestNG.LabTest.user_clicks_on_lab_tests_link(LabTest.java:41)
+	at ✽.user clicks on Lab Tests link(file:///C:/training/java/SprintPracto/Practo/src/test/resources/com/feature/Profile.feature:27)
+]]>
+</failure>
+<system-out><![CDATA[
+Given user is on Practo Homepage............................................passed
+When user clicks on Lab Tests link..........................................failed
+Then Lab Tests page should be displayed.....................................skipped
+And select Bangalore city...................................................skipped
+When user clicks on Lipid Profile link......................................skipped
+Then verify Lipid Profile page URL..........................................skipped
+And click on search.........................................................skipped
+And Enter the Test from 0 and 3 in Lipid Profile page for search............skipped
+And click Entered Test in search............................................skipped
+Then verify Test results for SearchBox......................................skipped
+]]></system-out>
+</testcase>
+<testcase classname="Lab Tests Navigation" name="Search for items in Lipid Profile page - #1.1" time="36.65">
+<failure type="org.openqa.selenium.StaleElementReferenceException" message="stale element reference: stale element not found
+  (Session info: chrome=142.0.7444.163)
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#stale-element-reference-exception
+Build info: version: '4.34.0', revision: '707dcb4246*'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '23.0.2'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [dc12755daacad52faa35e0edcf6c26a7, clickElement {id=f.B1108014E4D658298954855C6D17DE9B.d.59406F6A327113C67175AF7622D0CE6E.e.20}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 142.0.7444.163, chrome: {chromedriverVersion: 141.0.7390.78 (2b53b0e231fc..., userDataDir: C:\Users\bolled\AppData\Loc...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:61134}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:61134/devtoo..., se:cdpVersion: 142.0.7444.163, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Element: [[ChromeDriver: chrome on windows (dc12755daacad52faa35e0edcf6c26a7)] -&gt; link text: Lab Tests]
+Session ID: dc12755daacad52faa35e0edcf6c26a7">
+<![CDATA[org.openqa.selenium.StaleElementReferenceException: stale element reference: stale element not found
+  (Session info: chrome=142.0.7444.163)
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#stale-element-reference-exception
+Build info: version: '4.34.0', revision: '707dcb4246*'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '23.0.2'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [dc12755daacad52faa35e0edcf6c26a7, clickElement {id=f.B1108014E4D658298954855C6D17DE9B.d.59406F6A327113C67175AF7622D0CE6E.e.20}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 142.0.7444.163, chrome: {chromedriverVersion: 141.0.7390.78 (2b53b0e231fc..., userDataDir: C:\Users\bolled\AppData\Loc...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:61134}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:61134/devtoo..., se:cdpVersion: 142.0.7444.163, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Element: [[ChromeDriver: chrome on windows (dc12755daacad52faa35e0edcf6c26a7)] -> link text: Lab Tests]
+Session ID: dc12755daacad52faa35e0edcf6c26a7
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:501)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:485)
+	at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:138)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:215)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:544)
+	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:223)
+	at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:76)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:51)
+	at jdk.proxy2/jdk.proxy2.$Proxy29.click(Unknown Source)
+	at com.pages.HomePage.clickLabTests(HomePage.java:126)
+	at com.stepDefinitionTestNG.LabTest.user_clicks_on_lab_tests_link(LabTest.java:41)
+	at ✽.user clicks on Lab Tests link(file:///C:/training/java/SprintPracto/Practo/src/test/resources/com/feature/Profile.feature:27)
+]]>
+</failure>
+<system-out><![CDATA[
+Given user is on Practo Homepage............................................passed
+When user clicks on Lab Tests link..........................................failed
+Then Lab Tests page should be displayed.....................................skipped
+And select Bangalore city...................................................skipped
+When user clicks on Lipid Profile link......................................skipped
+Then verify Lipid Profile page URL..........................................skipped
+And click on search.........................................................skipped
+And Enter the Test from 0 and 1 in Lipid Profile page for search............skipped
+And click Entered Test in search............................................skipped
+Then verify Test results for SearchBox......................................skipped
+]]></system-out>
+</testcase>
+</testsuite>
