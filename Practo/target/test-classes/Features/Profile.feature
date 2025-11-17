@@ -1,11 +1,73 @@
-Feature: Lab Tests Navigation
-  Verify that user can book a diagnostic test from Top Booked Diagnostic Tests section
-  Scenario: Navigate and book a Top Booked Diagnostic Test   
-    Given user is on Practo Homepage
-    When user clicks on Lab Tests link
-    And Lab Tests page should be displayed
-    Then user clicks on TopBooked Diagnosttic Tests  link
-    And TopBooked Diagnosttic Tests page should be displayed correctly
+Feature: Home Page Footer Navigation
+This feature deals with the Search for clinics
+#passed
+@outline1
+Scenario Outline: Validate Footer Contains Search for clinics click
+    Given User is on the Home page
+    And User scrolls to the footer section
+    When The footer should contain a visible link labeled Search for clinics
+    And User clicks on the Search for clinics link
+    And User applies a location filter from sheet <sheet> at RowIndex <RowIndex>
+    Then Filtered clinic results should be displayed
+
+    Examples:
+      | sheet | RowIndex |
+      | 0     | 1        |
+      | 0     | 2        |
+     
+     
+ #passed 
+@firstclinic
+Scenario:navigate to required clinic details
+Given  user launch practo website
+When user clicks the search for clinics link
+And user clicks on view profile of first clinic
+And clinic details shouls be displayed
+Then user select the doctor in that clinic
+
+
+#passed
+@clinicinGopalapuram
+  Scenario: Navigate to doctor details in Gopalapuram
+   Given User is on the Home page
+    And User scrolls to the footer section
+    When The footer should contain a visible link labeled Search for clinics
+    And User clicks on the Search for clinics link
+    And User clicks on Clinics in Gopalapuram link
+    Then User click on Call Clinic
     
-    
-    
+#passed
+@Anesthesiologists
+Scenario:Navigate to Anesthesiologists available in chennai
+Given  user launch practo website
+When user clicks the search for clinics link
+And user clicks on Qure Ortho Clinic link
+Then Qure Ortho Clinic link displayed
+
+#passed
+@outline2
+Scenario Outline: Validate Footer Contains Search for clinics click
+    Given User is on the Home page
+    And User scrolls to the footer section
+    When The footer should contain a visible link labeled Search for clinics
+    And User clicks on the Search for clinics link
+    And User applies a speciality filter from sheet <sheet> at RowIndex <RowIndex>
+    Then Filtered clinic results should be displayed
+
+    Examples:
+      | sheet | RowIndex |
+      | 0     | 1        |
+      | 0     | 2        |
+#passed
+@negative
+Scenario Outline: Validate Footer Contains Search for clinics click
+    Given User is on the Home page
+    And User scrolls to the footer section
+    When The footer should contain a visible link labeled Search for clinics
+    And User clicks on the Search for clinics link
+    And User applies a location1 filter from sheet <sheet> at RowIndex <RowIndex>
+    Then Filtered clinic results should be displayed
+
+    Examples:
+      | sheet | RowIndex |
+      | 1     | 1        |
