@@ -1,22 +1,302 @@
 package com.pages;
- 
+
+import java.io.IOException;
+import java.time.Duration;
+import java.util.Map;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
- 
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.Status;
+import com.parameters.ExcelReader;
+import com.setup.Reports;
+
 public class HomePage {
-    WebDriver driver;
- 
-    @FindBy(linkText = "Lab Tests") // Update locator if needed
-    private WebElement labTestsLink;
- 
-    public HomePage(WebDriver driver) {
-        this.driver = driver;
-        PageFactory.initElements(driver, this);
-    }
- 
-    public void clickLabTestsLink() {
-        labTestsLink.click();
-    }
+	private WebDriver driver;
+	private WebDriverWait wait;
+	private ExtentTest test;
+
+	@FindBy(linkText = "Lab Tests")
+	private WebElement labTestsLink;
+
+	@FindBy(xpath = "//span[@class='practo-logo']")
+	private WebElement practo;
+
+	// Locator for current city (header)
+	@FindBy(xpath = "//span[contains(@class,'u-text--bold')]")
+	private WebElement currentCity;
+
+	@FindBy(xpath = "//a[text()='Lipid Profile']")
+	private WebElement lipidProfileLink;
+
+	@FindBy(xpath = "(//div[text()='Bangalore'])[1]")
+	private WebElement currentCityElement;
+
+	@FindBy(xpath = "//span[text()='Your Cart']")
+	private WebElement addToCartButton;
+
+	@FindBy(xpath = "//span[contains(text(),'1 item')]")
+	private WebElement cartItemCount;
+
+	@FindBy(xpath = "//span[text()='Your Cart']")
+	private WebElement goToCartButton;
+
+
+	@FindBy(xpath = "//input[@placeholder='Search for Tests, Packages and Profiles']")
+	private WebElement searchBox;
+
+	//Ts_03
+
+	//@FindBy(xpath = "//input[@class='c-search__input']")
+	@FindBy(css = "#omniSearch")
+	private WebElement searchForTests;
+
+	@FindBy(xpath = "//span[text()='Your Cart']")
+	private WebElement testVerify;
+
+	//Ts_04
+
+
+	@FindBy(xpath = "//input[@class='c-search__input--location']")
+	private WebElement searchForCity;
+
+	@FindBy(xpath = "//input[@class='c-search__input citylist']")
+	private WebElement selectACity;
+
+	@FindBy(xpath = "//span[text()='Your Cart']")
+	private WebElement verifyCity;
+
+	@FindBy(xpath = "(//div[text()='Hyderabad'])[1]")
+	private WebElement selectHyderabad;
+
+	@FindBy(xpath = "(//div[text()='Delhi'])[1]")
+	private WebElement selectDelhi;
+
+	@FindBy(xpath = "(//div[text()='Chennai'])[1]")
+	private WebElement selectChennai;
+
+	@FindBy(xpath = "//h1[text()='Lipid Profile']")
+	private WebElement verifyFinalPage;
+
+	//Ts_05
+	@FindBy(xpath = "//div[text()='Book Now']")
+	private WebElement selectBookNow;
+
+	@FindBy(xpath = "//div[text()='Add patient details']")
+	private WebElement verifyAddPatient;
+
+	//Ts_06
+	@FindBy(xpath = "//input[@placeholder='John Doe']")
+	private WebElement enterPName;
+	
+	@FindBy(xpath = "//div[text()='Enter valid name']")
+	private WebElement verifyPName;
+
+	public HomePage(WebDriver driver, ExtentTest test) {
+		this.driver = driver;
+		this.test= test;
+		this.wait = new WebDriverWait(driver, Duration.ofSeconds(15)); // Initialize wait
+		PageFactory.initElements(driver, this);
+	}
+
+	public boolean homePage1() {
+		boolean actResult = true;
+		try {
+		wait.until(ExpectedConditions.visibilityOf(practo));
+		Reports.generateReport(driver, test, Status.PASS, "Home page is opened");
+		}catch(TimeoutException te){
+			actResult = false;
+			Reports.generateReport(driver, test, Status.FAIL, "Home Page is not opened");
+		}
+		return actResult;
+	}
+
+	public void clickLabTests() {
+		wait.until(ExpectedConditions.elementToBeClickable(labTestsLink));
+		wait.until(ExpectedConditions.visibilityOf(labTestsLink));
+		labTestsLink.click();
+	}
+
+
+	public void selectCity(String cityName) throws InterruptedException {
+		Thread.sleep(5000);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		currentCityElement.click();
+
+	}
+
+	public boolean clickLipidProfile() throws InterruptedException {
+		boolean actResult = true;
+		try {
+		Thread.sleep(5000);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		lipidProfileLink.click();
+		Reports.generateReport(driver, test, Status.PASS, "Lipid Profile  is clicked");
+		}catch(TimeoutException te){
+			actResult = false;
+			Reports.generateReport(driver, test, Status.FAIL, "Lipid Profile is not clicked");
+		}
+		return actResult;
+	}
+
+	//Ts_02
+	public void clickAddToCart() {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		wait.until(ExpectedConditions.visibilityOf(addToCartButton));
+		wait.until(ExpectedConditions.elementToBeClickable(addToCartButton)).click();
+	}
+
+	public boolean isItemAddedToCart() throws InterruptedException {
+		boolean actResult = true;
+		try {
+		Thread.sleep(5000);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+		wait.until(ExpectedConditions.visibilityOf(goToCartButton));
+		 wait.until(ExpectedConditions.visibilityOf(goToCartButton)).isDisplayed();
+		 Reports.generateReport(driver, test, Status.PASS, "Item is added to cart");
+		}catch(TimeoutException te){
+			actResult = false;
+			Reports.generateReport(driver, test, Status.FAIL, "Item is added to cart");
+		}
+		return actResult;
+	}
+
+
+	//Ts_03
+	public void clickTests() throws InterruptedException {
+		Thread.sleep(5000);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		searchForTests.click();
+	}
+
+	public void enterTest(int sheet , int row ) throws IOException   {
+		String[] testData = ExcelReader.getRowData(sheet, row); 
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		((JavascriptExecutor)driver).executeScript("arguments[0].click();", searchForTests);
+		searchForTests.sendKeys(testData);
+		//System.out.println("DEBUG: Sent to search box -> " + TestName);
+	}
+	public boolean verifyTest() throws InterruptedException {
+		boolean actResult = true;
+		try {
+		Thread.sleep(5000);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+		wait.until(ExpectedConditions.visibilityOf(testVerify));
+		wait.until(ExpectedConditions.visibilityOf(testVerify)).isDisplayed();
+		 Reports.generateReport(driver, test, Status.PASS, "Test is Verified");
+		}catch(TimeoutException te){
+			actResult = false;
+			Reports.generateReport(driver, test, Status.FAIL, "Test is  not Verified");
+		}
+		return actResult;
+	}
+
+	//Ts_04
+	public void searchCity() throws InterruptedException {
+		Thread.sleep(5000);
+		wait.until(ExpectedConditions.visibilityOf(searchForCity));
+		searchForCity.click();
+	}
+
+	public void selectACity() throws InterruptedException {
+		Thread.sleep(5000);
+		wait.until(ExpectedConditions.visibilityOf(selectACity));
+		selectACity.click();
+	}
+
+	public void enterCityName(int sheet, int row) throws IOException {
+		String[] cityData = ExcelReader.getRowData(sheet, row); // Assuming ExcelReader returns String[]
+		String cityName = cityData[0]; // First column contains city name
+
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", selectACity);
+		selectACity.clear();
+		selectACity.sendKeys(cityName);
+
+		// Wait for dropdown and click matching city
+		if (cityName.equalsIgnoreCase("Hyderabad")) {
+			wait.until(ExpectedConditions.elementToBeClickable(selectHyderabad)).click();
+		} else if (cityName.equalsIgnoreCase("Delhi")) {
+			wait.until(ExpectedConditions.elementToBeClickable(selectDelhi)).click();
+		} else if (cityName.equalsIgnoreCase("Chennai")) {
+			wait.until(ExpectedConditions.elementToBeClickable(selectChennai)).click();
+		}
+	}
+
+	public void clickCityToSearch() {
+		wait.until(ExpectedConditions.visibilityOf(selectACity));
+		selectACity.click();
+	}
+
+	public boolean verifyCity() throws InterruptedException {
+		boolean actResult = true;
+		try {
+		Thread.sleep(5000);
+		wait.until(ExpectedConditions.visibilityOf(verifyFinalPage));
+		 Reports.generateReport(driver, test, Status.PASS, "City is verified");
+		}catch(TimeoutException te){
+			actResult = false;
+			Reports.generateReport(driver, test, Status.FAIL, "City is not verified");
+		}
+		return actResult;
+	}
+
+
+	//Ts_05
+	public void bookNow() {
+		wait.until(ExpectedConditions.visibilityOf(selectBookNow));
+		selectBookNow.click();
+	}
+
+	public boolean addPatientDetails() throws InterruptedException {
+		boolean actResult = true;
+		try {
+		Thread.sleep(5000);
+		wait.until(ExpectedConditions.visibilityOf(verifyAddPatient));
+		 Reports.generateReport(driver, test, Status.PASS, "Patient details are added");
+		}catch(TimeoutException te){
+			actResult = false;
+			Reports.generateReport(driver, test, Status.FAIL, "Patient details are  not added");
+		}
+		return actResult;
+	}
+
+	//Ts_06
+	
+	public void clickPName() throws InterruptedException {
+		Thread.sleep(5000);
+		wait.until(ExpectedConditions.visibilityOf(enterPName));
+	}
+	
+	public void enterPName() throws InterruptedException {
+		wait.until(ExpectedConditions.visibilityOf(enterPName));
+		((JavascriptExecutor)driver).executeScript("arguments[0].click();", enterPName);
+		enterPName.sendKeys("decf;");
+		enterPName.sendKeys(Keys.ENTER);
+	}
+	
+	public boolean verifyPName() throws InterruptedException {
+		boolean actResult = true;
+		try {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+		wait.until(ExpectedConditions.visibilityOf(verifyPName));
+		 Reports.generateReport(driver, test, Status.PASS, "Patient details are added");
+		}catch(TimeoutException te){
+			actResult = false;
+			Reports.generateReport(driver, test, Status.FAIL, "Patient details are  not added");
+		}
+		return actResult;
+	}
+	
+
 }
+

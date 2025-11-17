@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Cucumber" time="23.465" tests="1" skipped="0" failures="0" errors="0" timestamp="2025-11-17T13:47:07.149470200Z">
+<testcase classname="Lab Tests Navigation" name="Navigate to Lab Tests page" time="22.59">
+<system-out><![CDATA[
+Given user is on Practo Homepage............................................passed
+When user clicks on Lab Tests link..........................................passed
+Then Lab Tests page should be displayed.....................................passed
+And select Bangalore city...................................................passed
+When user clicks on Lipid Profile link......................................passed
+Then verify Lipid Profile page URL..........................................passed
+]]></system-out>
+</testcase>
+</testsuite>
