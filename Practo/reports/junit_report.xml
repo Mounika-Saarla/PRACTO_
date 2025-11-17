@@ -1,70 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="Cucumber" time="146.082" tests="7" skipped="0" failures="0" errors="0" timestamp="2025-11-17T03:48:44.098957900Z">
-<testcase classname="Home Page Footer Navigation" name="Validate Footer Contains Search for clinics click - #1.1" time="20.688">
+<testsuite name="Cucumber" time="35.346" tests="1" skipped="0" failures="1" errors="0" timestamp="2025-11-17T14:17:00.895526200Z">
+<testcase classname="Lab Tests Navigation" name="Search for an invalid doctor and validate No results found message" time="34.464">
+<failure type="java.lang.AssertionError" message="Validation failed for No results message expected [true] but found [false]">
+<![CDATA[java.lang.AssertionError: Validation failed for No results message expected [true] but found [false]
+	at org.testng.Assert.fail(Assert.java:111)
+	at org.testng.Assert.failNotEquals(Assert.java:1590)
+	at org.testng.Assert.assertTrue(Assert.java:57)
+	at com.stepDefinitionTestNG.Profile.user_should_see_a_message_no_results_found_on_the_page(Profile.java:407)
+	at ✽.user should see a message No results found on the page(file:///C:/Users/dyamaa/SpritPracto/Practo/src/test/resources/Features/Profile.feature:80)
+]]>
+</failure>
 <system-out><![CDATA[
-Given User is on the Home page..............................................passed
-And User scrolls to the footer section......................................passed
-When The footer should contain a visible link labeled Search for clinics....passed
-And User clicks on the Search for clinics link..............................passed
-And User applies a location filter from sheet 0 at RowIndex 1...............passed
-Then Filtered clinic results should be displayed............................passed
-]]></system-out>
-</testcase>
-<testcase classname="Home Page Footer Navigation" name="Validate Footer Contains Search for clinics click - #1.2" time="11.243">
-<system-out><![CDATA[
-Given User is on the Home page..............................................passed
-And User scrolls to the footer section......................................passed
-When The footer should contain a visible link labeled Search for clinics....passed
-And User clicks on the Search for clinics link..............................passed
-And User applies a location filter from sheet 0 at RowIndex 2...............passed
-Then Filtered clinic results should be displayed............................passed
-]]></system-out>
-</testcase>
-<testcase classname="Home Page Footer Navigation" name="navigate to required clinic details" time="14.549">
-<system-out><![CDATA[
-Given user launch practo website............................................passed
-When user clicks the search for clinics link................................passed
-And user clicks on view profile of first clinic.............................passed
-And clinic details shouls be displayed......................................passed
-Then user select the doctor in that clinic..................................passed
-]]></system-out>
-</testcase>
-<testcase classname="Home Page Footer Navigation" name="Navigate to doctor details in Gopalapuram" time="22.396">
-<system-out><![CDATA[
-Given User is on the Home page..............................................passed
-And User scrolls to the footer section......................................passed
-When The footer should contain a visible link labeled Search for clinics....passed
-And User clicks on the Search for clinics link..............................passed
-And User clicks on Clinics in Gopalapuram link..............................passed
-Then User click on Call Clinic..............................................passed
-]]></system-out>
-</testcase>
-<testcase classname="Home Page Footer Navigation" name="Navigate to Anesthesiologists available in chennai" time="44.392">
-<system-out><![CDATA[
-Given user launch practo website............................................passed
-When user clicks the search for clinics link................................passed
-And user clicks on Qure Ortho Clinic link...................................passed
-Then user clicks on Anesthesiologist in Chennai link in footer..............passed
-]]></system-out>
-</testcase>
-<testcase classname="Home Page Footer Navigation" name="Validate Footer Contains Search for clinics click - #1.1" time="17.857">
-<system-out><![CDATA[
-Given User is on the Home page..............................................passed
-And User scrolls to the footer section......................................passed
-When The footer should contain a visible link labeled Search for clinics....passed
-And User clicks on the Search for clinics link..............................passed
-And User applies a speciality filter from sheet 0 at RowIndex 1.............passed
-Then Filtered clinic results should be displayed............................passed
-]]></system-out>
-</testcase>
-<testcase classname="Home Page Footer Navigation" name="Validate Footer Contains Search for clinics click - #1.2" time="13.803">
-<system-out><![CDATA[
-Given User is on the Home page..............................................passed
-And User scrolls to the footer section......................................passed
-When The footer should contain a visible link labeled Search for clinics....passed
-And User clicks on the Search for clinics link..............................passed
-And User applies a speciality filter from sheet 0 at RowIndex 2.............passed
-Then Filtered clinic results should be displayed............................passed
+Given when the user launches Practo home page...............................passed
+When user clicks on the search bar..........................................passed
+And user enters an invalid doctor name......................................passed
+And user selects a suggestion from dropdown.................................passed
+Then user should see a message No results found on the page.................failed
 ]]></system-out>
 </testcase>
 </testsuite>
