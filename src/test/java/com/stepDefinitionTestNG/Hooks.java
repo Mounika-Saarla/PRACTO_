@@ -1,42 +1,8 @@
 package com.stepDefinitionTestNG;
-
-
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-
-/*
-import io.cucumber.java.After;
-import io.cucumber.java.Before;
-import io.cucumber.java.Scenario;
-import com.setup.BaseSteps;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-import java.io.File;
-import java.nio.file.Files;
-
-public class Hooks {
-
-    @Before
-    public void startTest() throws Exception {
-        BaseSteps.initDriver();
-    }
-
-    @After
-    public void endTest(Scenario scenario) {
-        if (scenario.isFailed()) {
-            byte[] screenshot = ((TakesScreenshot) BaseSteps.driver).getScreenshotAs(OutputType.BYTES);
-            scenario.attach(screenshot, "image/png", "Failed Screenshot");
-        }
-//        BaseSteps.quitDriver();
-    }
-}
-
-package com.stepDefinitionTestNG;
-*/
-
+ 
+ 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
-//import com.aventstack.extentreports.gherkin.model.Scenario;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import com.setup.BaseSteps;
  
@@ -44,77 +10,41 @@ import io.cucumber.java.After;
 import io.cucumber.java.AfterAll;
 import io.cucumber.java.Before;
 import io.cucumber.java.BeforeAll;
-import io.cucumber.java.Scenario;  //what to track on report(tester name,data etc...)
+import io.cucumber.java.Scenario;
  
 public class Hooks extends BaseSteps {
-	
-
-	public static WebDriver driver;
-
-	public Hooks() {
-		super(null); // or handle driver initialization differently
-	}	
-	
-	public Hooks(WebDriver driver) {
-		super(driver);
-		// TODO Auto-generated constructor stub
-	}
-
-
-	public static ExtentSparkReporter spark;
-    public static ExtentReports extReports;
-    public static ExtentTest test;
-    @BeforeAll
+ 
+	public static ExtentSparkReporter spark; // classes of extend reports, what should be color of reports
+    public static ExtentReports extReports; //what to track on report(tester name, date etc..,)
+    public static ExtentTest test; // it will track the test cases
+ 
+    @BeforeAll // run code before feature file starts
     public static void beforeAll() {
-        spark = new ExtentSparkReporter(".\\target\\ExtentReport.html");
+        
+        spark = new ExtentSparkReporter(".\\target\\ExtentReport.html"); // for extends report
         extReports = new ExtentReports();
         extReports.attachReporter(spark);
     }
+ 
     @AfterAll
-    public static void afterAll() {
-        //after feature file ends this will run
-    	//to generate extent report like commit method
-        extReports.flush();
+    public static void afterAll() { // after file rends this will run
+        
+        extReports.flush(); // to generate extentreport like commit method
     }
-    @Before
-    public void beforeScenario(Scenario scenario) throws Exception {
-       System.out.println("hi...");//before every scenario
-       //on the test track the name of the scenario
-       //Fresh browser will launch
-        test = extReports.createTest(scenario.getName());
-//       launchBrowser();
-        initDriver();
+ 
+    @Before // before every scenario
+    public void beforeScenario(Scenario scenario) {
+       
+        test = extReports.createTest(scenario.getName()); // on the test, track the name of scenario
+       launchBrowser(); // fresh browser will launch
     }
-
-    @After
-    public void afterScenario() throws InterruptedException  {
-    	
-    	
-//	    try {
-//	        Thread.sleep(5000);
-//	    } catch (InterruptedException e) {
-//	        e.printStackTrace();
-//	    }
-//	    BaseSteps.quitDriver();
-	}
-//    	try {
-//			BaseSteps.tearDown();
-//		} catch (Exception e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-    	
-//    	BaseSteps.tearDown();
-    	
-    	
-//        sleep(4000);
-//        driver.quit();   //after every scenario
-//    	if (driver != null) {
-//			driver.quit(); // ✅ Close browser once after all scenarios
-//		}
-    	
-//    }
-    
-    
-}
-
+      
+ 
+    @After // after every scenario
+    public void afterScenario() {
+        
+        sleep(4000);
+        driver.quit();
+    }
+ 
+} 
