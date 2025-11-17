@@ -50,7 +50,7 @@
               <ul>
                 <li>
                   <a href="#" panel-name="test-xml-Default_suite" class="navigator-link ">
-                    <span>C:\Users\sripath\AppData\Local\Temp\testng-eclipse--2011439795\testng-customsuite.xml</span>
+                    <span>C:\Users\dyamaa\AppData\Local\Temp\testng-eclipse-1116675664\testng-customsuite.xml</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
@@ -103,7 +103,7 @@
                     <div class="method-list-content failed suite-Default_suite">
                       <span>
                         <img src="failed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Default_suite" title="com.runner.TestRunnerTestNG" class="method navigator-link" hash-for-method="runScenario(&quot;Validate Footer Contains Search for clinics click&quot;, &quot;Home Page Footer Navigation&quot;)">runScenario("Validate Footer Contains Search for clinics click", "Home Page Footer Navigation")</a> <!-- method navigator-link -->
+                        <a href="#" panel-name="suite-Default_suite" title="com.runner.TestRunnerTestNG" class="method navigator-link" hash-for-method="runScenario(&quot;Search for an invalid doctor and validate No results found message&quot;, &quot;Lab Tests Navigation&quot;)">runScenario("Search for an invalid doctor and validate No results found message", "Lab Tests Navigation")</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                     </div> <!-- method-list-content failed suite-Default_suite -->
@@ -126,21 +126,16 @@
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="runScenario(&quot;Validate Footer Contains Search for clinics click&quot;, &quot;Home Page Footer Navigation&quot;)">
-                  </a> <!-- runScenario("Validate Footer Contains Search for clinics click", "Home Page Footer Navigation") -->
+                  <a name="runScenario(&quot;Search for an invalid doctor and validate No results found message&quot;, &quot;Lab Tests Navigation&quot;)">
+                  </a> <!-- runScenario("Search for an invalid doctor and validate No results found message", "Lab Tests Navigation") -->
                   <span class="method-name">runScenario</span>
-                  <span class="parameters">("Validate Footer Contains Search for clinics click","Home Page Footer Navigation")</span>
-                  <div class="stack-trace">org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of element located by By.xpath: //div[contains(text(), &apos;abc123&apos;)] (tried for 10 second(s) with 500 milliseconds interval)
-Build info: version: &apos;4.34.0&apos;, revision: &apos;707dcb4246*&apos;
-System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;21.0.8&apos;
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 142.0.7444.163, chrome: {chromedriverVersion: 142.0.7444.162 (c076baf266c..., userDataDir: C:\Users\sripath\AppData\Lo...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:56453}, goog:processID: 8756, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:56453/devtoo..., se:cdpVersion: 142.0.7444.163, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: e8e3c21ed808d2a94ce5f7c7a2409281
-	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)
-	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:228)
-	at com.pages.userpage.applylocationFilter(userpage.java:60)
-	at com.stepDefinitionTestNG.Profile.user_applies_a_location1_filter_from_sheet_at_row_index(Profile.java:253)
-	at ✽.User applies a location1 filter from sheet 1 at RowIndex 1(file:///C:/Training/SprintPracto/Practo/src/test/resources/Features/Profile.feature:68)
+                  <span class="parameters">("Search for an invalid doctor and validate No results found message","Lab Tests Navigation")</span>
+                  <div class="stack-trace">java.lang.AssertionError: Validation failed for No results message expected [true] but found [false]
+	at org.testng.Assert.fail(Assert.java:111)
+	at org.testng.Assert.failNotEquals(Assert.java:1590)
+	at org.testng.Assert.assertTrue(Assert.java:57)
+	at com.stepDefinitionTestNG.Profile.user_should_see_a_message_no_results_found_on_the_page(Profile.java:407)
+	at ✽.user should see a message No results found on the page(file:///C:/Users/dyamaa/SpritPracto/Practo/src/test/resources/Features/Profile.feature:80)
 
 </div> <!-- stack-trace -->
                   <em>
@@ -152,7 +147,7 @@ Session ID: e8e3c21ed808d2a94ce5f7c7a2409281
         </div> <!-- panel Default_suite -->
         <div panel-name="test-xml-Default_suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">C:\Users\sripath\AppData\Local\Temp\testng-eclipse--2011439795\testng-customsuite.xml</span>
+            <span class="header-content">C:\Users\dyamaa\AppData\Local\Temp\testng-eclipse-1116675664\testng-customsuite.xml</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <pre>
@@ -213,12 +208,12 @@ data.addRows(1);
 data.setCell(0, 0, 0)
 data.setCell(0, 1, 'runScenario')
 data.setCell(0, 2, 'com.runner.TestRunnerTestNG')
-data.setCell(0, 3, 29524);
+data.setCell(0, 3, 34585);
 window.suiteTableData['Default_suite']= { tableData: data, tableDiv: 'times-div-Default_suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 29 seconds</span>
+              <span class="suite-total-time">Total running time: 34 seconds</span>
               <div id="times-div-Default_suite">
               </div> <!-- times-div-Default_suite -->
             </div> <!-- times-div -->
@@ -246,18 +241,18 @@ return data;
             <div class="chronological-class">
               <div class="chronological-class-name">com.runner.TestRunnerTestNG</div> <!-- chronological-class-name -->
               <div class="configuration-class before">
-                <span class="method-name">setUpClass(org.testng.TestRunner@63f2e0b)</span>
+                <span class="method-name">setUpClass(org.testng.TestRunner@1a8e9ed9)</span>
                 <span class="method-start">0 ms</span>
               </div> <!-- configuration-class before -->
               <div class="test-method">
                 <img src="failed.png">
                 </img>
-                <span class="method-name">runScenario("Validate Footer Contains Search for clinics click", "Home Page Footer Navigation")</span>
-                <span class="method-start">7229 ms</span>
+                <span class="method-name">runScenario("Search for an invalid doctor and validate No results found message", "Lab Tests Navigation")</span>
+                <span class="method-start">914 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-class after">
                 <span class="method-name">tearDownClass</span>
-                <span class="method-start">36760 ms</span>
+                <span class="method-start">35510 ms</span>
               </div> <!-- configuration-class after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
